@@ -21,16 +21,16 @@ export function FloatingGeometry() {
 
   return (
     <Float speed={1.4} rotationIntensity={0.65} floatIntensity={1.2}>
-      <mesh ref={meshRef} position={[2.1, 0.1, 0]}>
+      <mesh ref={meshRef} position={[3, -0.2, -0.35]} scale={0.76}>
         <icosahedronGeometry args={[1.1, 1]} />
         <MeshDistortMaterial
-          color="#f59e0b"
+          color="#d97706"
           distort={0.25}
           speed={0.8}
-          roughness={0.1}
-          metalness={0.35}
+          roughness={0.18}
+          metalness={0.22}
           transparent
-          opacity={0.92}
+          opacity={0.78}
         />
       </mesh>
     </Float>
