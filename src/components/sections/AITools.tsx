@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import { motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FloatingChips } from '@/components/ui/FloatingChips';
@@ -30,7 +30,12 @@ function InlineSvg({ svg, className }: InlineSvgProps) {
 interface DraggableToolProps {
   constraintRef: React.RefObject<HTMLDivElement | null>;
   className?: string;
-  style?: React.CSSProperties;
+  id: string;
+  anchor: { x: number; y: number };
+  offset?: { x: number; y: number };
+  initialVelocity?: { x: number; y: number };
+  gravity?: number;
+  bounce?: number;
   children: React.ReactNode;
   prefersReducedMotion: boolean;
 }
@@ -38,35 +43,191 @@ interface DraggableToolProps {
 function DraggableTool({
   constraintRef,
   className,
-  style,
+  id,
+  anchor,
+  offset = { x: 0, y: 0 },
+  initialVelocity = { x: 0, y: 0 },
+  gravity = 0,
+  bounce = 0.965,
   children,
   prefersReducedMotion,
 }: DraggableToolProps) {
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const physicsRef = useRef({
+    velocityX: initialVelocity.x,
+    velocityY: initialVelocity.y,
+    width: 0,
+    height: 0,
+    maxX: 0,
+    maxY: 0,
+    initialized: false,
+    dragging: false,
+  });
+
+  useLayoutEffect(() => {
+    let resizeObserver: ResizeObserver | null = null;
+    let frameId = 0;
+
+    const measure = () => {
+      const container = constraintRef.current;
+      const body = bodyRef.current;
+
+      if (!container || !body) {
+        return false;
+      }
+
+      const nextWidth = body.offsetWidth;
+      const nextHeight = body.offsetHeight;
+      const maxX = Math.max(container.clientWidth - nextWidth, 0);
+      const maxY = Math.max(container.clientHeight - nextHeight, 0);
+
+      physicsRef.current.width = nextWidth;
+      physicsRef.current.height = nextHeight;
+      physicsRef.current.maxX = maxX;
+      physicsRef.current.maxY = maxY;
+
+      if (!physicsRef.current.initialized) {
+        x.set(Math.min(Math.max(anchor.x * maxX + offset.x, 0), maxX));
+        y.set(Math.min(Math.max(anchor.y * maxY + offset.y, 0), maxY));
+        physicsRef.current.initialized = true;
+        return true;
+      }
+
+      x.set(Math.min(Math.max(x.get(), 0), maxX));
+      y.set(Math.min(Math.max(y.get(), 0), maxY));
+      return true;
+    };
+
+    const setup = () => {
+      const container = constraintRef.current;
+      const body = bodyRef.current;
+
+      if (!container || !body) {
+        frameId = requestAnimationFrame(setup);
+        return;
+      }
+
+      measure();
+
+      resizeObserver = new ResizeObserver(() => {
+        measure();
+      });
+
+      resizeObserver.observe(container);
+      resizeObserver.observe(body);
+    };
+
+    setup();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      resizeObserver?.disconnect();
+    };
+  }, [anchor.x, anchor.y, constraintRef, offset.x, offset.y, x, y]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    let frameId = 0;
+    let lastTime = performance.now();
+
+    const step = (now: number) => {
+      const state = physicsRef.current;
+
+      if (!state.initialized || state.dragging) {
+        lastTime = now;
+        frameId = requestAnimationFrame(step);
+        return;
+      }
+
+      const dt = Math.min(now - lastTime, 32) / 1000;
+      lastTime = now;
+
+      const minHorizontalKick = 18;
+      const minVerticalKick = 18;
+
+      state.velocityY += gravity * dt;
+      state.velocityX *= 0.9988;
+      state.velocityY *= 0.9988;
+
+      let nextX = x.get() + state.velocityX * dt;
+      let nextY = y.get() + state.velocityY * dt;
+
+      if (nextX <= 0) {
+        nextX = 0;
+        state.velocityX = Math.abs(state.velocityX) * bounce;
+        if (state.velocityX < minHorizontalKick) {
+          state.velocityX = minHorizontalKick;
+        }
+      } else if (nextX >= state.maxX) {
+        nextX = state.maxX;
+        state.velocityX = -Math.abs(state.velocityX) * bounce;
+        if (Math.abs(state.velocityX) < minHorizontalKick) {
+          state.velocityX = -minHorizontalKick;
+        }
+      }
+
+      if (nextY <= 0) {
+        nextY = 0;
+        state.velocityY = Math.abs(state.velocityY) * bounce;
+      } else if (nextY >= state.maxY) {
+        nextY = state.maxY;
+        state.velocityY = -Math.abs(state.velocityY) * bounce;
+        if (Math.abs(state.velocityY) < minVerticalKick) {
+          state.velocityY = -minVerticalKick;
+        }
+      }
+
+      x.set(nextX);
+      y.set(nextY);
+
+      frameId = requestAnimationFrame(step);
+    };
+
+    frameId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [bounce, gravity, prefersReducedMotion, x, y]);
+
   return (
     <motion.div
+      ref={bodyRef}
+      data-tool-float={id}
       drag
       dragConstraints={constraintRef}
-      dragElastic={0.18}
-      dragMomentum
-      dragTransition={{
-        power: 0.12,
-        timeConstant: 220,
-        bounceStiffness: 140,
-        bounceDamping: 16,
+      dragElastic={0}
+      dragMomentum={false}
+      onDragStart={() => {
+        physicsRef.current.dragging = true;
+      }}
+      onDrag={(_, info) => {
+        physicsRef.current.velocityX = info.velocity.x * 0.24;
+        physicsRef.current.velocityY = info.velocity.y * 0.24;
+      }}
+      onDragEnd={(_, info) => {
+        physicsRef.current.dragging = false;
+        physicsRef.current.velocityX = info.velocity.x * 0.28;
+        physicsRef.current.velocityY = info.velocity.y * 0.28;
       }}
       whileTap={{ scale: 0.98 }}
+      whileDrag={{ scale: 1.02 }}
       className={cn(
-        'pointer-events-auto absolute left-0 top-0 z-20 touch-none cursor-grab active:cursor-grabbing',
+        'pointer-events-auto absolute left-0 top-0 z-20 touch-none cursor-grab active:cursor-grabbing will-change-transform',
         className,
       )}
-      style={style}
+      style={{ x, y }}
     >
       <motion.div
         animate={
           prefersReducedMotion
             ? undefined
             : {
-                y: [0, -10, 0, 8, 0],
                 rotate: [0, -1.5, 0, 1.5, 0],
               }
         }
@@ -111,19 +272,16 @@ export function AITools() {
 
       <div
         ref={playgroundRef}
-        className="relative mb-8 min-h-[22rem] overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015)),radial-gradient(circle_at_22%_28%,rgba(245,158,11,0.12),transparent_26%),radial-gradient(circle_at_78%_38%,rgba(45,212,191,0.12),transparent_28%)] sm:mb-10 sm:min-h-[28rem] lg:min-h-[34rem]"
+        className="relative mb-6 min-h-[16rem] overflow-hidden sm:mb-8 sm:min-h-[20rem] lg:min-h-[24rem]"
       >
-        <div className="pointer-events-none absolute inset-0 bg-noise opacity-70" />
-        <div className="pointer-events-none absolute inset-x-6 top-6 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-zinc-500 sm:inset-x-8 sm:text-xs">
-          <span>Drag freely</span>
-          <span>Momentum enabled</span>
-        </div>
-
         <DraggableTool
+          id="claude"
           constraintRef={playgroundRef}
           prefersReducedMotion={prefersReducedMotion}
           className="w-[16rem] sm:w-[20rem] lg:w-[24rem]"
-          style={{ left: '8%', top: '18%' }}
+          anchor={{ x: 0.08, y: 0.04 }}
+          offset={{ x: 18, y: 12 }}
+          initialVelocity={{ x: 54, y: -8 }}
         >
           <div className="relative h-[15rem] w-[15rem] sm:h-[18rem] sm:w-[18rem] lg:h-[21rem] lg:w-[21rem]">
             <FloatingChips
@@ -143,10 +301,14 @@ export function AITools() {
         </DraggableTool>
 
         <DraggableTool
+          id="codex"
           constraintRef={playgroundRef}
           prefersReducedMotion={prefersReducedMotion}
           className="w-[12rem] sm:w-[15rem] lg:w-[18rem]"
-          style={{ left: '56%', top: '26%' }}
+          anchor={{ x: 0.64, y: 0.08 }}
+          offset={{ x: -12, y: 26 }}
+          initialVelocity={{ x: -48, y: 6 }}
+          gravity={0}
         >
           <div className="flex flex-col items-center gap-4">
             <InlineSvg
