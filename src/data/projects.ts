@@ -76,7 +76,7 @@ export const projects: Project[] = [
     year: '2024',
     description: '把产品观察、视觉拆解和工程实践整理成一套可持续更新的公开写作系统。',
     longDescription: [
-      'Field Notes 不是单篇文章，而是一套写作与发布机制。我把前端实现、内容模板和标签检索整合在一起，让写作与站点本身形成反馈循环。',
+      'Field Notes 是一套写作与发布机制。我把前端实现、内容模板和标签检索整合在一起，让写作与站点本身形成反馈循环。',
       '本站博客区域就是基于这套结构重新构建的。',
     ],
     tags: ['MDX', 'Content System', 'Editorial Design'],

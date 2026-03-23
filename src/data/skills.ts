@@ -6,7 +6,7 @@ export const skills = [
   },
   {
     title: 'Immersive Motion',
-    description: '滚动驱动、微交互与页面转场之间保持统一节奏，而不是零散堆动画。',
+    description: '滚动驱动、微交互与页面转场之间保持统一节奏。',
     items: ['Framer Motion', 'GSAP', 'Lenis'],
   },
   {
@@ -16,7 +16,7 @@ export const skills = [
   },
   {
     title: 'Writing Pipeline',
-    description: '把博客和作品说明做成可维护内容系统，而不是一组静态页面。',
+    description: '把博客和作品说明做成可维护的内容系统。',
     items: ['MDX', 'Frontmatter', 'Editorial Layout'],
   },
 ];
