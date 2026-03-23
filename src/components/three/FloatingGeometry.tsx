@@ -11,8 +11,12 @@ export function FloatingGeometry() {
       return;
     }
 
-    meshRef.current.rotation.x = state.clock.elapsedTime * 0.15;
-    meshRef.current.rotation.y = state.clock.elapsedTime * 0.22;
+    const t = state.clock.elapsedTime;
+    const baseX = Math.sin(t * 0.3) * 0.4 + Math.sin(t * 0.17) * 0.15;
+    const baseY = Math.sin(t * 0.22) * 0.5 + Math.cos(t * 0.13) * 0.2;
+
+    meshRef.current.rotation.x = baseX + state.pointer.y * 0.1;
+    meshRef.current.rotation.y = baseY + state.pointer.x * 0.15;
   });
 
   return (
@@ -21,8 +25,8 @@ export function FloatingGeometry() {
         <icosahedronGeometry args={[1.1, 1]} />
         <MeshDistortMaterial
           color="#f59e0b"
-          distort={0.35}
-          speed={1.5}
+          distort={0.25}
+          speed={0.8}
           roughness={0.1}
           metalness={0.35}
           transparent

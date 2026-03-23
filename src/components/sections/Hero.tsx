@@ -23,6 +23,14 @@ export function Hero() {
             <p className="text-xs uppercase tracking-[0.5em] text-amber-300/80">
               Portfolio / Journal / Experiments
             </p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-sm tracking-wide text-zinc-400"
+            >
+              lifuyue / XMU / AI - Native Developer
+            </motion.p>
             <AnimatedText
               text="I build immersive interfaces that feel editorial, kinetic, and precise."
               className="font-display text-5xl leading-[0.95] text-white sm:text-6xl lg:text-8xl"
@@ -33,13 +41,19 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.35 }}
               className="max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg"
             >
-              这个站点是作品集、博客和视觉实验的合体。重点不只是展示项目，而是把前端工程、
-              交互编排和内容呈现组织成一个连续的空间体验。
+              我是 lifuyue，XMU SWE 在读，专注 AI Agent & Coding。这个站点是作品集、博客和视觉实验的合体，
+              把前端工程、交互编排和内容呈现组织成一个连续的空间体验。
             </motion.p>
             <div className="flex flex-wrap gap-4">
               <MagneticButton to="/works">View Works</MagneticButton>
               <MagneticButton to="/blog" className="border-teal-300/20 text-teal-100">
                 Read Notes
+              </MagneticButton>
+              <MagneticButton
+                href="https://github.com/lifuyue"
+                className="border-zinc-500/20 text-zinc-200"
+              >
+                GitHub ↗
               </MagneticButton>
             </div>
           </div>
