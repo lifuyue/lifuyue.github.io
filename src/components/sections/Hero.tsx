@@ -33,8 +33,8 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.35 }}
               className="max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg"
             >
-              这个站点是作品集、博客和视觉实验的合体。重点不只是展示项目，而是把前端工程、
-              交互编排和内容呈现组织成一个连续的空间体验。
+              这个站点是作品集、博客和视觉实验的合体。这里把前端工程、交互编排和内容呈现组织成
+              一个连续的空间体验。
             </motion.p>
             <div className="flex flex-wrap gap-4">
               <MagneticButton to="/works">View Works</MagneticButton>

@@ -4,7 +4,7 @@
 
 ## 仓库简介
 
-这是一个基于 React 19 + TypeScript + Vite 的个人 portfolio / blog 单页应用，部署目标是 GitHub Pages。站点把作品集、博客和视觉实验组织在一套统一的 editorial 视觉语言里，重点不是通用模板，而是有节奏的内容呈现、动效编排和适度的 3D 表达。
+这是一个基于 React 19 + TypeScript + Vite 的个人 portfolio / blog 单页应用，部署目标是 GitHub Pages。站点把作品集、博客和视觉实验组织在一套统一的 editorial 视觉语言里，核心是有节奏的内容呈现、动效编排和适度的 3D 表达。
 
 ## 开发命令
 

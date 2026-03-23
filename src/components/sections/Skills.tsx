@@ -9,7 +9,7 @@ export function Skills() {
       <SectionHeading
         eyebrow="Capabilities"
         title="Systems for motion, structure, and story."
-        description="我把视觉、交互和内容系统一起考虑。每一层都应该有存在理由，而不是只为填满页面。"
+        description="我把视觉、交互和内容系统一起考虑。每一层都应该有自己的存在理由。"
       />
       <div className="grid gap-6 md:grid-cols-2">
         {skills.map((skill, index) => (
