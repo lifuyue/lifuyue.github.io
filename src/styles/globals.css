@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 7 8 14;
+  --foreground: 239 236 230;
+  --surface: 18 20 29;
+  --line: 255 255 255;
+  --accent: 245 158 11;
+  --accent-soft: 251 191 36;
+  --teal: 45 212 191;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+  --background: 244 239 231;
+  --foreground: 15 23 42;
+  --surface: 255 255 255;
+  --line: 15 23 42;
+  --accent: 217 119 6;
+  --accent-soft: 234 179 8;
+  --teal: 13 148 136;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 35%),
+    radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 30%),
+    radial-gradient(circle at 75% 20%, rgba(45, 212, 191, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(7, 8, 14, 1) 0%, rgba(7, 8, 14, 0.92) 50%, rgba(7, 8, 14, 1) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-position: center;
+  background-size: 72px 72px;
+  content: '';
+  inset: 0;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  opacity: 0.25;
+  pointer-events: none;
+  position: fixed;
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  inset: 0;
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a,
+button {
+  @apply transition-all duration-300;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.35);
+  color: white;
+}
+
+.glass-panel {
+  @apply border border-white/10 bg-white/5 backdrop-blur-2xl;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25);
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+
+.section-space {
+  @apply py-20 sm:py-24 lg:py-32;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, rgb(var(--accent-soft)), rgb(var(--teal)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

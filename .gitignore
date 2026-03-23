@@ -1,0 +1,13 @@
+node_modules
+dist
+tsconfig.tsbuildinfo
+.codex-homepage.png
+
+# Local environment
+.DS_Store
+.env
+.env.*
+
+# Tooling outputs
+coverage
+.vite
