@@ -12,6 +12,7 @@ export function WorkDetail() {
 
   const project = projects[projectIndex];
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const isExternalLink = (href: string) => /^https?:\/\//i.test(href);
 
   return (
     <section className="section-shell section-space">
@@ -47,15 +48,27 @@ export function WorkDetail() {
           <div className="glass-panel rounded-[2rem] p-6">
             <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Links</p>
             <div className="mt-5 flex flex-col gap-3">
-              {project.links.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {project.links.map((item) =>
+                isExternalLink(item.href) ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
             </div>
           </div>
         </aside>

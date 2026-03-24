@@ -5,10 +5,29 @@ export type ResolvedTheme = 'dark' | 'light';
 
 const STORAGE_KEY = 'lifuyue-theme';
 const THEME_EVENT = 'lifuyue-theme-change';
+const THEME_TRANSITION_CLASS = 'theme-transition';
+const THEME_TRANSITION_DURATION_MS = 160;
 
 function applyTheme(theme: ResolvedTheme) {
-  document.documentElement.classList.remove('dark', 'light');
-  document.documentElement.classList.add(theme);
+  const root = document.documentElement;
+  const shouldAnimate =
+    typeof window !== 'undefined' &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (shouldAnimate) {
+    root.classList.add(THEME_TRANSITION_CLASS);
+    window.clearTimeout((window as Window & { __themeTransitionTimer?: number }).__themeTransitionTimer);
+  }
+
+  root.classList.remove('dark', 'light');
+  root.classList.add(theme);
+
+  if (shouldAnimate) {
+    (window as Window & { __themeTransitionTimer?: number }).__themeTransitionTimer =
+      window.setTimeout(() => {
+        root.classList.remove(THEME_TRANSITION_CLASS);
+      }, THEME_TRANSITION_DURATION_MS);
+  }
 }
 
 function readSystemTheme(): ResolvedTheme {
