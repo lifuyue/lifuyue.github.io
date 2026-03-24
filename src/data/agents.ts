@@ -8,7 +8,6 @@ import geminiTextSvg from '@/assets/logos/gemini-text.svg?raw';
 export interface AgentConfig {
   id: string;
   name: string;
-  role: string;
   colorIcon: string;
   textIcon?: string | null;
   glowColor: string;
@@ -19,7 +18,6 @@ export const heroAgents: AgentConfig[] = [
   {
     id: 'claude-code',
     name: 'Claude Code',
-    role: 'Plan',
     colorIcon: claudecodeColorSvg,
     textIcon: claudecodeTextSvg,
     glowColor: 'rgba(245, 158, 11, 0.34)',
@@ -27,7 +25,6 @@ export const heroAgents: AgentConfig[] = [
   {
     id: 'codex',
     name: 'Codex',
-    role: 'Code',
     colorIcon: codexColorSvg,
     textIcon: codexTextSvg,
     glowColor: 'rgba(45, 212, 191, 0.4)',
@@ -35,7 +32,6 @@ export const heroAgents: AgentConfig[] = [
   {
     id: 'gemini',
     name: 'Gemini',
-    role: 'FE-design',
     colorIcon: geminiColorSvg,
     textIcon: geminiTextSvg,
     glowColor: 'rgba(96, 165, 250, 0.38)',

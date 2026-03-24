@@ -2,18 +2,16 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
-import claudeColorSvg from '@/assets/logos/claude-color.svg?raw';
-import claudeTextSvg from '@/assets/logos/claude-text.svg?raw';
 import claudecodeColorSvg from '@/assets/logos/claudecode-color.svg?raw';
 import claudecodeTextSvg from '@/assets/logos/claudecode-text.svg?raw';
 import codexColorSvg from '@/assets/logos/codex-color.svg?raw';
 import codexTextSvg from '@/assets/logos/codex-text.svg?raw';
 import geminiColorSvg from '@/assets/logos/gemini-color.svg?raw';
 import geminiTextSvg from '@/assets/logos/gemini-text.svg?raw';
-import openaiSvg from '@/assets/logos/openai.svg?raw';
 
 const claudecodeChips = ['/model opus', 'plan'];
 const codexChips = ['code', 'review', 'implement'];
+const geminiChips = ['FE-design', 'prototype'];
 
 interface InlineSvgProps {
   svg: string;
@@ -275,11 +273,11 @@ export function AITools() {
   const playgroundRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="section-shell section-space relative">
+    <section className="section-shell relative py-12 sm:py-16 lg:py-20">
       <SectionHeading
-        eyebrow="AI Tools"
-        title="A working stage for planning, code, review, and model switching."
-        description="第二屏改成一个更大的交互舞台，把 Claude AI、Claude Code、Codex、Gemini 和 OpenAI 放进同一条工作回路里。推理、实现、切换和验证一起发生。"
+        eyebrow="Agent Toolkit"
+        title="Three agents. One workflow."
+        description="从推理到实现，Claude Code 负责规划，Codex 负责编码与 review，Gemini 负责前端设计与原型探索。三个 Agent 协同构成完整的 AI-native 开发流程。"
       />
 
       <motion.div
@@ -305,42 +303,18 @@ export function AITools() {
 
         <div
           ref={playgroundRef}
-          className="relative min-h-[24rem] overflow-hidden bg-transparent pt-2 sm:min-h-[30rem] lg:min-h-[36rem]"
+          className="relative min-h-[20rem] overflow-hidden bg-transparent pt-2 sm:min-h-[24rem] lg:min-h-[28rem]"
         >
-          <DraggableTool
-            id="claude"
-            constraintRef={playgroundRef}
-            prefersReducedMotion={prefersReducedMotion}
-            className="w-[9.75rem] sm:w-[11.5rem] lg:w-[13rem]"
-            anchor={{ x: 0.06, y: 0.06 }}
-            offset={{ x: 8, y: 8 }}
-            initialVelocity={{ x: 52, y: -6 }}
-          >
-            <div className="relative flex flex-col items-center gap-3 rounded-[1.75rem] border border-amber-300/10 bg-transparent px-4 py-5">
-              <InlineSvg
-                svg={claudeColorSvg}
-                className="h-14 w-14 drop-shadow-[0_18px_36px_rgba(245,158,11,0.34)] sm:h-16 sm:w-16 lg:h-20 lg:w-20"
-              />
-              <InlineSvg
-                svg={claudeTextSvg}
-                className="h-6 w-[6.75rem] text-foreground/95 sm:h-7 sm:w-[7.75rem] lg:h-8 lg:w-[8.75rem]"
-              />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-foreground/40 sm:text-[11px]">
-                Claude AI
-              </span>
-            </div>
-          </DraggableTool>
-
           <DraggableTool
             id="claude-code"
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
-            className="w-[15.5rem] sm:w-[18rem] lg:w-[21rem]"
-            anchor={{ x: 0.34, y: 0.09 }}
-            offset={{ x: 10, y: 18 }}
-            initialVelocity={{ x: -44, y: 8 }}
+            className="w-[14rem] sm:w-[16rem] lg:w-[18rem]"
+            anchor={{ x: 0.12, y: 0.15 }}
+            offset={{ x: 4, y: 2 }}
+            initialVelocity={{ x: 34, y: 10 }}
           >
-            <div className="rounded-[2rem] border border-amber-300/12 bg-transparent px-4 py-4 sm:px-5 sm:py-5">
+            <div className="rounded-[2rem] border border-amber-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(245,158,11,0.55)] sm:px-5 sm:py-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <InlineSvg
@@ -366,12 +340,12 @@ export function AITools() {
             id="codex"
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
-            className="w-[15rem] sm:w-[18rem] lg:w-[22rem]"
-            anchor={{ x: 0.48, y: 0.5 }}
-            offset={{ x: 0, y: -4 }}
-            initialVelocity={{ x: 46, y: -6 }}
+            className="w-[14.5rem] sm:w-[17rem] lg:w-[19rem]"
+            anchor={{ x: 0.55, y: 0.45 }}
+            offset={{ x: 0, y: 0 }}
+            initialVelocity={{ x: -42, y: 12 }}
           >
-            <div className="rounded-[2rem] border border-teal-300/12 bg-transparent px-4 py-4 sm:px-5 sm:py-5">
+            <div className="rounded-[2rem] border border-teal-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(45,212,191,0.55)] sm:px-5 sm:py-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <InlineSvg
@@ -397,39 +371,30 @@ export function AITools() {
             id="gemini"
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
-            className="w-[9.75rem] sm:w-[11rem] lg:w-[12.5rem]"
-            anchor={{ x: 0.8, y: 0.08 }}
-            offset={{ x: -4, y: 2 }}
-            initialVelocity={{ x: -34, y: 7 }}
+            className="w-[13rem] sm:w-[14.75rem] lg:w-[16rem]"
+            anchor={{ x: 0.78, y: 0.1 }}
+            offset={{ x: -8, y: 4 }}
+            initialVelocity={{ x: -28, y: 14 }}
           >
-            <div className="rounded-[1.75rem] border border-sky-300/12 bg-transparent px-4 py-5">
-              <div className="flex flex-col items-center gap-3">
-                <InlineSvg
-                  svg={geminiColorSvg}
-                  className="h-12 w-12 drop-shadow-[0_18px_42px_rgba(96,165,250,0.28)] sm:h-14 sm:w-14 lg:h-16 lg:w-16"
-                />
-                <InlineSvg
-                  svg={geminiTextSvg}
-                  className="h-6 w-[6.5rem] text-foreground/95 sm:h-7 sm:w-[7.75rem] lg:h-8 lg:w-[9rem]"
+            <div className="rounded-[2rem] border border-sky-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(96,165,250,0.55)] sm:px-5 sm:py-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-3">
+                  <InlineSvg
+                    svg={geminiColorSvg}
+                    className="h-11 w-11 drop-shadow-[0_18px_42px_rgba(96,165,250,0.28)] sm:h-12 sm:w-12 lg:h-14 lg:w-14"
+                  />
+                  <InlineSvg
+                    svg={geminiTextSvg}
+                    className="h-5 w-[6.25rem] text-foreground/95 sm:h-6 sm:w-[7.2rem] lg:h-7 lg:w-[8.1rem]"
+                  />
+                </div>
+
+                <ToolChipRow
+                  items={geminiChips}
+                  className="max-w-[10rem] sm:max-w-[9.5rem] sm:justify-end"
+                  chipClassName="border-sky-300/15 bg-sky-300/8 text-foreground/88 shadow-[0_10px_30px_rgba(96,165,250,0.12)]"
                 />
               </div>
-            </div>
-          </DraggableTool>
-
-          <DraggableTool
-            id="openai"
-            constraintRef={playgroundRef}
-            prefersReducedMotion={prefersReducedMotion}
-            className="w-[5.75rem] sm:w-[6.75rem] lg:w-[7.75rem]"
-            anchor={{ x: 0.16, y: 0.66 }}
-            offset={{ x: 10, y: 0 }}
-            initialVelocity={{ x: 38, y: -10 }}
-          >
-            <div className="flex items-center justify-center rounded-[1.5rem] border border-white/10 bg-transparent px-4 py-4 sm:px-5 sm:py-5">
-              <InlineSvg
-                svg={openaiSvg}
-                className="h-8 w-8 text-foreground/92 drop-shadow-[0_16px_36px_rgba(255,255,255,0.16)] sm:h-10 sm:w-10 lg:h-12 lg:w-12"
-              />
             </div>
           </DraggableTool>
         </div>
