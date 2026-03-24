@@ -11,7 +11,7 @@ import xSvg from '@/assets/logos/x.svg?raw';
 import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
-const headlineLines = ['I build immersive', 'interfaces that feel', 'editorial, kinetic, and precise.'];
+const headlineLines = ['From agents to', 'interfaces, I build', 'AI-native products with precision.'];
 
 interface FloatingAgentProps {
   constraintRef: RefObject<HTMLDivElement | null>;
@@ -373,7 +373,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-sm tracking-wide text-foreground/55"
             >
-              lifuyue / XMU / AI - Native Developer
+              lifuyue / XMU SWE / AI - Native Developer
             </motion.p>
             <motion.div
               initial="hidden"
@@ -410,8 +410,8 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.35 }}
               className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg"
             >
-              我是 lifuyue，XMU SWE 在读，专注 AI Agent & Coding。这个站点是作品集、博客和视觉实验的合体，
-              把前端工程、交互编排和内容呈现组织成一个连续的空间体验。
+              我是 lifuyue，XMU SWE 在读，专注 AI Native 全栈开发、Agent 工作流与产品实现。这个站点展示我如何把模型能力、
+              交互设计和前端工程组织成可交付的产品体验。
             </motion.p>
             <div className="flex flex-wrap gap-4">
               <MagneticButton to="/works">View Works</MagneticButton>
