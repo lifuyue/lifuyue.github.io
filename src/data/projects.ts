@@ -22,8 +22,7 @@ export const projects: Project[] = [
       '我也把大量运营型工作流直接纳入交付范围，包括 Excel 商品导入、需求清单导出、运单与批量处理能力，以及本地 Docker 栈、HTTP smoke 和 miniapp E2E 组成的协作验证链路。这样它既是一个可演示的产品系统，也是一个能持续推进的工程工作台。',
     ],
     tags: ['Taro', 'React', 'TypeScript', 'Go', 'OpenAPI', 'AI'],
-    cover:
-      'linear-gradient(135deg, rgba(100,116,139,0.9), rgba(15,23,42,0.96) 48%, rgba(8,145,178,0.42))',
+    cover: 'var(--tmo-cover-background)',
     accent: 'slate',
     metrics: [
       { label: 'Client Surface', value: 'WeChat + Alipay' },
