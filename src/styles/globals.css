@@ -114,6 +114,25 @@ body::after {
   min-height: 100vh;
 }
 
+html.theme-transition body,
+html.theme-transition body::before,
+html.theme-transition body::after,
+html.theme-transition .glass-panel,
+html.theme-transition .hero-overlay,
+html.theme-transition .about-image-gradient,
+html.theme-transition [style*='--tmo-cover-background'],
+html.theme-transition [style*='var(--tmo-cover-background)'] {
+  transition-property: background, background-color, background-image, box-shadow, color, opacity;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.theme-transition .glass-panel,
+html.theme-transition .hero-overlay,
+html.theme-transition .about-image-gradient {
+  transition-property: background, background-color, background-image, border-color, box-shadow, color, opacity;
+}
+
 a,
 button {
   @apply transition-all duration-300;
