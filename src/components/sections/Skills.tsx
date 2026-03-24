@@ -22,16 +22,16 @@ export function Skills() {
           >
             <GlassCard className="h-full min-h-[280px]">
               <div className="flex h-full flex-col">
-                <p className="text-xs uppercase tracking-[0.35em] text-amber-300/80">
+                <p className="text-xs uppercase tracking-[0.35em] text-accent/80">
                   0{index + 1}
                 </p>
-                <h3 className="mt-6 font-display text-3xl text-white">{skill.title}</h3>
-                <p className="mt-4 flex-1 text-sm leading-7 text-zinc-300">{skill.description}</p>
+                <h3 className="mt-6 font-display text-3xl text-foreground">{skill.title}</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-foreground/70">{skill.description}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {skill.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-200"
+                      className="rounded-full border border-line/10 px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground/80"
                     >
                       {item}
                     </span>

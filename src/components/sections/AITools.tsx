@@ -288,13 +288,13 @@ export function AITools() {
               items={claudeChips}
               radius={96}
               className="scale-[0.86] sm:scale-100 lg:scale-[1.1]"
-              chipClassName="border-amber-200/20 bg-[#17120a]/45 text-amber-50 shadow-[0_10px_30px_rgba(245,158,11,0.18)]"
+              chipClassName="border-line/10 bg-line/8 text-foreground/90 shadow-[0_10px_30px_rgba(245,158,11,0.18)]"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
               <InlineSvg svg={claudeColorSvg} className="h-16 w-16 drop-shadow-[0_18px_40px_rgba(245,158,11,0.35)] sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
               <InlineSvg
                 svg={claudeTextSvg}
-                className="h-7 w-[7.5rem] text-white/95 drop-shadow-[0_10px_28px_rgba(245,158,11,0.16)] sm:h-8 sm:w-[8.5rem] lg:h-9 lg:w-[9.5rem]"
+                className="h-7 w-[7.5rem] text-foreground/95 drop-shadow-[0_10px_28px_rgba(245,158,11,0.16)] sm:h-8 sm:w-[8.5rem] lg:h-9 lg:w-[9.5rem]"
               />
             </div>
           </div>
@@ -317,13 +317,13 @@ export function AITools() {
             />
             <InlineSvg
               svg={codexTextSvg}
-              className="h-7 w-[7.5rem] text-white/95 drop-shadow-[0_10px_28px_rgba(45,212,191,0.16)] sm:h-8 sm:w-[8.75rem] lg:h-9 lg:w-[10rem]"
+              className="h-7 w-[7.5rem] text-foreground/95 drop-shadow-[0_10px_28px_rgba(45,212,191,0.16)] sm:h-8 sm:w-[8.75rem] lg:h-9 lg:w-[10rem]"
             />
             <div className="flex flex-wrap justify-center gap-2">
               {codexChips.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-zinc-100"
+                  className="rounded-full border border-line/10 bg-line/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-foreground/90"
                 >
                   {item}
                 </span>
@@ -353,21 +353,21 @@ export function AITools() {
             <div className="relative flex h-full flex-col p-6 sm:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-amber-300/85">Primary Tool</p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-accent/85">Primary Tool</p>
                   <div className="mt-3">
                     <h3 className="sr-only">Claude</h3>
                     <InlineSvg
                       svg={claudeTextSvg}
-                      className="h-7 w-[7.25rem] text-white/95 sm:h-9 sm:w-[9.25rem]"
+                      className="h-7 w-[7.25rem] text-foreground/95 sm:h-9 sm:w-[9.25rem]"
                     />
                   </div>
                 </div>
-                <div className="rounded-full border border-amber-300/15 bg-amber-300/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-amber-100/90">
+                <div className="rounded-full border border-accent/15 bg-accent/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-accent">
                   Reasoning Layer
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 text-sm leading-7 text-zinc-300">
+              <div className="mt-8 grid gap-4 text-sm leading-7 text-foreground/70">
                 <p>
                   适合处理方向比较、任务拆解、长链路讨论和较重的上下文阅读，让复杂前端问题先有
                   一个稳定的结构。
@@ -376,7 +376,7 @@ export function AITools() {
                   {claudeChips.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-zinc-100"
+                      className="rounded-full border border-line/10 bg-line/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-foreground/90"
                     >
                       {item}
                     </span>
@@ -384,8 +384,8 @@ export function AITools() {
                 </div>
               </div>
 
-              <div className="mt-auto grid gap-3 border-t border-white/10 pt-6 text-sm leading-7 text-zinc-300">
-                <p className="text-sm uppercase tracking-[0.32em] text-zinc-500">
+              <div className="mt-auto grid gap-3 border-t border-line/10 pt-6 text-sm leading-7 text-foreground/70">
+                <p className="text-sm uppercase tracking-[0.32em] text-foreground/45">
                   Long-context planning / editorial reasoning
                 </p>
                 <p>拖拽上方实体时，Claude 会带着模型标签一起漂浮，保持更强的上下文感。</p>
@@ -400,21 +400,21 @@ export function AITools() {
             <div className="relative flex h-full flex-col p-6 sm:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-teal-200/80">Execution Tool</p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-teal/80">Execution Tool</p>
                   <div className="mt-3">
                     <h3 className="sr-only">Codex</h3>
                     <InlineSvg
                       svg={codexTextSvg}
-                      className="h-8 w-[7.5rem] text-white/95 sm:h-10 sm:w-[9.75rem]"
+                      className="h-8 w-[7.5rem] text-foreground/95 sm:h-10 sm:w-[9.75rem]"
                     />
                   </div>
                 </div>
-                <div className="rounded-full border border-teal-300/15 bg-teal-300/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-teal-50/90">
+                <div className="rounded-full border border-teal/15 bg-teal/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-teal">
                   Shipping Layer
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 text-sm leading-7 text-zinc-300">
+              <div className="mt-8 grid gap-4 text-sm leading-7 text-foreground/70">
                 <p>
                   更适合贴着代码库执行具体改动、跑构建和补验证，让抽象判断尽快落到可以交付的实现
                   上。
@@ -423,7 +423,7 @@ export function AITools() {
                   {codexChips.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-zinc-100"
+                      className="rounded-full border border-line/10 bg-line/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-foreground/90"
                     >
                       {item}
                     </span>
@@ -431,8 +431,8 @@ export function AITools() {
                 </div>
               </div>
 
-              <div className="mt-auto grid gap-3 border-t border-white/10 pt-6 text-sm leading-7 text-zinc-300">
-                <p className="text-sm uppercase tracking-[0.32em] text-zinc-500">
+              <div className="mt-auto grid gap-3 border-t border-line/10 pt-6 text-sm leading-7 text-foreground/70">
+                <p className="text-sm uppercase tracking-[0.32em] text-foreground/45">
                   Focused implementation / fast verification
                 </p>
                 <p>Codex 实体不再被包进面板里，会和页面里的其他元素保持更轻、更直接的关系。</p>

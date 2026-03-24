@@ -34,7 +34,7 @@ export function MagneticButton({
   const handleLeave = () => setOffset({ x: 0, y: 0 });
 
   const sharedClassName = cn(
-    'inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-5 py-3 text-sm font-semibold tracking-[0.18em] text-white uppercase backdrop-blur-xl hover:border-amber-300/50 hover:bg-white/12',
+    'inline-flex items-center gap-2 rounded-full border border-line/10 bg-line/8 px-5 py-3 text-sm font-semibold tracking-[0.18em] text-foreground uppercase backdrop-blur-xl hover:border-accent/50 hover:bg-line/12',
     className,
   );
 

@@ -27,7 +27,7 @@ export function GlassCard({ children, className }: GlassCardProps) {
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/12 via-transparent to-transparent opacity-70" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-line/12 via-transparent to-transparent opacity-70" />
       <div className="relative h-full">{children}</div>
     </motion.div>
   );

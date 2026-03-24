@@ -19,7 +19,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <div className="section-shell">
         <div className="glass-panel flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
-          <Link to="/" className="font-display text-xl text-white">
+          <Link to="/" className="font-display text-xl text-foreground">
             Lifuyue
           </Link>
           <nav className="hidden items-center gap-2 md:flex">
@@ -28,8 +28,8 @@ export function Navbar() {
                 key={link.to}
                 to={link.to}
                 className={cn(
-                  'rounded-full px-4 py-2 text-sm uppercase tracking-[0.24em] text-zinc-300 hover:text-white',
-                  pathname === link.to && 'bg-white/10 text-white',
+                  'rounded-full px-4 py-2 text-sm uppercase tracking-[0.24em] text-foreground/70 hover:text-foreground',
+                  pathname === link.to && 'bg-line/10 text-foreground',
                 )}
               >
                 {link.label}
@@ -48,8 +48,8 @@ export function Navbar() {
             onClick={() => setOpen((current) => !current)}
             aria-label="Toggle navigation"
           >
-            <span className="block h-0.5 w-6 bg-white" />
-            <span className="mt-1.5 block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-foreground" />
+            <span className="mt-1.5 block h-0.5 w-6 bg-foreground" />
           </button>
         </div>
         <AnimatePresence>
@@ -66,7 +66,7 @@ export function Navbar() {
                     key={link.to}
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className="rounded-2xl border border-white/10 px-4 py-3 text-sm uppercase tracking-[0.2em] text-zinc-200"
+                    className="rounded-2xl border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.2em] text-foreground/80 hover:border-line/20 hover:text-foreground"
                   >
                     {link.label}
                   </Link>

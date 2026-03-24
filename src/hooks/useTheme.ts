@@ -9,17 +9,30 @@ function applyTheme(theme: Theme) {
   document.documentElement.classList.add(theme);
 }
 
-export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('dark');
+function readTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'dark';
+  }
 
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const nextTheme =
-      saved ??
-      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    setTheme(nextTheme);
-    applyTheme(nextTheme);
-  }, []);
+  if (document.documentElement.classList.contains('light')) {
+    return 'light';
+  }
+
+  if (document.documentElement.classList.contains('dark')) {
+    return 'dark';
+  }
+
+  const saved = window.localStorage.getItem(STORAGE_KEY);
+
+  if (saved === 'light' || saved === 'dark') {
+    return saved;
+  }
+
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+export function useTheme() {
+  const [theme, setTheme] = useState<Theme>(() => readTheme());
 
   useEffect(() => {
     applyTheme(theme);
