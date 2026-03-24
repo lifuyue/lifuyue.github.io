@@ -15,7 +15,7 @@ export function BlogPost() {
   return (
     <article className="section-shell section-space">
       <div
-        className="mb-10 h-[36vh] min-h-[280px] overflow-hidden rounded-[2.5rem] border border-line/10"
+        className="mb-10 h-[36vh] min-h-[280px] overflow-hidden rounded-[1rem]"
         style={{ backgroundImage: post.coverImage }}
       />
       <div className="mx-auto max-w-4xl">

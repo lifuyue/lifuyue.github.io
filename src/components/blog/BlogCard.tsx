@@ -12,7 +12,7 @@ export function BlogCard({ post }: BlogCardProps) {
     <motion.article layout className="group h-full">
       <Link
         to={`/blog/${post.slug}`}
-        className="glass-panel flex h-full flex-col overflow-hidden rounded-[2rem]"
+        className="glass-panel flex h-full flex-col overflow-hidden rounded-[1.5rem]"
       >
         <div
           className="h-56 border-b border-line/10 transition-transform duration-500 group-hover:scale-[1.03]"
