@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { Theme } from '@/hooks/useTheme';
+import type { ResolvedTheme } from '@/hooks/useTheme';
 
-function readCurrentTheme(): Theme {
+function readCurrentTheme(): ResolvedTheme {
   if (typeof document === 'undefined') {
     return 'dark';
   }
@@ -10,7 +10,7 @@ function readCurrentTheme(): Theme {
 }
 
 export function useCurrentTheme() {
-  const [theme, setTheme] = useState<Theme>(() => readCurrentTheme());
+  const [theme, setTheme] = useState<ResolvedTheme>(() => readCurrentTheme());
 
   useEffect(() => {
     const root = document.documentElement;

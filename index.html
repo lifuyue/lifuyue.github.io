@@ -25,12 +25,14 @@
 
         try {
           const saved = localStorage.getItem(key);
+          const preference =
+            saved === 'system' || saved === 'light' || saved === 'dark' ? saved : 'system';
           const theme =
-            saved === 'light' || saved === 'dark'
-              ? saved
-              : window.matchMedia('(prefers-color-scheme: light)').matches
+            preference === 'system'
+              ? window.matchMedia('(prefers-color-scheme: light)').matches
                 ? 'light'
-                : 'dark';
+                : 'dark'
+              : preference;
 
           root.classList.remove('dark', 'light');
           root.classList.add(theme);
