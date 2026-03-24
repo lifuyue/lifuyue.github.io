@@ -23,11 +23,11 @@ export function GlassCard({ children, className }: GlassCardProps) {
       transition={{ type: 'spring', stiffness: 200, damping: 18 }}
       style={{ transformStyle: 'preserve-3d' }}
       className={cn(
-        'glass-panel relative overflow-hidden rounded-[2rem] p-6 shadow-glow',
+        'glass-panel relative overflow-hidden rounded-[1.5rem] p-6',
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-line/12 via-transparent to-transparent opacity-70" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-line/12 via-transparent to-transparent opacity-40" />
       <div className="relative h-full">{children}</div>
     </motion.div>
   );

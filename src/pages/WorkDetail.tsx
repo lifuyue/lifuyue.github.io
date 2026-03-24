@@ -17,7 +17,7 @@ export function WorkDetail() {
   return (
     <section className="section-shell section-space">
       <div
-        className="mb-12 h-[40vh] min-h-[320px] overflow-hidden rounded-[2.5rem] border border-line/10"
+        className="mb-12 h-[40vh] min-h-[320px] overflow-hidden rounded-[1rem]"
         style={{ background: project.cover }}
       />
       <SectionHeading
@@ -26,15 +26,13 @@ export function WorkDetail() {
         description={project.description}
       />
       <div className="grid gap-8 lg:grid-cols-[1.3fr,0.7fr]">
-        <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
-          <div className="space-y-6 text-base leading-8 text-foreground/70">
-            {project.longDescription.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+        <div className="space-y-6 text-base leading-8 text-foreground/70">
+          {project.longDescription.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
         <aside className="space-y-6">
-          <div className="glass-panel rounded-[2rem] p-6">
+          <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
             <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Project Metrics</p>
             <div className="mt-5 space-y-4">
               {project.metrics.map((item) => (
@@ -45,7 +43,7 @@ export function WorkDetail() {
               ))}
             </div>
           </div>
-          <div className="glass-panel rounded-[2rem] p-6">
+          <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
             <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Links</p>
             <div className="mt-5 flex flex-col gap-3">
               {project.links.map((item) =>
