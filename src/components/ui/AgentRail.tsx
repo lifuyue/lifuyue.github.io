@@ -30,7 +30,7 @@ export function AgentRail({ agents, className }: AgentRailProps) {
             },
           },
         }}
-        className="flex min-w-max snap-x snap-mandatory gap-3 pb-1 sm:gap-4 lg:min-w-0 lg:gap-5 xl:gap-6"
+        className="flex min-w-max snap-x snap-mandatory gap-3 pb-1 sm:gap-4 lg:min-w-0 lg:gap-4 xl:gap-5"
       >
         {agents.map((agent, index) => {
           const isActive = activeId === agent.id;
@@ -57,7 +57,7 @@ export function AgentRail({ agents, className }: AgentRailProps) {
               onBlur={() => setActiveId((current) => (current === agent.id ? null : current))}
               onClick={() => setActiveId((current) => (current === agent.id ? null : agent.id))}
               className={cn(
-                'group relative w-[11.5rem] snap-start text-left transition-opacity duration-300 focus:outline-none sm:w-[12rem] lg:min-w-0 lg:flex-1 lg:basis-0',
+                'group relative w-[11rem] snap-start text-left transition-opacity duration-300 focus:outline-none sm:w-[11.5rem] lg:min-w-0 lg:flex-1 lg:basis-0',
                 isDimmed && 'opacity-50',
               )}
             >
@@ -79,7 +79,7 @@ export function AgentRail({ agents, className }: AgentRailProps) {
               >
                 <div
                   className={cn(
-                    'relative flex h-full min-h-[10.5rem] flex-col justify-between rounded-[1.75rem] border border-line/10 bg-background/15 p-4 backdrop-blur-xl transition-[border-color,background-color] duration-300 sm:min-h-[11rem] sm:p-5',
+                    'relative flex h-full min-h-[10rem] flex-col justify-between rounded-[1.65rem] border border-line/9 bg-background/12 p-4 backdrop-blur-xl transition-[border-color,background-color] duration-300 sm:min-h-[10.5rem] sm:p-4.5',
                     isActive && 'border-line/20 bg-line/[0.06]',
                   )}
                   style={{
@@ -93,7 +93,7 @@ export function AgentRail({ agents, className }: AgentRailProps) {
                       background: `linear-gradient(90deg, transparent 0%, ${agent.glowColor} 48%, transparent 100%)`,
                     }}
                   />
-                  <div className="space-y-4">
+                    <div className="space-y-3.5">
                     <div className="flex items-start justify-between gap-3">
                       <motion.div
                         animate={{
@@ -111,12 +111,12 @@ export function AgentRail({ agents, className }: AgentRailProps) {
                           className="h-9 w-9 sm:h-10 sm:w-10"
                         />
                       </motion.div>
-                      <span className="rounded-full border border-line/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.28em] text-foreground/45 sm:text-[10px]">
+                      <span className="rounded-full border border-line/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.26em] text-foreground/40 sm:text-[10px]">
                         {agent.role}
                       </span>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       {agent.textIcon ? (
                         <InlineSvg
                           svg={agent.textIcon}
@@ -125,12 +125,12 @@ export function AgentRail({ agents, className }: AgentRailProps) {
                       ) : (
                         <p className="font-display text-xl text-foreground">{agent.name}</p>
                       )}
-                      <p className="text-xs uppercase tracking-[0.34em] text-foreground/48">{agent.name}</p>
+                      <p className="text-[11px] uppercase tracking-[0.3em] text-foreground/44">{agent.name}</p>
                     </div>
                   </div>
 
-                  <div className="mt-4 border-t border-line/8 pt-3">
-                    <p className="text-[11px] uppercase tracking-[0.34em] text-foreground/42">Agent Rail</p>
+                  <div className="mt-3.5 border-t border-line/8 pt-3">
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/36">Agent Rail</p>
                     <AnimatePresence initial={false}>
                       {hasChips && isActive ? (
                         <motion.div
