@@ -2,8 +2,26 @@ import { lazy, Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/AnimatedText';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import githubSvg from '@/assets/logos/github.svg?raw';
+import xSvg from '@/assets/logos/x.svg?raw';
+import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
+
+interface InlineSvgProps {
+  svg: string;
+  className?: string;
+}
+
+function InlineSvg({ svg, className }: InlineSvgProps) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn('block shrink-0 [&_svg]:block [&_svg]:h-full [&_svg]:w-full', className)}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+}
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -53,7 +71,15 @@ export function Hero() {
                 href="https://github.com/lifuyue"
                 className="border-line/20 text-foreground/80 hover:border-line/20"
               >
-                GitHub ↗
+                <InlineSvg svg={githubSvg} className="h-4 w-4" />
+                <span>GitHub ↗</span>
+              </MagneticButton>
+              <MagneticButton
+                href="https://x.com/L1fuyue"
+                className="border-line/20 text-foreground/80 hover:border-line/20"
+              >
+                <InlineSvg svg={xSvg} className="h-3.5 w-3.5" />
+                <span>X.COM ↗</span>
               </MagneticButton>
             </div>
           </div>
