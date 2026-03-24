@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from 'react';
 import type { ReactNode, RefObject } from 'react';
 import { motion, useMotionValue, useReducedMotion } from 'framer-motion';
-import { AnimatedText } from '@/components/ui/AnimatedText';
 import { InlineSvg } from '@/components/ui/InlineSvg';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { ToolChipRow } from '@/components/ui/ToolChipRow';
@@ -12,6 +11,7 @@ import xSvg from '@/assets/logos/x.svg?raw';
 import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
+const headlineLines = ['I build immersive', 'interfaces that feel', 'editorial, kinetic, and precise.'];
 
 interface FloatingAgentProps {
   constraintRef: RefObject<HTMLDivElement | null>;
@@ -221,40 +221,40 @@ const heroAgentLayouts: Record<
   }
 > = {
   'claude-code': {
-    className: 'w-[14rem] sm:w-[16rem] lg:w-[17.5rem] xl:w-[19rem]',
-    anchor: { x: 0.04, y: 0.08 },
-    offset: { x: 8, y: 8 },
-    initialVelocity: { x: 28, y: 18 },
+    className: 'w-[12.75rem] sm:w-[14.5rem] lg:w-[15.25rem] xl:w-[16rem]',
+    anchor: { x: 0.06, y: 0.16 },
+    offset: { x: 4, y: 6 },
+    initialVelocity: { x: 24, y: 16 },
     cardClassName:
-      'border-amber-300/14 bg-[linear-gradient(145deg,rgba(245,158,11,0.08),rgba(255,255,255,0.015))]',
+      'border-amber-300/14 bg-[linear-gradient(145deg,rgba(245,158,11,0.06),rgba(255,255,255,0.015))]',
     iconClassName:
-      'h-10 w-10 drop-shadow-[0_16px_34px_rgba(245,158,11,0.26)] sm:h-11 sm:w-11 lg:h-12 lg:w-12',
-    textIconClassName: 'h-5 w-[8rem] text-foreground/94 sm:h-5.5 sm:w-[9rem] lg:h-6 lg:w-[10rem]',
+      'h-9 w-9 drop-shadow-[0_16px_34px_rgba(245,158,11,0.26)] sm:h-10 sm:w-10 lg:h-11 lg:w-11',
+    textIconClassName: 'h-[1.125rem] w-[7rem] text-foreground/94 sm:h-5 sm:w-[7.8rem] lg:h-[1.375rem] lg:w-[8.5rem]',
     chipClassName: 'border-amber-300/14 bg-amber-300/[0.08] text-foreground/82',
   },
   codex: {
-    className: 'w-[13.5rem] sm:w-[16rem] lg:w-[18rem] xl:w-[19.5rem]',
-    anchor: { x: 0.46, y: 0.48 },
-    offset: { x: 2, y: -2 },
-    initialVelocity: { x: -26, y: 16 },
+    className: 'w-[12.5rem] sm:w-[14.25rem] lg:w-[15rem] xl:w-[16rem]',
+    anchor: { x: 0.36, y: 0.02 },
+    offset: { x: 0, y: 2 },
+    initialVelocity: { x: -22, y: 14 },
     cardClassName:
-      'border-teal-300/14 bg-[linear-gradient(145deg,rgba(45,212,191,0.08),rgba(255,255,255,0.015))]',
+      'border-teal-300/14 bg-[linear-gradient(145deg,rgba(45,212,191,0.06),rgba(255,255,255,0.015))]',
     iconClassName:
-      'h-11 w-11 drop-shadow-[0_16px_36px_rgba(45,212,191,0.28)] sm:h-12 sm:w-12 lg:h-[3.25rem] lg:w-[3.25rem]',
+      'h-10 w-10 drop-shadow-[0_16px_36px_rgba(45,212,191,0.28)] sm:h-11 sm:w-11 lg:h-12 lg:w-12',
     textIconClassName:
-      'h-5.5 w-[6.5rem] text-foreground/95 sm:h-6 sm:w-[7.5rem] lg:h-6.5 lg:w-[8.5rem]',
+      'h-5 w-[5.8rem] text-foreground/95 sm:h-5.5 sm:w-[6.75rem] lg:h-6 lg:w-[7.5rem]',
     chipClassName: 'border-teal-300/14 bg-teal-300/[0.08] text-foreground/82',
   },
   gemini: {
-    className: 'w-[9.5rem] sm:w-[10.5rem] lg:w-[11.5rem] xl:w-[12rem]',
-    anchor: { x: 0.62, y: 0.06 },
-    offset: { x: 0, y: 6 },
-    initialVelocity: { x: -18, y: 14 },
+    className: 'w-[8rem] sm:w-[9rem] lg:w-[9.75rem] xl:w-[10.5rem]',
+    anchor: { x: 0.52, y: 0.52 },
+    offset: { x: 0, y: 0 },
+    initialVelocity: { x: -16, y: 12 },
     cardClassName:
-      'border-sky-300/14 bg-[linear-gradient(145deg,rgba(96,165,250,0.08),rgba(255,255,255,0.015))]',
+      'border-sky-300/14 bg-[linear-gradient(145deg,rgba(96,165,250,0.06),rgba(255,255,255,0.015))]',
     iconClassName:
-      'h-12 w-12 drop-shadow-[0_18px_40px_rgba(96,165,250,0.24)] sm:h-[3.25rem] sm:w-[3.25rem] lg:h-14 lg:w-14',
-    textIconClassName: 'h-6 w-[6rem] text-foreground/95 sm:h-6.5 sm:w-[7rem] lg:h-7 lg:w-[8rem]',
+      'h-10 w-10 drop-shadow-[0_18px_40px_rgba(96,165,250,0.24)] sm:h-11 sm:w-11 lg:h-12 lg:w-12',
+    textIconClassName: 'h-5 w-[5.25rem] text-foreground/95 sm:h-5.5 sm:w-[6rem] lg:h-6 lg:w-[6.8rem]',
     compact: true,
   },
 };
@@ -265,11 +265,11 @@ function HeroAgentCard({ agent }: { agent: AgentConfig }) {
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-[1.75rem] border p-4 backdrop-blur-md sm:p-5',
+        'relative overflow-hidden rounded-[1.5rem] border p-3.5 backdrop-blur-md sm:p-4',
         layout.cardClassName,
       )}
       style={{
-        boxShadow: `0 24px 56px -40px ${agent.glowColor}`,
+        boxShadow: `0 22px 48px -40px ${agent.glowColor}`,
       }}
     >
       <span
@@ -296,7 +296,7 @@ function HeroAgentCard({ agent }: { agent: AgentConfig }) {
           )}
         </div>
         <div className={cn('flex flex-col gap-3', layout.compact ? 'items-center' : 'sm:items-end')}>
-          <span className="rounded-full border border-line/10 px-2.5 py-1 text-[9px] uppercase tracking-[0.28em] text-foreground/44">
+          <span className="rounded-full border border-line/10 px-2 py-1 text-[8px] uppercase tracking-[0.24em] text-foreground/44 sm:text-[9px]">
             {agent.role}
           </span>
           {agent.chips?.length ? (
@@ -304,7 +304,7 @@ function HeroAgentCard({ agent }: { agent: AgentConfig }) {
               items={agent.chips}
               className={cn('max-w-[10.5rem]', layout.compact ? 'justify-center' : 'sm:justify-end')}
               chipClassName={cn(
-                'border-line/10 px-2.5 py-1 text-[9px] tracking-[0.2em] backdrop-blur-sm sm:text-[10px]',
+                'border-line/10 px-2 py-1 text-[8px] tracking-[0.16em] backdrop-blur-sm sm:text-[9px]',
                 layout.chipClassName,
               )}
             />
@@ -323,7 +323,7 @@ function FloatingAgentCluster({ className }: { className?: string }) {
     <div
       ref={playgroundRef}
       className={cn(
-        'pointer-events-none relative isolate min-h-[18rem] overflow-hidden sm:min-h-[21rem] lg:min-h-[27rem] xl:min-h-[31rem]',
+        'pointer-events-none relative isolate min-h-[14rem] overflow-hidden sm:min-h-[16rem] lg:min-h-[18rem] xl:min-h-[20rem]',
         className,
       )}
     >
@@ -361,10 +361,9 @@ export function Hero() {
         </Suspense>
       </div>
       <div className="hero-overlay absolute inset-0" />
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(7,8,14,0.28)_0%,rgba(7,8,14,0.16)_36%,transparent_72%)] light:bg-[linear-gradient(90deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.16)_34%,transparent_74%)]" />
-      <div className="section-shell relative z-10 flex min-h-[calc(100vh-7rem)] flex-col justify-between py-16 sm:py-20 lg:py-24">
-        <div className="grid flex-1 items-center gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(19rem,0.84fr)] lg:gap-14 xl:gap-16">
-          <div className="max-w-4xl space-y-8">
+      <div className="section-shell relative z-10 flex min-h-[calc(100vh-7rem)] flex-col justify-between py-14 sm:py-16 lg:py-20">
+        <div className="grid flex-1 items-center gap-8 lg:grid-cols-[minmax(0,1.42fr)_minmax(13rem,0.52fr)] lg:gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(13rem,0.45fr)] xl:gap-8">
+          <div className="max-w-none space-y-6 lg:space-y-7">
             <p className="text-xs uppercase tracking-[0.5em] text-accent/80">
               Portfolio / Journal / Experiments
             </p>
@@ -376,15 +375,40 @@ export function Hero() {
             >
               lifuyue / XMU / AI - Native Developer
             </motion.p>
-            <AnimatedText
-              text="I build immersive interfaces that feel editorial, kinetic, and precise."
-              className="font-display text-5xl leading-[0.95] text-foreground sm:text-6xl lg:text-7xl xl:text-8xl"
-            />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.6 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: prefersReducedMotion ? 0 : 0.08,
+                  },
+                },
+              }}
+              className="font-display text-5xl leading-[0.95] text-foreground sm:text-6xl lg:text-[4.7rem] xl:text-[5.25rem]"
+            >
+              {headlineLines.map((line) => (
+                <span key={line} className="block overflow-hidden">
+                  <motion.span
+                    className="block"
+                    variants={{
+                      hidden: { y: prefersReducedMotion ? 0 : '110%', opacity: prefersReducedMotion ? 1 : 0 },
+                      visible: { y: 0, opacity: 1 },
+                    }}
+                    transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </motion.div>
             <motion.p
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.35 }}
-              className="max-w-2xl text-base leading-8 text-foreground/70 sm:text-lg"
+              className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg"
             >
               我是 lifuyue，XMU SWE 在读，专注 AI Agent & Coding。这个站点是作品集、博客和视觉实验的合体，
               把前端工程、交互编排和内容呈现组织成一个连续的空间体验。
@@ -414,15 +438,15 @@ export function Hero() {
             initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.85, delay: prefersReducedMotion ? 0 : 0.25 }}
-            className="relative w-full"
+            className="relative w-full self-center lg:max-w-[17rem] xl:max-w-[18rem]"
           >
-            <p className="mb-4 text-[10px] uppercase tracking-[0.34em] text-foreground/38 sm:mb-5 sm:text-[11px]">
+            <p className="mb-3 text-[9px] uppercase tracking-[0.3em] text-foreground/38 sm:text-[10px]">
               Three Agents, One Right-Side Orbit
             </p>
             <FloatingAgentCluster />
           </motion.div>
         </div>
-        <div className="grid gap-6 pt-10 text-sm text-foreground/70 sm:grid-cols-3 lg:max-w-4xl">
+        <div className="grid gap-6 pt-8 text-sm text-foreground/70 sm:grid-cols-3 lg:max-w-[56rem]">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Focus</p>
             <p className="mt-2 text-foreground">Motion systems with readable information density.</p>
