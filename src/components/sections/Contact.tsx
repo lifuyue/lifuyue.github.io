@@ -6,7 +6,7 @@ import { socials } from '@/data/socials';
 export function Contact() {
   return (
     <section className="section-shell section-space">
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(245,158,11,0.16),rgba(45,212,191,0.08),rgba(255,255,255,0.04))] p-8 sm:p-10 lg:p-14">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-line/10 bg-[linear-gradient(135deg,rgba(245,158,11,0.16),rgba(45,212,191,0.08),rgba(var(--line),0.04))] p-8 sm:p-10 lg:p-14">
         <div className="absolute inset-0 bg-noise opacity-80" />
         <div className="relative">
           <SectionHeading

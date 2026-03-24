@@ -53,13 +53,13 @@ export function LoadingScreen() {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[90] flex items-center justify-center bg-[#080a0f]"
+      className="fixed inset-0 z-[90] flex items-center justify-center bg-background"
       style={{ clipPath: 'inset(0 0 0% 0 round 0rem)' }}
     >
       <div className="space-y-3 text-center">
-        <p className="font-display text-4xl text-white sm:text-5xl">Lifuyue</p>
-        <p className="text-xs uppercase tracking-[0.5em] text-zinc-400">Loading Signal</p>
-        <span ref={counterRef} className="text-sm text-amber-300">
+        <p className="font-display text-4xl text-foreground sm:text-5xl">Lifuyue</p>
+        <p className="text-xs uppercase tracking-[0.5em] text-foreground/55">Loading Signal</p>
+        <span ref={counterRef} className="text-sm text-accent">
           000
         </span>
       </div>

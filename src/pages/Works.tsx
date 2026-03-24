@@ -28,8 +28,8 @@ export function Works() {
             onClick={() => setActiveCategory(category)}
             className={`rounded-full border px-4 py-2 text-xs uppercase tracking-[0.22em] ${
               activeCategory === category
-                ? 'border-amber-300/60 bg-amber-300/10 text-white'
-                : 'border-white/10 text-zinc-300 hover:border-white/20 hover:text-white'
+                ? 'border-accent/60 bg-accent/10 text-foreground'
+                : 'border-line/10 text-foreground/70 hover:border-line/20 hover:text-foreground'
             }`}
           >
             {category}
@@ -48,23 +48,23 @@ export function Works() {
             <Link to={`/works/${project.slug}`} className="group block h-full">
               <GlassCard className="h-full min-h-[380px] p-0">
                 <div
-                  className="h-64 w-full border-b border-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="h-64 w-full border-b border-line/10 transition-transform duration-500 group-hover:scale-[1.02]"
                   style={{ background: project.cover }}
                 />
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-xs uppercase tracking-[0.28em] text-zinc-500">
+                    <span className="text-xs uppercase tracking-[0.28em] text-foreground/45">
                       {project.category}
                     </span>
-                    <span className="text-sm text-zinc-400">{project.year}</span>
+                    <span className="text-sm text-foreground/55">{project.year}</span>
                   </div>
-                  <h2 className="mt-4 font-display text-4xl text-white">{project.title}</h2>
-                  <p className="mt-4 text-sm leading-7 text-zinc-300">{project.description}</p>
+                  <h2 className="mt-4 font-display text-4xl text-foreground">{project.title}</h2>
+                  <p className="mt-4 text-sm leading-7 text-foreground/70">{project.description}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/10 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-zinc-200"
+                        className="rounded-full border border-line/10 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-foreground/80"
                       >
                         {tag}
                       </span>

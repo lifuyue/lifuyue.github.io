@@ -18,6 +18,29 @@
         }
       })();
     </script>
+    <script>
+      (function applyInitialTheme() {
+        const key = 'lifuyue-theme';
+        const root = document.documentElement;
+
+        try {
+          const saved = localStorage.getItem(key);
+          const preference =
+            saved === 'system' || saved === 'light' || saved === 'dark' ? saved : 'system';
+          const theme =
+            preference === 'system'
+              ? window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+              : preference;
+
+          root.classList.remove('dark', 'light');
+          root.classList.add(theme);
+        } catch {
+          root.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -2,8 +2,10 @@ import { Float, MeshDistortMaterial } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
+import { useCurrentTheme } from '@/hooks/useCurrentTheme';
 
 export function FloatingGeometry() {
+  const theme = useCurrentTheme();
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
@@ -30,7 +32,7 @@ export function FloatingGeometry() {
           roughness={0.18}
           metalness={0.22}
           transparent
-          opacity={0.78}
+          opacity={theme === 'light' ? 0.62 : 0.78}
         />
       </mesh>
     </Float>

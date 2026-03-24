@@ -42,6 +42,22 @@ export default {
         pulseLine: 'pulseLine 4s ease-in-out infinite',
       },
       typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'rgb(var(--foreground) / 0.78)',
+            '--tw-prose-headings': 'rgb(var(--foreground))',
+            '--tw-prose-links': 'rgb(var(--accent))',
+            '--tw-prose-bold': 'rgb(var(--foreground))',
+            '--tw-prose-counters': 'rgb(var(--foreground) / 0.55)',
+            '--tw-prose-bullets': 'rgb(var(--foreground) / 0.3)',
+            '--tw-prose-hr': 'rgb(var(--line) / 0.14)',
+            '--tw-prose-quotes': 'rgb(var(--foreground) / 0.82)',
+            '--tw-prose-quote-borders': 'rgb(var(--accent) / 0.55)',
+            '--tw-prose-code': 'rgb(var(--accent))',
+            '--tw-prose-pre-code': 'rgb(var(--foreground) / 0.9)',
+            '--tw-prose-pre-bg': 'rgb(var(--line) / 0.05)',
+          },
+        },
         invert: {
           css: {
             '--tw-prose-body': theme('colors.zinc.300'),

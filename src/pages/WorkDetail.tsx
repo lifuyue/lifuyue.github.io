@@ -16,7 +16,7 @@ export function WorkDetail() {
   return (
     <section className="section-shell section-space">
       <div
-        className="mb-12 h-[40vh] min-h-[320px] overflow-hidden rounded-[2.5rem] border border-white/10"
+        className="mb-12 h-[40vh] min-h-[320px] overflow-hidden rounded-[2.5rem] border border-line/10"
         style={{ background: project.cover }}
       />
       <SectionHeading
@@ -26,7 +26,7 @@ export function WorkDetail() {
       />
       <div className="grid gap-8 lg:grid-cols-[1.3fr,0.7fr]">
         <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
-          <div className="space-y-6 text-base leading-8 text-zinc-300">
+          <div className="space-y-6 text-base leading-8 text-foreground/70">
             {project.longDescription.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -34,24 +34,24 @@ export function WorkDetail() {
         </div>
         <aside className="space-y-6">
           <div className="glass-panel rounded-[2rem] p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-zinc-500">Project Metrics</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Project Metrics</p>
             <div className="mt-5 space-y-4">
               {project.metrics.map((item) => (
-                <div key={item.label} className="border-b border-white/10 pb-4 last:border-none">
-                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">{item.label}</p>
-                  <p className="mt-2 text-lg text-white">{item.value}</p>
+                <div key={item.label} className="border-b border-line/10 pb-4 last:border-none">
+                  <p className="text-xs uppercase tracking-[0.2em] text-foreground/45">{item.label}</p>
+                  <p className="mt-2 text-lg text-foreground">{item.value}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="glass-panel rounded-[2rem] p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-zinc-500">Links</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Links</p>
             <div className="mt-5 flex flex-col gap-3">
               {project.links.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="rounded-full border border-white/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-zinc-200 hover:border-amber-300/50 hover:text-white"
+                  className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
                 >
                   {item.label}
                 </a>
@@ -63,7 +63,7 @@ export function WorkDetail() {
       <div className="mt-12">
         <Link
           to={`/works/${nextProject.slug}`}
-          className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm uppercase tracking-[0.22em] text-zinc-200 hover:border-white/20 hover:text-white"
+          className="inline-flex rounded-full border border-line/10 px-5 py-3 text-sm uppercase tracking-[0.22em] text-foreground/80 hover:border-line/20 hover:text-foreground"
         >
           Next Project: {nextProject.title}
         </Link>

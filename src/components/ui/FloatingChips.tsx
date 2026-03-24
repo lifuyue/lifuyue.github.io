@@ -40,7 +40,7 @@ export function FloatingChips({
             <div
               key={item}
               className={cn(
-                'absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-zinc-100 backdrop-blur-sm',
+                'absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-line/10 bg-line/5 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-sm',
                 chipClassName,
               )}
               style={{
@@ -73,7 +73,7 @@ export function FloatingChips({
             >
               <motion.div
                 className={cn(
-                  'absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-zinc-100 backdrop-blur-sm',
+                  'absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-line/10 bg-line/5 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-foreground/90 backdrop-blur-sm',
                   chipClassName,
                 )}
                 style={{ x: radius }}

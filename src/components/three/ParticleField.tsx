@@ -1,8 +1,10 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
+import { useCurrentTheme } from '@/hooks/useCurrentTheme';
 
 export function ParticleField() {
+  const theme = useCurrentTheme();
   const pointsRef = useRef<THREE.Points>(null);
   const lineAttributeRefs = useRef<Array<THREE.BufferAttribute | null>>([]);
   const positions = useMemo(() => {
@@ -28,7 +30,7 @@ export function ParticleField() {
           [3.4, -0.4, -0.8],
         ] as const,
         color: '#5eead4',
-        opacity: 0.35,
+        opacity: theme === 'light' ? 0.22 : 0.35,
         amplitude: [0.16, 0.2, 0.12] as const,
         frequency: [0.42, 0.31, 0.26] as const,
         phase: 0.55,
@@ -40,14 +42,14 @@ export function ParticleField() {
           [0.4, -1.4, 0.3],
           [3.2, -2.1, -0.4],
         ] as const,
-        color: '#ffffff',
-        opacity: 0.18,
+        color: theme === 'light' ? '#1e293b' : '#ffffff',
+        opacity: theme === 'light' ? 0.14 : 0.18,
         amplitude: [0.14, 0.18, 0.13] as const,
         frequency: [0.36, 0.28, 0.22] as const,
         phase: 1.2,
       },
     ],
-    [],
+    [theme],
   );
   const lineBasePositions = useMemo(
     () =>
@@ -123,7 +125,7 @@ export function ParticleField() {
           size={0.03}
           sizeAttenuation
           transparent
-          opacity={0.9}
+          opacity={theme === 'light' ? 0.55 : 0.9}
         />
       </points>
       {lineConfigs.map(({ color, opacity }, index) => (
