@@ -1,58 +1,18 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { InlineSvg } from '@/components/ui/InlineSvg';
+import { ToolChipRow } from '@/components/ui/ToolChipRow';
 import { cn } from '@/lib/utils';
-import claudeColorSvg from '@/assets/logos/claude-color.svg?raw';
-import claudeTextSvg from '@/assets/logos/claude-text.svg?raw';
 import claudecodeColorSvg from '@/assets/logos/claudecode-color.svg?raw';
 import claudecodeTextSvg from '@/assets/logos/claudecode-text.svg?raw';
 import codexColorSvg from '@/assets/logos/codex-color.svg?raw';
 import codexTextSvg from '@/assets/logos/codex-text.svg?raw';
 import geminiColorSvg from '@/assets/logos/gemini-color.svg?raw';
 import geminiTextSvg from '@/assets/logos/gemini-text.svg?raw';
-import openaiSvg from '@/assets/logos/openai.svg?raw';
 
 const claudecodeChips = ['/model opus', 'plan'];
 const codexChips = ['code', 'review', 'implement'];
-
-interface InlineSvgProps {
-  svg: string;
-  className?: string;
-}
-
-function InlineSvg({ svg, className }: InlineSvgProps) {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn('block shrink-0 [&_svg]:block [&_svg]:h-full [&_svg]:w-full', className)}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-}
-
-interface ToolChipRowProps {
-  items: string[];
-  className?: string;
-  chipClassName?: string;
-}
-
-function ToolChipRow({ items, className, chipClassName }: ToolChipRowProps) {
-  return (
-    <div className={cn('flex flex-wrap gap-2', className)}>
-      {items.map((item) => (
-        <span
-          key={item}
-          className={cn(
-            'rounded-full border px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] backdrop-blur-sm sm:text-[11px]',
-            chipClassName,
-          )}
-        >
-          {item}
-        </span>
-      ))}
-    </div>
-  );
-}
 
 interface DraggableToolProps {
   constraintRef: React.RefObject<HTMLDivElement | null>;
@@ -279,7 +239,7 @@ export function AITools() {
       <SectionHeading
         eyebrow="AI Tools"
         title="A working stage for planning, code, review, and model switching."
-        description="第二屏改成一个更大的交互舞台，把 Claude AI、Claude Code、Codex、Gemini 和 OpenAI 放进同一条工作回路里。推理、实现、切换和验证一起发生。"
+        description="精简成规划、执行、研究三层，让 AI 工作流退到正确的视觉权重。"
       />
 
       <motion.div
@@ -289,54 +249,16 @@ export function AITools() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="relative overflow-hidden bg-transparent"
       >
-        <div className="relative z-10 flex items-start justify-between gap-4 pb-4 pt-3 sm:pb-6 sm:pt-4">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.42em] text-foreground/45 sm:text-xs">
-              Interactive Rail
-            </p>
-            <p className="mt-2 max-w-xl text-sm leading-6 text-foreground/62 sm:text-[15px]">
-              拖拽这些工具实体，观察它们在同一块舞台里重新分工。
-            </p>
-          </div>
-          <div className="hidden rounded-full border border-line/10 bg-transparent px-4 py-2 text-[10px] uppercase tracking-[0.32em] text-foreground/45 sm:block">
-            Drag to rearrange
-          </div>
-        </div>
-
         <div
           ref={playgroundRef}
-          className="relative min-h-[24rem] overflow-hidden bg-transparent pt-2 sm:min-h-[30rem] lg:min-h-[36rem]"
+          className="relative min-h-[16rem] overflow-hidden bg-transparent pt-2 sm:min-h-[20rem] lg:min-h-[24rem]"
         >
-          <DraggableTool
-            id="claude"
-            constraintRef={playgroundRef}
-            prefersReducedMotion={prefersReducedMotion}
-            className="w-[9.75rem] sm:w-[11.5rem] lg:w-[13rem]"
-            anchor={{ x: 0.06, y: 0.06 }}
-            offset={{ x: 8, y: 8 }}
-            initialVelocity={{ x: 52, y: -6 }}
-          >
-            <div className="relative flex flex-col items-center gap-3 rounded-[1.75rem] border border-amber-300/10 bg-transparent px-4 py-5">
-              <InlineSvg
-                svg={claudeColorSvg}
-                className="h-14 w-14 drop-shadow-[0_18px_36px_rgba(245,158,11,0.34)] sm:h-16 sm:w-16 lg:h-20 lg:w-20"
-              />
-              <InlineSvg
-                svg={claudeTextSvg}
-                className="h-6 w-[6.75rem] text-foreground/95 sm:h-7 sm:w-[7.75rem] lg:h-8 lg:w-[8.75rem]"
-              />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-foreground/40 sm:text-[11px]">
-                Claude AI
-              </span>
-            </div>
-          </DraggableTool>
-
           <DraggableTool
             id="claude-code"
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
             className="w-[15.5rem] sm:w-[18rem] lg:w-[21rem]"
-            anchor={{ x: 0.34, y: 0.09 }}
+            anchor={{ x: 0.05, y: 0.08 }}
             offset={{ x: 10, y: 18 }}
             initialVelocity={{ x: -44, y: 8 }}
           >
@@ -367,7 +289,7 @@ export function AITools() {
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
             className="w-[15rem] sm:w-[18rem] lg:w-[22rem]"
-            anchor={{ x: 0.48, y: 0.5 }}
+            anchor={{ x: 0.55, y: 0.45 }}
             offset={{ x: 0, y: -4 }}
             initialVelocity={{ x: 46, y: -6 }}
           >
@@ -398,7 +320,7 @@ export function AITools() {
             constraintRef={playgroundRef}
             prefersReducedMotion={prefersReducedMotion}
             className="w-[9.75rem] sm:w-[11rem] lg:w-[12.5rem]"
-            anchor={{ x: 0.8, y: 0.08 }}
+            anchor={{ x: 0.35, y: 0.02 }}
             offset={{ x: -4, y: 2 }}
             initialVelocity={{ x: -34, y: 7 }}
           >
@@ -413,23 +335,6 @@ export function AITools() {
                   className="h-6 w-[6.5rem] text-foreground/95 sm:h-7 sm:w-[7.75rem] lg:h-8 lg:w-[9rem]"
                 />
               </div>
-            </div>
-          </DraggableTool>
-
-          <DraggableTool
-            id="openai"
-            constraintRef={playgroundRef}
-            prefersReducedMotion={prefersReducedMotion}
-            className="w-[5.75rem] sm:w-[6.75rem] lg:w-[7.75rem]"
-            anchor={{ x: 0.16, y: 0.66 }}
-            offset={{ x: 10, y: 0 }}
-            initialVelocity={{ x: 38, y: -10 }}
-          >
-            <div className="flex items-center justify-center rounded-[1.5rem] border border-white/10 bg-transparent px-4 py-4 sm:px-5 sm:py-5">
-              <InlineSvg
-                svg={openaiSvg}
-                className="h-8 w-8 text-foreground/92 drop-shadow-[0_16px_36px_rgba(255,255,255,0.16)] sm:h-10 sm:w-10 lg:h-12 lg:w-12"
-              />
             </div>
           </DraggableTool>
         </div>

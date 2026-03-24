@@ -1,27 +1,14 @@
 import { lazy, Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/AnimatedText';
+import { AgentRail } from '@/components/ui/AgentRail';
+import { InlineSvg } from '@/components/ui/InlineSvg';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { heroAgents } from '@/data/agents';
 import githubSvg from '@/assets/logos/github.svg?raw';
 import xSvg from '@/assets/logos/x.svg?raw';
-import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
-
-interface InlineSvgProps {
-  svg: string;
-  className?: string;
-}
-
-function InlineSvg({ svg, className }: InlineSvgProps) {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn('block shrink-0 [&_svg]:block [&_svg]:h-full [&_svg]:w-full', className)}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-}
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -83,19 +70,9 @@ export function Hero() {
               </MagneticButton>
             </div>
           </div>
-          <div className="grid gap-6 border-t border-line/10 pt-8 text-sm text-foreground/70 sm:grid-cols-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Focus</p>
-              <p className="mt-2 text-foreground">Motion systems with readable information density.</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Toolkit</p>
-              <p className="mt-2 text-foreground">React, TypeScript, R3F, MDX, Framer Motion, GSAP.</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Current Mode</p>
-              <p className="mt-2 text-foreground">Designing for depth, shipping for performance.</p>
-            </div>
+          <div className="border-t border-line/10 pt-8">
+            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-foreground/45">AI Toolkit</p>
+            <AgentRail agents={heroAgents} />
           </div>
         </div>
         <motion.div
