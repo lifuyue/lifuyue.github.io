@@ -5,9 +5,8 @@ import { socials } from '@/data/socials';
 
 export function Contact() {
   return (
-    <section className="section-shell section-space relative">
-      <div className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-[linear-gradient(135deg,rgba(245,158,11,0.08),rgba(45,212,191,0.04),transparent)]" />
-      <div className="relative">
+    <section className="section-shell section-space">
+      <div>
         <SectionHeading
           eyebrow="Say Hi"
           title="Want to build something together?"
