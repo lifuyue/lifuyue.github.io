@@ -1,4 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
@@ -10,19 +11,29 @@ import { Blog } from '@/pages/Blog';
 import { BlogPost } from '@/pages/BlogPost';
 import { Home } from '@/pages/Home';
 import { NotFound } from '@/pages/NotFound';
+import { Resume } from '@/pages/Resume';
 import { WorkDetail } from '@/pages/WorkDetail';
 import { Works } from '@/pages/Works';
 
 export default function App() {
   const location = useLocation();
+  const isResumeRoute = location.pathname === '/resume';
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('resume-mode', isResumeRoute);
+
+    return () => {
+      document.documentElement.classList.remove('resume-mode');
+    };
+  }, [isResumeRoute]);
 
   return (
     <>
-      <SmoothScroll />
-      <LoadingScreen />
-      <CustomCursor />
-      <Navbar />
-      <main className="min-h-screen pt-24">
+      {isResumeRoute ? null : <SmoothScroll />}
+      {isResumeRoute ? null : <LoadingScreen />}
+      {isResumeRoute ? null : <CustomCursor />}
+      {isResumeRoute ? null : <Navbar />}
+      <main className={isResumeRoute ? 'min-h-screen' : 'min-h-screen pt-24'}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
@@ -66,6 +77,14 @@ export default function App() {
               }
             />
             <Route
+              path="/resume"
+              element={
+                <PageTransition>
+                  <Resume />
+                </PageTransition>
+              }
+            />
+            <Route
               path="*"
               element={
                 <PageTransition>
@@ -76,7 +95,7 @@ export default function App() {
           </Routes>
         </AnimatePresence>
       </main>
-      <Footer />
+      {isResumeRoute ? null : <Footer />}
     </>
   );
 }
