@@ -7,9 +7,9 @@ export function Skills() {
   return (
     <section className="section-shell section-space">
       <SectionHeading
-        eyebrow="Capabilities"
-        title="Systems for motion, structure, and story."
-        description="我把视觉、交互和内容系统一起考虑。每一层都应该有自己的存在理由。"
+        eyebrow="What I Work With"
+        title="Tools and skills I actually use."
+        description="不是罗列会什么，而是这些东西我确实每天都在用，而且用在真实的项目里。"
       />
       <div className="grid gap-6 md:grid-cols-2">
         {skills.map((skill, index) => (

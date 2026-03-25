@@ -5,13 +5,12 @@ import { socials } from '@/data/socials';
 
 export function Contact() {
   return (
-    <section className="section-shell section-space relative">
-      <div className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-[linear-gradient(135deg,rgba(245,158,11,0.08),rgba(45,212,191,0.04),transparent)]" />
-      <div className="relative">
+    <section className="section-shell section-space">
+      <div>
         <SectionHeading
-          eyebrow="Contact"
-          title="Open to building expressive products and sharper experiences."
-          description="如果你在做需要更强叙事感和更高完成度的前端项目，可以直接联系我。"
+          eyebrow="Say Hi"
+          title="Want to build something together?"
+          description="不管是正经项目还是有意思的实验，都欢迎找我聊。邮件、Twitter 私信都行。"
         />
         <div className="flex flex-wrap gap-4">
           {socials.map((item, index) => (
