@@ -8,9 +8,9 @@ export function Blog() {
   return (
     <section className="section-shell section-space">
       <SectionHeading
-        eyebrow="Journal"
-        title="Notes on interface craft, motion, and content systems."
-        description="这些文章是工作台记录：我如何拆解一个体验，以及如何把它做成能维护的代码。"
+        eyebrow="Blog"
+        title="项目复盘与技术博客"
+        description="记录每个项目踩过的坑和做对的决定。更多碎片想法在 Twitter 上。"
       />
       <BlogList posts={posts} />
     </section>
