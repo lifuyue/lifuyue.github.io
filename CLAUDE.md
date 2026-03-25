@@ -14,7 +14,7 @@ No linting or test commands are configured.
 
 ## Architecture
 
-This is a **React 19 + TypeScript SPA** (personal portfolio + blog) deployed to GitHub Pages via GitHub Actions on push to `main`.
+This is a **React 19 + TypeScript SPA** (personal portfolio + blog) deployed to GitHub Pages via a manually dispatched GitHub Actions workflow (`workflow_dispatch`, not on push).
 
 ### Key tech
 - **Routing**: React Router DOM v7, routes defined in `src/App.tsx`
@@ -51,3 +51,20 @@ Colors are defined as CSS custom properties (`--color-background`, `--color-fore
 
 ### Blog content
 Add new posts as `content/blog/<slug>.mdx` with frontmatter fields defined in `src/types/blog.ts`. The MDX loader in `src/lib/mdx.ts` reads and processes these at build time via Vite's import.meta.glob.
+
+## Conventions
+
+Non-obvious patterns that require reading multiple files to discover:
+
+- **Class merging**: Use `cn()` from `src/lib/utils.ts` (wraps `clsx` + `tailwind-merge`) for all conditional class composition. The same file exports `formatDate()` using `zh-CN` locale.
+- **CSS color tokens**: Defined as raw RGB triplets (e.g., `--background: 7 8 14`, not `rgb()`), enabling Tailwind's `rgb(var(--color-*) / <alpha>)` alpha syntax. Adding new colors requires updating both `globals.css` and `tailwind.config.ts`.
+- **Two theme hooks**: `useTheme` (`src/hooks/useTheme.ts`) for full read/write/persist management; `useCurrentTheme` (`src/hooks/useCurrentTheme.ts`) for read-only MutationObserver-based observation. Three.js components use the latter to avoid coupling to theme state management.
+- **SVG imports**: SVGs are imported as raw strings via Vite's `?raw` suffix and rendered via `InlineSvg` component — not as React components.
+- **Exports**: All components use named exports except `HeroScene`, which uses `export default` because it is lazy-loaded via `React.lazy`.
+- **Page transitions**: `AnimatePresence mode="wait"` in `src/App.tsx` with a `clipPath` reveal in `PageTransition`; shared easing `[0.22, 1, 0.36, 1]`, 0.8s. Both `PageTransition` and `useScrollAnimation` respect `prefers-reduced-motion`.
+- **Hero animation**: The draggable agent cards in the Hero section use a canvas-based physics simulation (`requestAnimationFrame` + custom spring/repulsion) — distinct from Framer Motion used elsewhere on the page.
+- **Three.js is lazy-loaded**: `HeroScene` is wrapped in `React.lazy` + `<Suspense fallback={null}>` to keep it out of the initial bundle.
+- **Resume route**: `/resume` disables all chrome (navbar, footer, cursor, smooth scroll, loading screen) and applies a `resume-mode` CSS class on `<html>` for a clean printable layout.
+- **Loading screen**: Shown once per session via `sessionStorage` key `lifuyue-loading-screen`; uses a GSAP timeline (not Framer Motion).
+- **Project covers**: The `cover` field in `src/data/projects.ts` is a CSS `background` value (gradient string or CSS variable reference), not an image URL.
+- **SPA routing on GitHub Pages**: `public/404.html` saves the original path to `sessionStorage.redirect`; an inline script in `index.html` restores it via `history.replaceState`.
