@@ -10,7 +10,7 @@ import xSvg from '@/assets/logos/x.svg?raw';
 import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
-const headlineLines = ['From agents to', 'interfaces, I build', 'AI-native products with precision.'];
+const headlineLines = ['Hi, I build things', 'with AI agents', 'and ship them as products.'];
 
 interface ObstacleRect {
   x: number;
@@ -785,7 +785,7 @@ export function Hero() {
         <div className="relative z-20 flex min-h-[calc(100vh-7rem)] flex-col justify-between py-14 sm:py-16 lg:py-20">
           <div ref={copyRef} className="max-w-[56rem] space-y-6 lg:space-y-7">
             <p className="text-xs uppercase tracking-[0.5em] text-accent/80">
-              Portfolio / Journal / Experiments
+              Projects / Notes / Playground
             </p>
             <motion.p
               initial={{ opacity: 0 }}
@@ -793,7 +793,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-sm tracking-wide text-foreground/55"
             >
-              lifuyue / XMU SWE / AI - Native Developer
+              lifuyue / XMU Software Engineering / Building with AI
             </motion.p>
             <motion.div
               initial="hidden"
@@ -830,8 +830,8 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.35 }}
               className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg"
             >
-              我是 lifuyue，XMU SWE 在读，专注 AI Native 全栈开发、Agent 工作流与产品实现。这个站点展示我如何把模型能力、
-              交互设计和前端工程组织成可交付的产品体验。
+              我是 lifuyue，厦大软件工程在读。日常做的事情是用 AI agent 搭建产品——从想法到可以交付的东西，
+              前端、后端、工作流我都自己来。这个站点是我的作品集，也是我边做边想的记录。
             </motion.p>
             <div className="flex flex-wrap gap-4">
               <MagneticButton to="/works">View Works</MagneticButton>
@@ -861,7 +861,7 @@ export function Hero() {
           >
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Focus</p>
-              <p className="mt-2 text-foreground">Motion systems with readable information density.</p>
+              <p className="mt-2 text-foreground">AI-native products &amp; creative frontend.</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Toolkit</p>
@@ -869,7 +869,7 @@ export function Hero() {
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Current Mode</p>
-              <p className="mt-2 text-foreground">Designing for depth, shipping for performance.</p>
+              <p className="mt-2 text-foreground">在校，接活，持续出货。</p>
             </div>
           </div>
         </div>
