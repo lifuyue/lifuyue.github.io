@@ -30,6 +30,95 @@ export const projects: Project[] = [
       { label: 'API Entry', value: '1 gateway' },
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/teamdsb/tmo' }],
+    caseStudy: {
+      contextLine: '合作外包项目 · Go / Gin / PostgreSQL / Taro / OpenAPI / React / Docker',
+      summaryMetrics: [
+        { label: 'Service Footprint', value: 'Gateway-BFF + 4 domain services' },
+        { label: 'Code Reuse', value: '60%+ shared between WeChat / Alipay / H5' },
+        { label: 'Validation Loop', value: 'Agent-driven smoke + E2E via MCP' },
+      ],
+      chapters: [
+        {
+          eyebrow: '01 / Engineering System',
+          title: '先锁接口行为，再让 Agent 落实现',
+          body:
+            '我把 TDD 放在整个协作流的最前面：先用 Go testing 与 httptest 写验收用例，明确响应结构、异常分支与边界行为，再让 Coding Agent 按测试约束逐步补全实现。这让接口不再依赖“提示词描述的理解一致性”，而是由可执行用例直接锁定，显著减少了 Agent 在多轮生成里偏离业务语义的情况。',
+          focusPoints: [
+            '用 Go testing / httptest 预写验收用例，把 API 行为转成可执行 contract。',
+            '引入 Air 热更新、sqlc 与 oapi-codegen，减少重复样板与手工同步成本。',
+            '测试 pipeline 只输出失败信息，压缩 token 消耗并给 Agent 留出更多 context window。',
+          ],
+        },
+        {
+          eyebrow: '02 / Cross-Platform Delivery',
+          title: '把三端交付收束到同一套 Taro 代码库',
+          body:
+            '项目面向微信、支付宝与 H5 三个触点，但我没有把它拆成三套前端工程，而是围绕 Taro + React 建了一套统一代码库。业务逻辑、数据请求、状态流和大部分组件都保持同构，只把平台能力与交互细节留在差异层适配，从而让功能迭代、联调和发布节奏都能围绕同一条主线推进。',
+          focusPoints: [
+            '统一商品目录、意向下单、售后与归属绑定等核心业务模块。',
+            '组件层与业务逻辑层 60% 以上代码复用，仅在平台差异层做单独适配。',
+            '三端从同一份源码构建，降低回归范围和功能漂移风险。',
+          ],
+        },
+        {
+          eyebrow: '03 / Automated Verification',
+          title: '让前端冒烟、E2E 与错误归因自动闭环',
+          body:
+            '为了让交付不是“能跑就结束”，我额外搭建了一个前端自动化测试 harness，通过 MCP 打通 Chrome DevTools，让 Codex 可以自己发起页面冒烟与端到端测试、抓取 Console 与 Network 线索，并继续回溯到失败环节。这条链路的价值不只是替代手工点点点，而是把“触发测试、定位错误、确认归因”压成一条无需人工接力的验证回路。',
+          focusPoints: [
+            '基于 MCP 驱动浏览器测试与日志抓取，而不是只依赖截图或人工复现。',
+            '同时收集 Console / Network 线索，缩短从异常暴露到归因定位的时间。',
+            '把本地 Docker 栈、HTTP smoke 与 miniapp E2E 串成持续可复用的交付工作台。',
+          ],
+        },
+      ],
+      spotlightCards: [
+        {
+          eyebrow: 'TDD + Agent',
+          title: 'Executable contracts before implementation',
+          description:
+            '先用验收测试把接口行为写死，再让 Agent 在边界被锁定的前提下生成服务代码，显著提高单轮输出的可用率。',
+          meta: 'Go testing · httptest · sqlc · oapi-codegen · Air',
+        },
+        {
+          eyebrow: 'Unified Multi-End',
+          title: 'One codebase compiled to three client surfaces',
+          description:
+            '把 WeChat、Alipay 与 H5 收束到同一套 Taro + React 代码，重心放在业务一致性，而不是重复维护平台分叉。',
+          meta: 'Taro · React · shared business logic · platform adapters',
+        },
+        {
+          eyebrow: 'Autonomous QA',
+          title: 'Codex-operated smoke and end-to-end verification',
+          description:
+            '通过 MCP 直连 Chrome DevTools，让自动化测试既能触发，也能继续采集 Console 与 Network 证据，把归因过程一起自动化。',
+          meta: 'MCP · Chrome DevTools · smoke test · E2E · log triage',
+        },
+      ],
+      gallery: [
+        {
+          title: 'Catalog / SKU Discovery',
+          caption: '商品目录与 SKU 浏览视图，后续可替换为真实页面截图。',
+          image: '/images/tmo/gallery-catalog.png',
+          ratio: 'landscape',
+          theme: 'teal',
+        },
+        {
+          title: 'Intent Order Flow',
+          caption: '从意向下单到业务员归属绑定的关键转场位，当前先用占位卡承接。',
+          image: '/images/tmo/gallery-order-flow.png',
+          ratio: 'portrait',
+          theme: 'amber',
+        },
+        {
+          title: 'Automation Harness',
+          caption: '自动化验证与日志归因的工作台视角，可替换为 DevTools / pipeline 实拍。',
+          image: '/images/tmo/gallery-harness.png',
+          ratio: 'landscape',
+          theme: 'slate',
+        },
+      ],
+    },
   },
   {
     slug: 'signal-room',
