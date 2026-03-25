@@ -197,33 +197,33 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
   return (
     <section className="section-shell section-space">
       <div
-        className="relative overflow-hidden rounded-[1.75rem] border border-line/10 bg-line/[0.03]"
+        className="case-study-hero relative overflow-hidden rounded-[1.75rem] min-h-[34rem] lg:aspect-[16/9] lg:min-h-0"
         style={{ background: project.cover }}
       >
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,8,14,0.15),rgba(7,8,14,0.78)_58%,rgba(7,8,14,0.95))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_25%),radial-gradient(circle_at_78%_18%,rgba(45,212,191,0.14),transparent_18%)]" />
-        <div className="relative grid gap-10 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[1.15fr,0.85fr] lg:px-12 lg:py-14">
-          <div className="flex min-h-[440px] flex-col justify-between">
+        <div className="case-study-hero-mask absolute inset-0" />
+        <div className="case-study-hero-ambient absolute inset-0" />
+        <div className="relative grid h-full gap-10 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[1.15fr,0.85fr] lg:px-12 lg:py-14">
+          <div className="flex min-h-[440px] flex-col justify-between lg:min-h-0">
             <div>
               <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-foreground/55">
                 <span>{project.category}</span>
                 <span className="h-1 w-1 rounded-full bg-foreground/35" />
                 <span>{project.year}</span>
               </div>
-              <p className="mt-6 max-w-2xl text-sm uppercase tracking-[0.22em] text-foreground/62">
+              <p className="case-study-hero-context mt-6 max-w-2xl text-sm uppercase tracking-[0.22em]">
                 {caseStudy.contextLine}
               </p>
               <h1 className="mt-8 max-w-3xl font-display text-5xl leading-[0.95] text-foreground sm:text-6xl lg:text-7xl">
                 {project.title}
               </h1>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-foreground/75 sm:text-lg">
+              <p className="case-study-hero-description mt-6 max-w-2xl text-base leading-8 sm:text-lg">
                 {project.description}
               </p>
               <div className="mt-8 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/12 bg-black/20 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-foreground/82"
+                    className="case-study-hero-chip rounded-full px-3 py-2 text-[11px] uppercase tracking-[0.2em]"
                   >
                     {tag}
                   </span>
@@ -234,19 +234,19 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
               {caseStudy.summaryMetrics.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-[1.25rem] border border-white/10 bg-black/20 p-5 backdrop-blur-xl"
+                  className="case-study-hero-stat rounded-[1.25rem] p-5"
                 >
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-foreground/48">{item.label}</p>
+                  <p className="case-study-hero-label text-[11px] uppercase tracking-[0.24em]">{item.label}</p>
                   <p className="mt-3 text-lg leading-7 text-foreground">{item.value}</p>
                 </div>
               ))}
             </div>
           </div>
-          <GlassCard className="h-full min-h-[440px] border-white/10 bg-black/25 p-0 backdrop-blur-3xl">
+          <GlassCard className="case-study-hero-panel h-full min-h-[440px] p-0 lg:min-h-0">
             <div className="flex h-full flex-col">
-              <div className="border-b border-white/10 px-6 py-5">
-                <p className="text-xs uppercase tracking-[0.34em] text-foreground/45">Project Lens</p>
-                <p className="mt-4 max-w-md text-sm leading-7 text-foreground/72">
+              <div className="case-study-hero-panel-divider border-b px-6 py-5">
+                <p className="case-study-hero-label text-xs uppercase tracking-[0.34em]">Project Lens</p>
+                <p className="case-study-hero-panel-copy mt-4 max-w-md text-sm leading-7">
                   从业务可演示性到工程可持续性，TMO 更像一套持续交付系统，而不是一次性前后端拼装。
                 </p>
               </div>
@@ -254,15 +254,15 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
                 {project.metrics.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-[1.15rem] border border-white/10 bg-white/[0.04] p-5"
+                    className="case-study-hero-metric-card rounded-[1.15rem] p-5"
                   >
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-foreground/45">{item.label}</p>
+                    <p className="case-study-hero-label text-[11px] uppercase tracking-[0.24em]">{item.label}</p>
                     <p className="mt-3 text-xl text-foreground">{item.value}</p>
                   </div>
                 ))}
-                <div className="rounded-[1.15rem] border border-dashed border-white/14 bg-[linear-gradient(135deg,rgba(45,212,191,0.08),rgba(255,255,255,0.04),rgba(245,158,11,0.08))] p-5">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-foreground/45">Delivery Shape</p>
-                  <p className="mt-3 text-sm leading-7 text-foreground/70">
+                <div className="case-study-hero-delivery rounded-[1.15rem] p-5">
+                  <p className="case-study-hero-label text-[11px] uppercase tracking-[0.24em]">Delivery Shape</p>
+                  <p className="case-study-hero-panel-copy mt-3 text-sm leading-7">
                     商品目录、意向订单、业务员归属、售后回路和自动化验证都被纳入同一条交付链路。
                   </p>
                 </div>
@@ -314,7 +314,7 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
             ))}
           </div>
         </div>
-        <div className="space-y-24">
+        <div className="space-y-20 lg:space-y-24">
           {caseStudy.chapters.map((chapter, index) => (
             <motion.article
               key={chapter.title}
@@ -322,10 +322,8 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.75, delay: 0.08 }}
-              className="lg:sticky lg:top-28"
-              style={{ zIndex: caseStudy.chapters.length - index }}
             >
-              <GlassCard className="overflow-visible p-0">
+              <GlassCard className="overflow-hidden p-0">
                 <div className="grid gap-6 border-b border-line/10 px-6 py-6 sm:px-8 sm:py-7 lg:grid-cols-[0.75fr,1.25fr]">
                   <div className="rounded-[1.15rem] border border-line/10 bg-[linear-gradient(160deg,rgba(45,212,191,0.08),rgba(255,255,255,0.03),rgba(245,158,11,0.08))] p-5">
                     <p className="text-xs uppercase tracking-[0.28em] text-foreground/48">{chapter.eyebrow}</p>
