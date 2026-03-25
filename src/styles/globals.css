@@ -114,6 +114,16 @@ body::after {
   min-height: 100vh;
 }
 
+html.resume-mode,
+html.resume-mode body {
+  background: #fff;
+}
+
+html.resume-mode body::before,
+html.resume-mode body::after {
+  display: none;
+}
+
 html.theme-transition body,
 html.theme-transition body::before,
 html.theme-transition body::after,
