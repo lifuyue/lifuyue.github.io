@@ -12,7 +12,7 @@ export function AnimatedText({ text, className }: AnimatedTextProps) {
 
   return (
     <motion.span
-      className={cn('block overflow-hidden', className)}
+      className={cn('block', className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.6 }}
@@ -26,7 +26,10 @@ export function AnimatedText({ text, className }: AnimatedTextProps) {
       }}
     >
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} className="mr-[0.3em] inline-block overflow-hidden">
+        <span
+          key={`${word}-${index}`}
+          className="mr-[0.3em] inline-block overflow-hidden pb-[0.18em] -mb-[0.18em]"
+        >
           <motion.span
             className="inline-block"
             variants={{

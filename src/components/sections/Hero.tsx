@@ -10,7 +10,7 @@ import xSvg from '@/assets/logos/x.svg?raw';
 import { cn } from '@/lib/utils';
 
 const HeroScene = lazy(() => import('@/components/three/HeroScene'));
-const headlineLines = ['Hi, I build things', 'with AI agents', 'and ship them as products.'];
+const headlineLines = ['Hi, I build things', 'with AI agents', 'and ship them.'];
 
 interface ObstacleRect {
   x: number;
@@ -793,7 +793,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-sm tracking-wide text-foreground/55"
             >
-              lifuyue / XMU Software Engineering / Building with AI
+              lifuyue / XMU Software Engineering / AI-Native Developer
             </motion.p>
             <motion.div
               initial="hidden"
@@ -807,10 +807,10 @@ export function Hero() {
                   },
                 },
               }}
-              className="font-display text-5xl leading-[0.95] text-foreground sm:text-6xl lg:text-[4.7rem] xl:text-[5.25rem]"
+              className="font-display text-5xl leading-[1.02] text-foreground sm:text-6xl lg:text-[4.7rem] xl:text-[5.25rem]"
             >
               {headlineLines.map((line) => (
-                <span key={line} className="block overflow-hidden">
+                <span key={line} className="block overflow-hidden pb-[0.18em] -mb-[0.18em]">
                   <motion.span
                     className="block"
                     variants={{
@@ -830,7 +830,7 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.35 }}
               className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg"
             >
-              我是 lifuyue，厦大软件工程在读。日常做的事情是用 AI agent 搭建产品——从想法到可以交付的东西，
+              我是 李富悦，厦大软件工程在读。日常做的事情是用 Coding Agent 搭建产品——从想法到可以交付的东西，
               前端、后端、工作流我都自己来。这个站点是我的作品集，也是我边做边想的记录。
             </motion.p>
             <div className="flex flex-wrap gap-4">
@@ -861,15 +861,15 @@ export function Hero() {
           >
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Focus</p>
-              <p className="mt-2 text-foreground">AI-native products &amp; creative frontend.</p>
+              <p className="mt-2 text-foreground">Full-stack · AI Agent workflows · Idea to shipped product</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Toolkit</p>
-              <p className="mt-2 text-foreground">React, TypeScript, R3F, MDX, Framer Motion, GSAP.</p>
+              <p className="mt-2 text-foreground">Claude Code · Codex · Cursor · Gemini & Stitch</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Current Mode</p>
-              <p className="mt-2 text-foreground">在校，接活，持续出货。</p>
+              <p className="mt-2 text-foreground">Studying · Vibe Coding · Exploring the Edge</p>
             </div>
           </div>
         </div>

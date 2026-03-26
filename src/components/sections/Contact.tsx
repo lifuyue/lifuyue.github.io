@@ -10,7 +10,7 @@ export function Contact() {
         <SectionHeading
           eyebrow="Say Hi"
           title="Want to build something together?"
-          description="不管是正经项目还是有意思的实验，都欢迎找我聊。邮件、Twitter 私信都行。"
+          description="不管是正经项目还是有意思的实验，都欢迎找我聊——不写代码的时候大概在跑马或者健身。邮件、Twitter 私信都行。"
         />
         <div className="flex flex-wrap gap-4">
           {socials.map((item, index) => (
