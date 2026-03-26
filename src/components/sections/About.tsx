@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export function About() {
+  const [isPortraitAvailable, setIsPortraitAvailable] = useState(true);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [50, -60]);
   const animation = useScrollAnimation(0.1);
@@ -18,6 +20,14 @@ export function About() {
         <motion.div style={{ y }} className="relative">
           <div className="relative overflow-hidden rounded-[1.5rem]">
             <div className="about-image-gradient aspect-[4/5]" />
+            {isPortraitAvailable ? (
+              <img
+                src="/images/about-portrait.jpg"
+                alt="Li Fuyue"
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={() => setIsPortraitAvailable(false)}
+              />
+            ) : null}
             <div className="absolute bottom-10 left-10 rounded-full border border-line/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-foreground/70">
               Xiamen / Remote
             </div>
