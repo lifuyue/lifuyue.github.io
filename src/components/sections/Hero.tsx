@@ -807,10 +807,10 @@ export function Hero() {
                   },
                 },
               }}
-              className="font-display text-5xl leading-[0.95] text-foreground sm:text-6xl lg:text-[4.7rem] xl:text-[5.25rem]"
+              className="font-display text-5xl leading-[1.02] text-foreground sm:text-6xl lg:text-[4.7rem] xl:text-[5.25rem]"
             >
               {headlineLines.map((line) => (
-                <span key={line} className="block overflow-hidden">
+                <span key={line} className="block overflow-hidden pb-[0.18em] -mb-[0.18em]">
                   <motion.span
                     className="block"
                     variants={{
