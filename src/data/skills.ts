@@ -1,22 +1,22 @@
 export const skills = [
   {
-    title: 'Interface Systems',
-    description: '我搭的前端不是一次性 demo——组件层级、设计规范、状态管理，都按能长期维护的标准来。',
-    items: ['React / TypeScript', 'Design Tokens', 'Motion Architecture'],
+    title: 'Product Thinking',
+    description: '不只是写代码——从想法到原型到上线，我关注的是把东西做成能用的产品，而不是停留在技术 demo。',
+    items: ['Idea → Ship', '用户视角', 'MVP 迭代'],
   },
   {
-    title: 'Immersive Motion',
-    description: '页面滚动、微交互、转场动画，我会统一节奏，让整体感觉流畅而不是炫技。',
-    items: ['Framer Motion', 'GSAP', 'Lenis'],
+    title: 'AI-Native Dev',
+    description: '我用 Claude Code、Codex 真正跑通开发流程，不是调 API 玩一下。Agent 是我的协作者，不是玩具。',
+    items: ['Claude Code', 'Codex', 'Agent Workflow'],
   },
   {
-    title: 'Creative Frontend',
-    description: '喜欢用 3D 和粒子做一些有情绪感的东西，但性能永远优先——不会为了酷炫牺牲体验。',
-    items: ['R3F / Three.js', 'Procedural Fields', 'Progressive Enhancement'],
+    title: 'Frontend Craft',
+    description: '有设计感的前端实现——动效、3D、交互细节都讲究，但永远服务于体验，不是为了炫技。',
+    items: ['React / TypeScript', 'Motion & 3D', 'Design-Aware'],
   },
   {
-    title: 'Writing Pipeline',
-    description: '博客和项目文档不是写完就扔，我把它们做成了一套可以持续更新的系统。',
-    items: ['MDX', 'Frontmatter', 'Editorial Layout'],
+    title: 'Ship Fast',
+    description: '在校期间持续接活出货，不是实验室写完就扔。每个项目都以「能交付、能维护」为标准。',
+    items: ['持续交付', 'Real Projects', '独立执行'],
   },
 ];

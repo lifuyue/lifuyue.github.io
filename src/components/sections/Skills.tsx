@@ -7,9 +7,9 @@ export function Skills() {
   return (
     <section className="section-shell section-space">
       <SectionHeading
-        eyebrow="What I Work With"
-        title="Tools and skills I actually use."
-        description="不是罗列会什么，而是这些东西我确实每天都在用，而且用在真实的项目里。"
+        eyebrow="What I Ship"
+        title="Things I actually build and deliver."
+        description="我真正在做的事和交付的方式。"
       />
       <div className="grid gap-6 md:grid-cols-2">
         {skills.map((skill, index) => (
