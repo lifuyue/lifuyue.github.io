@@ -40,7 +40,13 @@ function ProjectMetaLinks({ project }: { project: Project }) {
   );
 }
 
-function DefaultWorkDetail({ project, nextProject }: { project: Project; nextProject: Project }) {
+function DefaultWorkDetail({
+  project,
+  nextProject,
+}: {
+  project: Project;
+  nextProject?: Project;
+}) {
   return (
     <section className="section-shell section-space">
       <div
@@ -73,14 +79,16 @@ function DefaultWorkDetail({ project, nextProject }: { project: Project; nextPro
           <ProjectMetaLinks project={project} />
         </aside>
       </div>
-      <div className="mt-12">
-        <Link
-          to={`/works/${nextProject.slug}`}
-          className="inline-flex rounded-full border border-line/10 px-5 py-3 text-sm uppercase tracking-[0.22em] text-foreground/80 hover:border-line/20 hover:text-foreground"
-        >
-          Next Project: {nextProject.title}
-        </Link>
-      </div>
+      {nextProject ? (
+        <div className="mt-12">
+          <Link
+            to={`/works/${nextProject.slug}`}
+            className="inline-flex rounded-full border border-line/10 px-5 py-3 text-sm uppercase tracking-[0.22em] text-foreground/80 hover:border-line/20 hover:text-foreground"
+          >
+            Next Project: {nextProject.title}
+          </Link>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -187,7 +195,13 @@ function GalleryCard({ item, index }: { item: ProjectCaseStudyGalleryItem; index
   );
 }
 
-function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextProject: Project }) {
+function CaseStudyWorkDetail({
+  project,
+  nextProject,
+}: {
+  project: Project;
+  nextProject?: Project;
+}) {
   const caseStudy = project.caseStudy;
 
   if (!caseStudy) {
@@ -428,19 +442,21 @@ function CaseStudyWorkDetail({ project, nextProject }: { project: Project; nextP
 
         <aside className="space-y-6">
           <ProjectMetaLinks project={project} />
-          <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Continue</p>
-            <Link
-              to={`/works/${nextProject.slug}`}
-              className="mt-5 flex rounded-[1rem] border border-line/10 bg-black/10 px-5 py-5 text-left hover:border-line/20"
-            >
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/45">Next Project</p>
-                <p className="mt-3 font-display text-3xl text-foreground">{nextProject.title}</p>
-                <p className="mt-3 text-sm leading-7 text-foreground/68">{nextProject.description}</p>
-              </div>
-            </Link>
-          </div>
+          {nextProject ? (
+            <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
+              <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Continue</p>
+              <Link
+                to={`/works/${nextProject.slug}`}
+                className="mt-5 flex rounded-[1rem] border border-line/10 bg-black/10 px-5 py-5 text-left hover:border-line/20"
+              >
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/45">Next Project</p>
+                  <p className="mt-3 font-display text-3xl text-foreground">{nextProject.title}</p>
+                  <p className="mt-3 text-sm leading-7 text-foreground/68">{nextProject.description}</p>
+                </div>
+              </Link>
+            </div>
+          ) : null}
         </aside>
       </div>
     </section>
@@ -456,7 +472,8 @@ export function WorkDetail() {
   }
 
   const project = projects[projectIndex];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const nextProject =
+    projects.length > 1 ? projects[(projectIndex + 1) % projects.length] : undefined;
 
   if (project.caseStudy) {
     return <CaseStudyWorkDetail project={project} nextProject={nextProject} />;

@@ -20,6 +20,11 @@
     radial-gradient(circle at 18% 16%, rgb(255 255 255 / 0.14), transparent 26%),
     radial-gradient(circle at 85% 14%, rgb(45 212 191 / 0.08), transparent 22%),
     url('/images/tmo/hero-sku.png') center -7.5rem / 108% auto no-repeat;
+  --suanxian-cover-background:
+    linear-gradient(135deg, rgb(7 8 14 / 0.6), rgb(7 8 14 / 0.3)),
+    radial-gradient(circle at 20% 30%, rgb(34 197 94 / 0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(45 212 191 / 0.15), transparent 35%),
+    linear-gradient(160deg, #0f172a, #0b1a12 55%, #0d1117);
   --about-image-gradient:
     radial-gradient(circle at 30% 20%, rgb(245 158 11 / 0.35), transparent 30%),
     linear-gradient(160deg, #111827, #0f172a 55%, #0b1120);
@@ -45,6 +50,11 @@
     radial-gradient(circle at 16% 18%, rgb(255 255 255 / 0.3), transparent 28%),
     radial-gradient(circle at 84% 18%, rgb(59 130 246 / 0.05), transparent 24%),
     url('/images/tmo/hero-sku.png') center -7.5rem / 108% auto no-repeat;
+  --suanxian-cover-background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.3), rgb(255 255 255 / 0.1)),
+    radial-gradient(circle at 20% 30%, rgb(34 197 94 / 0.12), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(13 148 136 / 0.08), transparent 35%),
+    linear-gradient(160deg, rgb(240 253 244), rgb(236 253 245) 55%, rgb(220 252 231));
   --about-image-gradient:
     radial-gradient(circle at 30% 20%, rgb(217 119 6 / 0.18), transparent 32%),
     linear-gradient(160deg, rgb(248 250 252), rgb(241 245 249) 55%, rgb(226 232 240));
@@ -139,7 +149,9 @@ html.theme-transition .case-study-hero-metric-card,
 html.theme-transition .case-study-hero-delivery,
 html.theme-transition .about-image-gradient,
 html.theme-transition [style*='--tmo-cover-background'],
-html.theme-transition [style*='var(--tmo-cover-background)'] {
+html.theme-transition [style*='var(--tmo-cover-background)'],
+html.theme-transition [style*='--suanxian-cover-background'],
+html.theme-transition [style*='var(--suanxian-cover-background)'] {
   transition-property: background, background-color, background-image, box-shadow, color, opacity;
   transition-duration: 160ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
