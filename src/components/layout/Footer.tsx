@@ -6,7 +6,7 @@ export function Footer() {
       <div className="section-shell flex flex-col gap-6 text-sm text-foreground/55 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-lg text-foreground">Lifuyue</p>
-          <p>Immersive frontend, editorial motion, and code-driven visual systems.</p>
+          <p>全栈开发、AI Agent 工作流，以及从想法到交付的记录。</p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
           <Link to="/" className="text-foreground/70 hover:text-foreground">

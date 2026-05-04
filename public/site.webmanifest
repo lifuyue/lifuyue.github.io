@@ -1,0 +1,17 @@
+{
+  "name": "fuyue",
+  "short_name": "fuyue",
+  "description": "Lifuyue 的个人作品集，记录产品工程、交互体验和视觉实验。",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#07080e",
+  "theme_color": "#07080e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
