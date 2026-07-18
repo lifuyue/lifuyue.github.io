@@ -13,6 +13,12 @@ export function LoadingScreen() {
       return;
     }
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.sessionStorage.setItem(STORAGE_KEY, '1');
+      setVisible(false);
+      return;
+    }
+
     const state = { progress: 0 };
     const timeline = gsap.timeline({
       defaults: { ease: 'power3.inOut' },
@@ -24,7 +30,7 @@ export function LoadingScreen() {
 
     timeline.to(state, {
       progress: 100,
-      duration: 1.4,
+      duration: 0.55,
       onUpdate: () => {
         if (counterRef.current) {
           counterRef.current.textContent = String(Math.round(state.progress)).padStart(3, '0');
@@ -36,7 +42,7 @@ export function LoadingScreen() {
       overlayRef.current,
       {
         clipPath: 'inset(0 0 100% 0 round 2.5rem)',
-        duration: 0.9,
+        duration: 0.42,
       },
       '>-0.05',
     );

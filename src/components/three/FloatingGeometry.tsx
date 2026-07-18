@@ -23,7 +23,7 @@ export function FloatingGeometry() {
 
   return (
     <Float speed={1.4} rotationIntensity={0.65} floatIntensity={1.2}>
-      <mesh ref={meshRef} position={[3, -0.2, -0.35]} scale={0.76}>
+      <mesh ref={meshRef} position={[2.85, -0.15, -0.35]} scale={1.18}>
         <icosahedronGeometry args={[1.1, 1]} />
         <MeshDistortMaterial
           color="#d97706"

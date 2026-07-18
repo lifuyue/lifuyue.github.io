@@ -1,23 +1,28 @@
-import { useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export function About() {
   const [isPortraitAvailable, setIsPortraitAvailable] = useState(true);
-  const { scrollYProgress } = useScroll();
+  const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
   const y = useTransform(scrollYProgress, [0, 1], [50, -60]);
   const animation = useScrollAnimation(0.1);
 
   return (
-    <section className="section-shell section-space relative">
+    <section ref={sectionRef} className="section-shell section-space relative">
       <SectionHeading
         eyebrow="About"
         title="Who I am, briefly."
         description="我是一名软件工程师，专注于 web 全栈开发和 AI Agent 设计。"
       />
       <div className="grid gap-8 lg:grid-cols-[1fr,1.4fr]">
-        <motion.div style={{ y }} className="relative">
+        <motion.div style={prefersReducedMotion ? undefined : { y }} className="relative">
           <div className="relative overflow-hidden rounded-[1.5rem]">
             <div className="about-image-gradient aspect-[4/5]" />
             {isPortraitAvailable ? (
