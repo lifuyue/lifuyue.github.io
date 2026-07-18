@@ -22,7 +22,7 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
         whileInView={{ width: '9rem', opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-        className="mt-5 h-px rounded-full bg-gradient-to-r from-amber-300 via-teal-300 to-transparent"
+        className="mt-5 h-px rounded-full bg-gradient-to-r from-accent via-accentSoft to-teal/40"
       />
       <p className="mt-6 max-w-2xl text-base leading-8 text-foreground/70 sm:text-lg">
         {description}

@@ -21,11 +21,11 @@ export default {
       },
       boxShadow: {
         glow: '0 0 0 1px rgba(255,255,255,0.08), 0 18px 60px rgba(0,0,0,0.35)',
-        highlight: '0 0 50px rgba(245, 158, 11, 0.25)',
+        highlight: '0 0 50px rgba(210, 106, 69, 0.24)',
       },
       backgroundImage: {
         noise:
-          'radial-gradient(circle at 20% 20%, rgba(245,158,11,0.08), transparent 35%), radial-gradient(circle at 80% 0%, rgba(59,130,246,0.08), transparent 28%), radial-gradient(circle at 30% 80%, rgba(45,212,191,0.08), transparent 30%)',
+          'radial-gradient(circle at 20% 20%, rgba(210,106,69,0.08), transparent 35%), radial-gradient(circle at 80% 0%, rgba(217,168,95,0.06), transparent 28%), radial-gradient(circle at 30% 80%, rgba(132,144,120,0.08), transparent 30%)',
       },
       keyframes: {
         float: {

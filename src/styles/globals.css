@@ -6,28 +6,29 @@
 
 :root {
   color-scheme: dark;
-  --background: 7 8 14;
-  --foreground: 239 236 230;
-  --surface: 18 20 29;
-  --line: 255 255 255;
-  --accent: 245 158 11;
-  --accent-soft: 251 191 36;
-  --teal: 45 212 191;
-  --hero-overlay-start: rgb(9 12 20 / 0.96);
-  --hero-overlay-middle: rgb(9 12 20 / 0.78);
+  --background: 13 13 11;
+  --foreground: 238 233 223;
+  --surface: 27 26 22;
+  --line: 238 233 223;
+  --accent: 210 106 69;
+  --accent-soft: 217 168 95;
+  --teal: 132 144 120;
+  --hero-overlay-start: rgb(13 13 11 / 0.96);
+  --hero-overlay-middle: rgb(13 13 11 / 0.68);
   --tmo-cover-background:
-    linear-gradient(180deg, rgb(7 8 14 / 0.08), rgb(7 8 14 / 0.2)),
-    radial-gradient(circle at 18% 16%, rgb(255 255 255 / 0.14), transparent 26%),
-    radial-gradient(circle at 85% 14%, rgb(45 212 191 / 0.08), transparent 22%),
+    linear-gradient(180deg, rgb(13 13 11 / 0.08), rgb(13 13 11 / 0.22)),
+    radial-gradient(circle at 18% 16%, rgb(238 233 223 / 0.14), transparent 26%),
+    radial-gradient(circle at 85% 14%, rgb(132 144 120 / 0.09), transparent 22%),
     url('/images/tmo/hero-sku.png') center -7.5rem / 108% auto no-repeat;
   --suanxian-cover-background:
-    linear-gradient(135deg, rgb(7 8 14 / 0.6), rgb(7 8 14 / 0.3)),
-    radial-gradient(circle at 20% 30%, rgb(34 197 94 / 0.25), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgb(45 212 191 / 0.15), transparent 35%),
-    linear-gradient(160deg, #0f172a, #0b1a12 55%, #0d1117);
+    linear-gradient(135deg, rgb(13 13 11 / 0.58), rgb(13 13 11 / 0.28)),
+    radial-gradient(circle at 20% 30%, rgb(132 144 120 / 0.28), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(210 106 69 / 0.14), transparent 35%),
+    linear-gradient(160deg, #1b1d17, #151912 55%, #11110e);
   --about-image-gradient:
-    radial-gradient(circle at 30% 20%, rgb(245 158 11 / 0.35), transparent 30%),
-    linear-gradient(160deg, #111827, #0f172a 55%, #0b1120);
+    radial-gradient(circle at 30% 20%, rgb(210 106 69 / 0.34), transparent 30%),
+    radial-gradient(circle at 78% 72%, rgb(132 144 120 / 0.18), transparent 34%),
+    linear-gradient(160deg, #241b16, #171713 55%, #10100e);
 }
 
 .dark {
@@ -36,28 +37,29 @@
 
 .light {
   color-scheme: light;
-  --background: 255 255 255;
-  --foreground: 15 23 42;
-  --surface: 255 255 255;
-  --line: 15 23 42;
-  --accent: 217 119 6;
-  --accent-soft: 234 179 8;
-  --teal: 13 148 136;
-  --hero-overlay-start: rgb(255 255 255 / 0.92);
-  --hero-overlay-middle: rgb(255 255 255 / 0.72);
+  --background: 244 240 231;
+  --foreground: 28 26 22;
+  --surface: 232 225 213;
+  --line: 28 26 22;
+  --accent: 184 82 51;
+  --accent-soft: 181 130 61;
+  --teal: 103 117 95;
+  --hero-overlay-start: rgb(244 240 231 / 0.96);
+  --hero-overlay-middle: rgb(244 240 231 / 0.72);
   --tmo-cover-background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.12)),
-    radial-gradient(circle at 16% 18%, rgb(255 255 255 / 0.3), transparent 28%),
-    radial-gradient(circle at 84% 18%, rgb(59 130 246 / 0.05), transparent 24%),
+    linear-gradient(180deg, rgb(244 240 231 / 0.04), rgb(244 240 231 / 0.13)),
+    radial-gradient(circle at 16% 18%, rgb(255 252 246 / 0.3), transparent 28%),
+    radial-gradient(circle at 84% 18%, rgb(132 144 120 / 0.08), transparent 24%),
     url('/images/tmo/hero-sku.png') center -7.5rem / 108% auto no-repeat;
   --suanxian-cover-background:
-    linear-gradient(135deg, rgb(255 255 255 / 0.3), rgb(255 255 255 / 0.1)),
-    radial-gradient(circle at 20% 30%, rgb(34 197 94 / 0.12), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgb(13 148 136 / 0.08), transparent 35%),
-    linear-gradient(160deg, rgb(240 253 244), rgb(236 253 245) 55%, rgb(220 252 231));
+    linear-gradient(135deg, rgb(255 252 246 / 0.32), rgb(244 240 231 / 0.12)),
+    radial-gradient(circle at 20% 30%, rgb(132 144 120 / 0.14), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(210 106 69 / 0.08), transparent 35%),
+    linear-gradient(160deg, #f0f0e8, #e9ede2 55%, #dfe5d8);
   --about-image-gradient:
-    radial-gradient(circle at 30% 20%, rgb(217 119 6 / 0.18), transparent 32%),
-    linear-gradient(160deg, rgb(248 250 252), rgb(241 245 249) 55%, rgb(226 232 240));
+    radial-gradient(circle at 30% 20%, rgb(184 82 51 / 0.16), transparent 32%),
+    radial-gradient(circle at 78% 72%, rgb(103 117 95 / 0.11), transparent 36%),
+    linear-gradient(160deg, #f3e9dc, #ebe2d5 55%, #ded7cb);
 }
 
 html {
@@ -68,20 +70,20 @@ html {
 body {
   @apply bg-background text-foreground font-sans antialiased;
   background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 35%),
-    radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 30%),
-    radial-gradient(circle at 75% 20%, rgba(45, 212, 191, 0.12), transparent 22%),
-    linear-gradient(180deg, rgba(7, 8, 14, 1) 0%, rgba(7, 8, 14, 0.92) 50%, rgba(7, 8, 14, 1) 100%);
+    linear-gradient(135deg, rgb(238 233 223 / 0.035), transparent 35%),
+    radial-gradient(circle at top, rgb(var(--accent) / 0.12), transparent 30%),
+    radial-gradient(circle at 75% 20%, rgb(var(--teal) / 0.1), transparent 22%),
+    linear-gradient(180deg, rgb(var(--background)) 0%, rgb(var(--background) / 0.94) 50%, rgb(var(--background)) 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .light body {
   background-image:
-    linear-gradient(135deg, rgb(15 23 42 / 0.02), transparent 38%),
+    linear-gradient(135deg, rgb(28 26 22 / 0.025), transparent 38%),
     radial-gradient(circle at top, rgb(var(--accent) / 0.08), transparent 32%),
     radial-gradient(circle at 75% 20%, rgb(var(--teal) / 0.07), transparent 24%),
-    linear-gradient(180deg, rgb(255 255 255) 0%, rgb(255 255 255 / 0.98) 50%, rgb(255 255 255) 100%);
+    linear-gradient(180deg, rgb(var(--background)) 0%, rgb(248 244 236 / 0.98) 50%, rgb(var(--background)) 100%);
 }
 
 body::before {
@@ -139,7 +141,11 @@ html.theme-transition body,
 html.theme-transition body::before,
 html.theme-transition body::after,
 html.theme-transition .glass-panel,
+html.theme-transition .hero-editorial-stage,
+html.theme-transition .hero-editorial-image,
 html.theme-transition .hero-overlay,
+html.theme-transition .rail-project-scrim,
+html.theme-transition .rail-edge-fade,
 html.theme-transition .case-study-hero,
 html.theme-transition .case-study-hero-mask,
 html.theme-transition .case-study-hero-ambient,
@@ -159,7 +165,11 @@ html.theme-transition [style*='var(--suanxian-cover-background)'] {
 }
 
 html.theme-transition .glass-panel,
+html.theme-transition .hero-editorial-stage,
+html.theme-transition .hero-editorial-image,
 html.theme-transition .hero-overlay,
+html.theme-transition .rail-project-scrim,
+html.theme-transition .rail-edge-fade,
 html.theme-transition .case-study-hero,
 html.theme-transition .case-study-hero-mask,
 html.theme-transition .case-study-hero-ambient,
@@ -178,8 +188,8 @@ button {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.35);
-  color: white;
+  background: rgb(var(--accent) / 0.38);
+  color: rgb(var(--foreground));
 }
 
 .light ::selection {
@@ -193,11 +203,11 @@ button {
 }
 
 .light .glass-panel {
-  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 6px 24px rgb(28 26 22 / 0.06);
 }
 
 .light .shadow-glow {
-  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 18px 52px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 0 0 1px rgb(28 26 22 / 0.06), 0 18px 52px rgb(28 26 22 / 0.1);
 }
 
 .section-shell {
@@ -209,19 +219,158 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, rgb(var(--accent-soft)), rgb(var(--teal)));
+  background: linear-gradient(
+    115deg,
+    rgb(var(--accent)) 0%,
+    rgb(var(--accent-soft)) 52%,
+    rgb(var(--teal)) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .hero-overlay {
-  background: linear-gradient(
-    90deg,
-    var(--hero-overlay-start) 0%,
-    var(--hero-overlay-middle) 56%,
-    transparent 100%
-  );
+  background:
+    linear-gradient(90deg, var(--hero-overlay-start) 0%, var(--hero-overlay-middle) 42%, transparent 73%),
+    linear-gradient(180deg, rgb(13 13 11 / 0.28), transparent 24%, transparent 72%, rgb(13 13 11 / 0.5));
+}
+
+.hero-editorial-stage {
+  --background: 13 13 11;
+  --foreground: 238 233 223;
+  --surface: 27 26 22;
+  --line: 238 233 223;
+  --accent: 210 106 69;
+  --accent-soft: 217 168 95;
+  --teal: 132 144 120;
+  isolation: isolate;
+  background: #0d0d0b;
+  color: #eee9df;
+}
+
+.light .hero-editorial-stage {
+  --background: 244 240 231;
+  --foreground: 28 26 22;
+  --surface: 232 225 213;
+  --line: 28 26 22;
+  --accent: 184 82 51;
+  --accent-soft: 181 130 61;
+  --teal: 103 117 95;
+  background: #f4f0e7;
+  color: #1c1a16;
+}
+
+.nav-on-editorial-hero {
+  --foreground: 238 233 223;
+  --surface: 27 26 22;
+  --line: 238 233 223;
+  --accent: 210 106 69;
+  --accent-soft: 217 168 95;
+  --teal: 132 144 120;
+}
+
+.nav-on-editorial-hero .glass-panel {
+  background: rgb(13 13 11 / 0.28);
+  box-shadow:
+    inset 0 1px 0 rgb(238 233 223 / 0.04),
+    0 18px 42px rgb(0 0 0 / 0.12);
+}
+
+.light .nav-on-editorial-hero {
+  --foreground: 28 26 22;
+  --surface: 232 225 213;
+  --line: 28 26 22;
+  --accent: 184 82 51;
+  --accent-soft: 181 130 61;
+  --teal: 103 117 95;
+}
+
+.light .nav-on-editorial-hero .glass-panel {
+  background: rgb(244 240 231 / 0.62);
+  box-shadow:
+    inset 0 1px 0 rgb(255 252 246 / 0.56),
+    0 18px 42px rgb(28 26 22 / 0.08);
+}
+
+.hero-editorial-image {
+  background-image: url('/images/hero/warm-editorial-hero-v2.webp');
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.94) contrast(1.025);
+  user-select: none;
+}
+
+.light .hero-editorial-stage .hero-editorial-image {
+  background-image: url('/images/hero/warm-editorial-hero-v2-light.webp');
+  filter: saturate(0.92) contrast(1.015);
+}
+
+.hero-paper-details {
+  pointer-events: none;
+}
+
+.hero-paper-orbit {
+  position: absolute;
+  right: 9%;
+  top: 14%;
+  width: clamp(12rem, 24vw, 25rem);
+  aspect-ratio: 1.2;
+  border: 1px solid rgb(238 233 223 / 0.2);
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  box-shadow: inset 0 0 0 1px rgb(210 106 69 / 0.04);
+}
+
+.hero-paper-chip {
+  position: absolute;
+  display: block;
+  box-shadow: 0 18px 42px rgb(0 0 0 / 0.22);
+}
+
+.hero-paper-chip--ivory {
+  right: 7%;
+  top: 23%;
+  width: clamp(1.6rem, 3.2vw, 3.5rem);
+  aspect-ratio: 0.72;
+  background: #eee9df;
+  clip-path: polygon(10% 0, 100% 13%, 85% 100%, 0 84%);
+  opacity: 0.78;
+  transform: rotate(12deg);
+}
+
+.hero-paper-chip--sage {
+  right: 34%;
+  bottom: 17%;
+  width: clamp(1.8rem, 4vw, 4.5rem);
+  aspect-ratio: 1.7;
+  background: #849078;
+  border-radius: 100% 18% 80% 22%;
+  opacity: 0.62;
+  transform: rotate(-18deg);
+}
+
+.hero-paper-mark {
+  position: absolute;
+  right: 3.5%;
+  bottom: 21%;
+  width: clamp(3.8rem, 7vw, 7.5rem);
+  height: 1px;
+  background: rgb(217 168 95 / 0.7);
+  transform: rotate(-28deg);
+  transform-origin: right center;
+}
+
+.hero-paper-mark::after {
+  position: absolute;
+  right: 12%;
+  top: -0.28rem;
+  width: 0.56rem;
+  height: 0.56rem;
+  border: 1px solid rgb(217 168 95 / 0.72);
+  border-radius: 999px;
+  content: '';
 }
 
 .case-study-hero {
@@ -236,22 +385,22 @@ button {
 
 .dark .case-study-hero-mask {
   background:
-    linear-gradient(135deg, rgb(7 8 14 / 0.12), rgb(7 8 14 / 0.56) 56%, rgb(7 8 14 / 0.72)),
-    linear-gradient(180deg, rgb(7 8 14 / 0.02), rgb(7 8 14 / 0.14));
+    linear-gradient(135deg, rgb(13 13 11 / 0.12), rgb(13 13 11 / 0.56) 56%, rgb(13 13 11 / 0.72)),
+    linear-gradient(180deg, rgb(13 13 11 / 0.02), rgb(13 13 11 / 0.14));
   box-shadow:
     inset 0 0 0 1px rgb(255 255 255 / 0.04),
-    inset 0 0 0 999px rgb(7 8 14 / 0.01);
+    inset 0 0 0 999px rgb(13 13 11 / 0.01);
 }
 
 .dark .case-study-hero-ambient {
   background:
     radial-gradient(circle at 18% 16%, rgb(255 255 255 / 0.08), transparent 24%),
-    radial-gradient(circle at 78% 18%, rgb(45 212 191 / 0.08), transparent 20%);
+    radial-gradient(circle at 78% 18%, rgb(132 144 120 / 0.08), transparent 20%);
 }
 
 .light .case-study-hero {
   background-color: rgb(255 255 255 / 0.12);
-  box-shadow: inset 0 0 0 1px rgb(15 23 42 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(28 26 22 / 0.05);
 }
 
 .light .case-study-hero-mask,
@@ -262,7 +411,7 @@ button {
 .light .case-study-hero-mask {
   opacity: 1;
   background:
-    linear-gradient(135deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.34) 54%, rgb(248 250 252 / 0.46)),
+    linear-gradient(135deg, rgb(255 252 246 / 0.18), rgb(255 252 246 / 0.34) 54%, rgb(244 240 231 / 0.46)),
     linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.18));
   backdrop-filter: blur(0.75px) saturate(1.005);
 }
@@ -271,7 +420,7 @@ button {
   opacity: 1;
   background:
     radial-gradient(circle at 20% 18%, rgb(255 255 255 / 0.16), transparent 24%),
-    radial-gradient(circle at 78% 18%, rgb(13 148 136 / 0.05), transparent 20%);
+    radial-gradient(circle at 78% 18%, rgb(103 117 95 / 0.06), transparent 20%);
 }
 
 .case-study-hero-context {
@@ -285,21 +434,21 @@ button {
 
 .case-study-hero-chip {
   border: 1px solid rgb(255 255 255 / 0.18);
-  background: rgb(7 8 14 / 0.2);
+  background: rgb(13 13 11 / 0.2);
   color: rgb(var(--foreground) / 0.92);
   backdrop-filter: blur(12px);
 }
 
 .case-study-hero-stat {
   border: 1px solid rgb(255 255 255 / 0.12);
-  background: rgb(7 8 14 / 0.24);
+  background: rgb(13 13 11 / 0.24);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
   backdrop-filter: blur(18px);
 }
 
 .case-study-hero-panel {
   border-color: rgb(255 255 255 / 0.12) !important;
-  background: linear-gradient(180deg, rgb(35 39 50 / 0.72), rgb(23 26 35 / 0.82)) !important;
+  background: linear-gradient(180deg, rgb(39 36 30 / 0.72), rgb(25 24 20 / 0.82)) !important;
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.05),
     0 22px 70px rgb(0 0 0 / 0.16);
@@ -317,7 +466,7 @@ button {
 
 .case-study-hero-delivery {
   border: 1px dashed rgb(255 255 255 / 0.16);
-  background: linear-gradient(135deg, rgb(45 212 191 / 0.09), rgb(255 255 255 / 0.04), rgb(245 158 11 / 0.08));
+  background: linear-gradient(135deg, rgb(132 144 120 / 0.09), rgb(238 233 223 / 0.04), rgb(210 106 69 / 0.08));
 }
 
 .case-study-hero-label {
@@ -338,39 +487,39 @@ button {
 }
 
 .light .case-study-hero-chip {
-  border-color: rgb(15 23 42 / 0.12);
-  background: rgb(255 255 255 / 0.82);
+  border-color: rgb(28 26 22 / 0.12);
+  background: rgb(255 252 246 / 0.82);
   color: rgb(var(--foreground) / 0.9);
 }
 
 .light .case-study-hero-stat {
-  border-color: rgb(15 23 42 / 0.08);
-  background: rgb(255 255 255 / 0.78);
+  border-color: rgb(28 26 22 / 0.08);
+  background: rgb(255 252 246 / 0.78);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.4),
-    0 12px 32px rgb(15 23 42 / 0.06);
+    0 12px 32px rgb(28 26 22 / 0.06);
 }
 
 .light .case-study-hero-panel {
-  border-color: rgb(15 23 42 / 0.09) !important;
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.78), rgb(247 250 252 / 0.9)) !important;
+  border-color: rgb(28 26 22 / 0.09) !important;
+  background: linear-gradient(180deg, rgb(255 252 246 / 0.78), rgb(240 234 224 / 0.9)) !important;
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.7),
-    0 18px 42px rgb(15 23 42 / 0.07);
+    0 18px 42px rgb(28 26 22 / 0.07);
 }
 
 .light .case-study-hero-panel-divider {
-  border-color: rgb(15 23 42 / 0.08);
+  border-color: rgb(28 26 22 / 0.08);
 }
 
 .light .case-study-hero-metric-card {
-  border-color: rgb(15 23 42 / 0.08);
-  background: rgb(255 255 255 / 0.58);
+  border-color: rgb(28 26 22 / 0.08);
+  background: rgb(255 252 246 / 0.58);
 }
 
 .light .case-study-hero-delivery {
-  border-color: rgb(15 23 42 / 0.12);
-  background: linear-gradient(135deg, rgb(13 148 136 / 0.08), rgb(255 255 255 / 0.5), rgb(217 119 6 / 0.06));
+  border-color: rgb(28 26 22 / 0.12);
+  background: linear-gradient(135deg, rgb(103 117 95 / 0.08), rgb(255 252 246 / 0.5), rgb(184 82 51 / 0.06));
 }
 
 .light .case-study-hero-label {
@@ -396,9 +545,9 @@ button {
 
 .hero-cinematic-bloom {
   background:
-    radial-gradient(circle at 78% 42%, rgb(var(--accent) / 0.2), transparent 20%),
-    radial-gradient(circle at 62% 18%, rgb(var(--teal) / 0.11), transparent 24%),
-    linear-gradient(115deg, transparent 48%, rgb(var(--accent) / 0.045) 49%, transparent 50%);
+    radial-gradient(circle at 78% 42%, rgb(var(--accent) / 0.12), transparent 22%),
+    radial-gradient(circle at 62% 18%, rgb(var(--teal) / 0.08), transparent 26%),
+    linear-gradient(115deg, transparent 48%, rgb(var(--accent-soft) / 0.035) 49%, transparent 50%);
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -412,13 +561,90 @@ button {
 
 .light .cinematic-grid {
   background-image:
-    linear-gradient(rgb(15 23 42 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(15 23 42 / 0.05) 1px, transparent 1px);
+    linear-gradient(rgb(28 26 22 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(28 26 22 / 0.05) 1px, transparent 1px);
 }
 
 .light .hero-cinematic-bloom {
   mix-blend-mode: multiply;
   opacity: 0.62;
+}
+
+.light .hero-editorial-stage .cinematic-grid {
+  background-image:
+    linear-gradient(rgb(28 26 22 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(28 26 22 / 0.045) 1px, transparent 1px);
+}
+
+.light .hero-editorial-stage .hero-cinematic-bloom {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.light .hero-editorial-stage .hero-overlay {
+  background:
+    linear-gradient(90deg, rgb(244 240 231 / 0.97) 0%, rgb(244 240 231 / 0.7) 42%, transparent 73%),
+    linear-gradient(180deg, rgb(244 240 231 / 0.18), transparent 24%, transparent 72%, rgb(244 240 231 / 0.52));
+}
+
+.light .hero-editorial-stage .hero-paper-orbit {
+  border-color: rgb(28 26 22 / 0.16);
+  box-shadow: inset 0 0 0 1px rgb(184 82 51 / 0.04);
+}
+
+.light .hero-editorial-stage .hero-paper-chip {
+  box-shadow: 0 18px 42px rgb(28 26 22 / 0.12);
+}
+
+.light .hero-editorial-stage .hero-paper-chip--ivory {
+  background: #d9a85f;
+  opacity: 0.46;
+}
+
+.light .hero-editorial-stage .hero-paper-mark {
+  background: rgb(184 82 51 / 0.62);
+}
+
+.light .hero-editorial-stage .hero-paper-mark::after {
+  border-color: rgb(184 82 51 / 0.64);
+}
+
+.rail-project-card {
+  box-shadow: 0 40px 120px rgb(0 0 0 / 0.28);
+}
+
+.light .rail-project-card {
+  box-shadow:
+    0 0 0 1px rgb(28 26 22 / 0.04),
+    0 30px 90px rgb(28 26 22 / 0.12);
+}
+
+.rail-project-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 24%,
+      rgb(var(--background) / 0.18) 43%,
+      rgb(var(--background) / 0.84) 70%,
+      rgb(var(--background) / 0.98) 100%
+    ),
+    linear-gradient(90deg, rgb(var(--background) / 0.34) 0%, transparent 66%);
+}
+
+.rail-project-highlight {
+  background: radial-gradient(circle at 78% 22%, rgb(var(--foreground) / 0.1), transparent 28%);
+  opacity: 0.58;
+}
+
+.rail-edge-fade {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--background) / 0.84),
+    transparent 20%,
+    transparent 80%,
+    rgb(var(--background) / 0.84)
+  );
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -433,5 +659,32 @@ button {
   .cinematic-grid,
   .hero-cinematic-bloom {
     transform: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-editorial-image {
+    background-position: 64% center;
+    opacity: 0.72;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(90deg, rgb(13 13 11 / 0.96) 0%, rgb(13 13 11 / 0.74) 74%, rgb(13 13 11 / 0.5)),
+      linear-gradient(180deg, rgb(13 13 11 / 0.26), transparent 22%, rgb(13 13 11 / 0.72));
+  }
+
+  .hero-paper-details {
+    opacity: 0.5;
+  }
+
+  .light .hero-editorial-stage .hero-editorial-image {
+    opacity: 0.9;
+  }
+
+  .light .hero-editorial-stage .hero-overlay {
+    background:
+      linear-gradient(90deg, rgb(244 240 231 / 0.97) 0%, rgb(244 240 231 / 0.76) 74%, rgb(244 240 231 / 0.52)),
+      linear-gradient(180deg, rgb(244 240 231 / 0.22), transparent 22%, rgb(244 240 231 / 0.74));
   }
 }

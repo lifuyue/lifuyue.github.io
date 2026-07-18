@@ -98,17 +98,17 @@ function GalleryCard({ item, index }: { item: ProjectCaseStudyGalleryItem; index
 
   const frameClassName =
     item.theme === 'teal'
-      ? 'from-teal-300/24 via-teal-300/8 to-background'
+      ? 'from-teal/25 via-teal/10 to-background'
       : item.theme === 'amber'
-        ? 'from-amber-300/24 via-amber-200/8 to-background'
-        : 'from-slate-200/18 via-white/8 to-background';
+        ? 'from-accent/25 via-accentSoft/10 to-background'
+        : 'from-foreground/15 via-foreground/5 to-background';
 
   const chromeClassName =
     item.theme === 'teal'
-      ? 'border-teal-300/30 bg-teal-300/10 text-teal-100'
+      ? 'border-teal/30 bg-teal/10 text-foreground/90'
       : item.theme === 'amber'
-        ? 'border-amber-300/30 bg-amber-300/10 text-amber-100'
-        : 'border-white/15 bg-white/10 text-white/80';
+        ? 'border-accent/30 bg-accent/10 text-foreground/90'
+        : 'border-line/15 bg-line/10 text-foreground/80';
 
   return (
     <motion.article
@@ -162,7 +162,7 @@ function GalleryCard({ item, index }: { item: ProjectCaseStudyGalleryItem; index
                   <div className="mt-4 space-y-2">
                     <div className="h-12 rounded-[0.85rem] bg-white/8" />
                     <div className="h-12 rounded-[0.85rem] bg-white/8" />
-                    <div className="h-24 rounded-[1rem] bg-[linear-gradient(135deg,rgba(45,212,191,0.16),rgba(245,158,11,0.1))]" />
+                    <div className="h-24 rounded-[1rem] bg-[linear-gradient(135deg,rgba(132,144,120,0.16),rgba(210,106,69,0.1))]" />
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -339,7 +339,7 @@ function CaseStudyWorkDetail({
             >
               <GlassCard className="overflow-hidden p-0">
                 <div className="grid gap-6 border-b border-line/10 px-6 py-6 sm:px-8 sm:py-7 lg:grid-cols-[0.75fr,1.25fr]">
-                  <div className="rounded-[1.15rem] border border-line/10 bg-[linear-gradient(160deg,rgba(45,212,191,0.08),rgba(255,255,255,0.03),rgba(245,158,11,0.08))] p-5">
+                  <div className="rounded-[1.15rem] border border-line/10 bg-[linear-gradient(160deg,rgba(132,144,120,0.08),rgba(238,233,223,0.03),rgba(210,106,69,0.08))] p-5">
                     <p className="text-xs uppercase tracking-[0.28em] text-foreground/48">{chapter.eyebrow}</p>
                     <h3 className="mt-4 font-display text-3xl leading-tight text-foreground">
                       {chapter.title}

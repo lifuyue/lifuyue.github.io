@@ -314,12 +314,12 @@ export function AITools() {
             offset={{ x: 4, y: 2 }}
             initialVelocity={{ x: 34, y: 10 }}
           >
-            <div className="rounded-[2rem] border border-amber-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(245,158,11,0.55)] sm:px-5 sm:py-5">
+            <div className="rounded-[2rem] border border-accent/20 bg-accent/[0.025] px-4 py-4 shadow-[0_20px_55px_-42px_rgba(210,106,69,0.45)] sm:px-5 sm:py-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <InlineSvg
                     svg={claudecodeColorSvg}
-                    className="h-11 w-11 drop-shadow-[0_18px_36px_rgba(245,158,11,0.22)] sm:h-12 sm:w-12 lg:h-14 lg:w-14"
+                    className="h-11 w-11 drop-shadow-[0_18px_36px_rgba(210,106,69,0.22)] sm:h-12 sm:w-12 lg:h-14 lg:w-14"
                   />
                   <InlineSvg
                     svg={claudecodeTextSvg}
@@ -330,7 +330,7 @@ export function AITools() {
                 <ToolChipRow
                   items={claudecodeChips}
                   className="max-w-[10rem] sm:max-w-[9.5rem] sm:justify-end"
-                  chipClassName="border-amber-300/15 bg-amber-300/8 text-foreground/88 shadow-[0_10px_30px_rgba(245,158,11,0.12)]"
+                  chipClassName="border-accent/15 bg-accent/[0.06] text-foreground/88 shadow-[0_10px_30px_rgba(210,106,69,0.1)]"
                 />
               </div>
             </div>
@@ -345,12 +345,12 @@ export function AITools() {
             offset={{ x: 0, y: 0 }}
             initialVelocity={{ x: -42, y: 12 }}
           >
-            <div className="rounded-[2rem] border border-teal-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(45,212,191,0.55)] sm:px-5 sm:py-5">
+            <div className="rounded-[2rem] border border-teal/20 bg-teal/[0.025] px-4 py-4 shadow-[0_20px_55px_-42px_rgba(132,144,120,0.45)] sm:px-5 sm:py-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <InlineSvg
                     svg={codexColorSvg}
-                    className="h-12 w-12 drop-shadow-[0_18px_40px_rgba(45,212,191,0.3)] sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                    className="h-12 w-12 drop-shadow-[0_18px_40px_rgba(132,144,120,0.26)] sm:h-14 sm:w-14 lg:h-16 lg:w-16"
                   />
                   <InlineSvg
                     svg={codexTextSvg}
@@ -361,7 +361,7 @@ export function AITools() {
                 <ToolChipRow
                   items={codexChips}
                   className="max-w-[11rem] sm:max-w-[10.5rem] sm:justify-end"
-                  chipClassName="border-teal-300/15 bg-teal-300/8 text-foreground/88 shadow-[0_10px_30px_rgba(45,212,191,0.12)]"
+                  chipClassName="border-teal/15 bg-teal/[0.06] text-foreground/88 shadow-[0_10px_30px_rgba(132,144,120,0.1)]"
                 />
               </div>
             </div>
@@ -376,12 +376,12 @@ export function AITools() {
             offset={{ x: -8, y: 4 }}
             initialVelocity={{ x: -28, y: 14 }}
           >
-            <div className="rounded-[2rem] border border-sky-300/12 bg-transparent px-4 py-4 shadow-[0_20px_55px_-42px_rgba(96,165,250,0.55)] sm:px-5 sm:py-5">
+            <div className="rounded-[2rem] border border-accentSoft/20 bg-accentSoft/[0.025] px-4 py-4 shadow-[0_20px_55px_-42px_rgba(217,168,95,0.42)] sm:px-5 sm:py-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-3">
                   <InlineSvg
                     svg={geminiColorSvg}
-                    className="h-11 w-11 drop-shadow-[0_18px_42px_rgba(96,165,250,0.28)] sm:h-12 sm:w-12 lg:h-14 lg:w-14"
+                    className="h-11 w-11 drop-shadow-[0_18px_42px_rgba(217,168,95,0.24)] sm:h-12 sm:w-12 lg:h-14 lg:w-14"
                   />
                   <InlineSvg
                     svg={geminiTextSvg}
@@ -392,7 +392,7 @@ export function AITools() {
                 <ToolChipRow
                   items={geminiChips}
                   className="max-w-[10rem] sm:max-w-[9.5rem] sm:justify-end"
-                  chipClassName="border-sky-300/15 bg-sky-300/8 text-foreground/88 shadow-[0_10px_30px_rgba(96,165,250,0.12)]"
+                  chipClassName="border-accentSoft/15 bg-accentSoft/[0.06] text-foreground/88 shadow-[0_10px_30px_rgba(217,168,95,0.1)]"
                 />
               </div>
             </div>

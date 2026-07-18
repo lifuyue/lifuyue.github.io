@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
@@ -14,9 +14,37 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const [isOverEditorialHero, setIsOverEditorialHero] = useState(pathname === '/');
+
+  useEffect(() => {
+    const syncNavSurface = () => {
+      if (pathname !== '/') {
+        setIsOverEditorialHero(false);
+        return;
+      }
+
+      const heroStage = document.querySelector<HTMLElement>('.hero-editorial-stage');
+      const rect = heroStage?.getBoundingClientRect();
+      setIsOverEditorialHero(Boolean(rect && rect.top <= 88 && rect.bottom > 88));
+    };
+
+    syncNavSurface();
+    window.addEventListener('scroll', syncNavSurface, { passive: true });
+    window.addEventListener('resize', syncNavSurface);
+
+    return () => {
+      window.removeEventListener('scroll', syncNavSurface);
+      window.removeEventListener('resize', syncNavSurface);
+    };
+  }, [pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6',
+        isOverEditorialHero && 'nav-on-editorial-hero',
+      )}
+    >
       <div className="section-shell">
         <div className="glass-panel flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
           <Link to="/" className="font-display text-xl text-foreground">

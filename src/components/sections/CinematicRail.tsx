@@ -17,40 +17,40 @@ function RailProjectCard({ project, compact = false }: { project: Project; compa
       to={`/works/${project.slug}`}
       className={
         compact
-          ? 'group relative block h-[32rem] min-w-[82vw] snap-center overflow-hidden rounded-[1.75rem] border border-line/10 bg-surface/[0.35] sm:min-w-[70vw]'
-          : 'group relative block h-[68vh] w-[74vw] shrink-0 overflow-hidden rounded-[2.4rem] border border-line/10 bg-surface/[0.35] shadow-[0_40px_120px_rgba(0,0,0,0.34)]'
+          ? 'rail-project-card group relative block h-[32rem] min-w-[82vw] snap-center overflow-hidden rounded-[1.75rem] border border-line/10 bg-surface/[0.35] sm:min-w-[70vw]'
+          : 'rail-project-card group relative block h-[68vh] w-[74vw] shrink-0 overflow-hidden rounded-[2.4rem] border border-line/10 bg-surface/[0.35]'
       }
     >
       <div
         className="absolute inset-0 scale-[1.04] transition-transform duration-700 ease-out group-hover:scale-[1.08]"
         style={{ background: project.cover }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,14,0.92)_0%,rgba(7,8,14,0.62)_44%,rgba(7,8,14,0.12)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_22%,rgba(255,255,255,0.12),transparent_28%)] opacity-70" />
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b border-white/10 px-6 py-5 text-[10px] uppercase tracking-[0.34em] text-white/[0.55] sm:px-8">
+      <div className="rail-project-scrim absolute inset-0" />
+      <div className="rail-project-highlight absolute inset-0" />
+      <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b border-line/10 bg-background/10 px-6 py-5 text-[10px] uppercase tracking-[0.34em] text-foreground/[0.55] backdrop-blur-[2px] sm:px-8">
         <span>{project.category}</span>
         <span>{project.year}</span>
       </div>
       <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
-        <p className="text-xs uppercase tracking-[0.4em] text-amber-200/70">Selected Work</p>
-        <h3 className="mt-4 font-display text-5xl leading-none text-white sm:text-6xl lg:text-8xl">
+        <p className="text-xs uppercase tracking-[0.4em] text-accentSoft/70">Selected Work</p>
+        <h3 className="mt-4 font-display text-5xl leading-none text-foreground sm:text-6xl lg:text-8xl">
           {project.title}
         </h3>
-        <p className="mt-5 max-w-xl text-sm leading-7 text-white/[0.68] sm:text-base">
+        <p className="mt-5 max-w-xl text-sm leading-7 text-foreground/[0.68] sm:text-base">
           {project.description}
         </p>
         <div className="mt-7 flex flex-wrap gap-2">
           {project.tags.slice(0, compact ? 3 : 5).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/[0.14] bg-black/[0.15] px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-white/75 backdrop-blur-md"
+              className="rounded-full border border-line/[0.14] bg-background/[0.16] px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-foreground/75 backdrop-blur-md"
             >
               {tag}
             </span>
           ))}
         </div>
       </div>
-      <div className="absolute bottom-8 right-8 hidden h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-black/[0.15] text-xl text-white backdrop-blur-md transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110 sm:flex">
+      <div className="absolute bottom-8 right-8 hidden h-14 w-14 items-center justify-center rounded-full border border-line/20 bg-background/[0.16] text-xl text-foreground backdrop-blur-md transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-110 sm:flex">
         ↗
       </div>
     </Link>
@@ -127,10 +127,10 @@ function DesktopCinematicRail() {
           <motion.div
             aria-hidden="true"
             style={{ x: ambientX }}
-            className="absolute inset-y-0 left-0 w-[140%] bg-[radial-gradient(circle_at_38%_45%,rgba(245,158,11,0.13),transparent_24%),radial-gradient(circle_at_76%_35%,rgba(45,212,191,0.1),transparent_22%)]"
+            className="absolute inset-y-0 left-0 w-[140%] bg-[radial-gradient(circle_at_38%_45%,rgba(210,106,69,0.12),transparent_24%),radial-gradient(circle_at_76%_35%,rgba(132,144,120,0.1),transparent_22%)]"
           />
           <div aria-hidden="true" className="cinematic-grid absolute inset-0 opacity-45" />
-          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,14,0.8),transparent_20%,transparent_80%,rgba(7,8,14,0.8))]" />
+          <div aria-hidden="true" className="rail-edge-fade absolute inset-0" />
 
           <div className="absolute inset-x-8 top-24 z-20 flex items-center justify-between text-[10px] uppercase tracking-[0.42em] text-foreground/40 lg:inset-x-12">
             <span>02 / Spatial Index</span>
