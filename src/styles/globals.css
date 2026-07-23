@@ -25,6 +25,11 @@
     radial-gradient(circle at 20% 30%, rgb(132 144 120 / 0.28), transparent 40%),
     radial-gradient(circle at 80% 70%, rgb(210 106 69 / 0.14), transparent 35%),
     linear-gradient(160deg, #1b1d17, #151912 55%, #11110e);
+  --man-month-cover-background:
+    radial-gradient(circle at 78% 18%, rgb(217 168 95 / 0.22), transparent 24%),
+    radial-gradient(circle at 22% 82%, rgb(132 144 120 / 0.14), transparent 29%),
+    linear-gradient(118deg, transparent 0 48%, rgb(238 233 223 / 0.045) 48.15% 48.42%, transparent 48.6%),
+    linear-gradient(148deg, #21170f 0%, #13120f 48%, #0d0d0b 100%);
   --about-image-gradient:
     radial-gradient(circle at 30% 20%, rgb(210 106 69 / 0.34), transparent 30%),
     radial-gradient(circle at 78% 72%, rgb(132 144 120 / 0.18), transparent 34%),
@@ -56,6 +61,11 @@
     radial-gradient(circle at 20% 30%, rgb(132 144 120 / 0.14), transparent 40%),
     radial-gradient(circle at 80% 70%, rgb(210 106 69 / 0.08), transparent 35%),
     linear-gradient(160deg, #f0f0e8, #e9ede2 55%, #dfe5d8);
+  --man-month-cover-background:
+    radial-gradient(circle at 78% 18%, rgb(181 130 61 / 0.2), transparent 25%),
+    radial-gradient(circle at 22% 82%, rgb(103 117 95 / 0.12), transparent 30%),
+    linear-gradient(118deg, transparent 0 48%, rgb(28 26 22 / 0.045) 48.15% 48.42%, transparent 48.6%),
+    linear-gradient(148deg, #f1e4d4 0%, #eee7dc 48%, #e5ded2 100%);
   --about-image-gradient:
     radial-gradient(circle at 30% 20%, rgb(184 82 51 / 0.16), transparent 32%),
     radial-gradient(circle at 78% 72%, rgb(103 117 95 / 0.11), transparent 36%),
@@ -145,6 +155,11 @@ html.theme-transition .hero-editorial-stage,
 html.theme-transition .hero-editorial-image,
 html.theme-transition .hero-overlay,
 html.theme-transition .rail-project-scrim,
+html.theme-transition .journal-feature-card,
+html.theme-transition .journal-feature-cover,
+html.theme-transition .longform-hero,
+html.theme-transition .longform-hero-field,
+html.theme-transition .longform-end-panel,
 html.theme-transition .rail-edge-fade,
 html.theme-transition .case-study-hero,
 html.theme-transition .case-study-hero-mask,
@@ -158,7 +173,9 @@ html.theme-transition .about-image-gradient,
 html.theme-transition [style*='--tmo-cover-background'],
 html.theme-transition [style*='var(--tmo-cover-background)'],
 html.theme-transition [style*='--suanxian-cover-background'],
-html.theme-transition [style*='var(--suanxian-cover-background)'] {
+html.theme-transition [style*='var(--suanxian-cover-background)'],
+html.theme-transition [style*='--man-month-cover-background'],
+html.theme-transition [style*='var(--man-month-cover-background)'] {
   transition-property: background, background-color, background-image, box-shadow, color, opacity;
   transition-duration: 160ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -169,6 +186,11 @@ html.theme-transition .hero-editorial-stage,
 html.theme-transition .hero-editorial-image,
 html.theme-transition .hero-overlay,
 html.theme-transition .rail-project-scrim,
+html.theme-transition .journal-feature-card,
+html.theme-transition .journal-feature-cover,
+html.theme-transition .longform-hero,
+html.theme-transition .longform-hero-field,
+html.theme-transition .longform-end-panel,
 html.theme-transition .rail-edge-fade,
 html.theme-transition .case-study-hero,
 html.theme-transition .case-study-hero-mask,
@@ -647,6 +669,300 @@ button {
   );
 }
 
+.journal-feature-card {
+  background: rgb(var(--surface) / 0.72);
+  box-shadow:
+    inset 0 1px 0 rgb(var(--foreground) / 0.04),
+    0 34px 110px rgb(0 0 0 / 0.2);
+}
+
+.light .journal-feature-card {
+  background: rgb(var(--surface) / 0.54);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    0 28px 80px rgb(28 26 22 / 0.1);
+}
+
+.journal-feature-cover {
+  background-color: rgb(var(--surface));
+}
+
+.journal-feature-grid {
+  background-image:
+    linear-gradient(rgb(var(--foreground) / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--foreground) / 0.055) 1px, transparent 1px);
+  background-position: center;
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, transparent 4%, black 30%, black 96%);
+}
+
+.rail-series-card .rail-project-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--background) / 0.08) 0%,
+      transparent 28%,
+      rgb(var(--background) / 0.25) 46%,
+      rgb(var(--background) / 0.88) 74%,
+      rgb(var(--background) / 0.98) 100%
+    ),
+    linear-gradient(90deg, rgb(var(--background) / 0.4) 0%, transparent 72%);
+}
+
+.rail-series-ghost {
+  position: absolute;
+  right: -0.04em;
+  top: 0.05em;
+  color: rgb(var(--foreground) / 0.055);
+  font-family: 'Fraunces', serif;
+  font-size: clamp(12rem, 26vw, 28rem);
+  font-weight: 300;
+  letter-spacing: -0.1em;
+  line-height: 0.78;
+}
+
+.rail-series-orbit {
+  position: absolute;
+  right: 9%;
+  top: 16%;
+  width: clamp(9rem, 20vw, 20rem);
+  aspect-ratio: 1.25;
+  border: 1px solid rgb(var(--accent-soft) / 0.24);
+  border-radius: 50%;
+  transform: rotate(-13deg);
+}
+
+.longform-article {
+  background:
+    radial-gradient(circle at 50% 22%, rgb(var(--accent) / 0.045), transparent 24%),
+    rgb(var(--background));
+}
+
+.longform-hero {
+  background: rgb(var(--background));
+  isolation: isolate;
+}
+
+.longform-hero-field {
+  background-image:
+    linear-gradient(180deg, rgb(var(--background) / 0.04), rgb(var(--background) / 0.52)),
+    var(--man-month-cover-background);
+  background-position: center;
+  background-size: cover;
+}
+
+.longform-hero-field::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(var(--background) / 0.08), transparent 22%, rgb(var(--background) / 0.65)),
+    radial-gradient(ellipse at center, transparent 30%, rgb(var(--background) / 0.3) 100%);
+  content: '';
+}
+
+.longform-hero-folio {
+  position: absolute;
+  right: -0.04em;
+  top: 0.15em;
+  z-index: 1;
+  color: rgb(var(--foreground) / 0.035);
+  font-family: 'Fraunces', serif;
+  font-size: clamp(16rem, 39vw, 42rem);
+  font-weight: 300;
+  letter-spacing: -0.12em;
+  line-height: 0.72;
+  user-select: none;
+}
+
+.longform-hero-orbit {
+  position: absolute;
+  right: 8%;
+  top: 17%;
+  z-index: 1;
+  width: clamp(14rem, 29vw, 34rem);
+  aspect-ratio: 1.28;
+  border: 1px solid rgb(var(--accent-soft) / 0.2);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(var(--foreground) / 0.015);
+  transform: rotate(-13deg);
+}
+
+.longform-hero-rule {
+  position: absolute;
+  right: 4%;
+  top: 59%;
+  z-index: 1;
+  width: clamp(7rem, 18vw, 17rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(var(--accent-soft) / 0.68));
+  transform: rotate(-28deg);
+  transform-origin: right center;
+}
+
+.longform-reading-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 46rem);
+  justify-content: center;
+}
+
+.longform-chapter-index {
+  max-height: calc(100vh - 10rem);
+  overflow-y: auto;
+  padding-right: 0.75rem;
+  scrollbar-color: rgb(var(--foreground) / 0.12) transparent;
+  scrollbar-width: thin;
+}
+
+.longform-prose {
+  color: rgb(var(--foreground) / 0.78);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 2.05;
+  text-wrap: pretty;
+}
+
+.longform-prose > p {
+  margin-bottom: 1.65em;
+  margin-top: 1.65em;
+}
+
+.longform-prose > p:first-of-type {
+  color: rgb(var(--foreground) / 0.9);
+  font-size: 1.08em;
+}
+
+.longform-prose > p:first-of-type::first-letter {
+  float: left;
+  margin: 0.09em 0.16em 0 0;
+  color: rgb(var(--accent));
+  font-family: 'Fraunces', serif;
+  font-size: 4.8em;
+  font-weight: 400;
+  line-height: 0.76;
+}
+
+.longform-prose h2 {
+  position: relative;
+  margin-bottom: 0.8em;
+  margin-top: clamp(5.5rem, 12vw, 9rem);
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--line) / 0.11);
+  font-size: clamp(2.35rem, 5vw, 4.35rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.longform-prose h2::after {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 4.5rem;
+  height: 1px;
+  background: rgb(var(--accent) / 0.8);
+  content: '';
+}
+
+.longform-prose h3 {
+  margin-bottom: 0.8em;
+  margin-top: 3.5em;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.longform-prose strong {
+  color: rgb(var(--foreground));
+  font-weight: 700;
+}
+
+.longform-prose a {
+  border-bottom: 1px solid rgb(var(--accent) / 0.45);
+  color: rgb(var(--accent));
+  text-decoration: none;
+}
+
+.longform-prose a:hover {
+  border-color: rgb(var(--accent));
+  color: rgb(var(--foreground));
+}
+
+.longform-prose ul,
+.longform-prose ol {
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  padding: 1.4rem 1.5rem 1.4rem 2.9rem;
+  border: 1px solid rgb(var(--line) / 0.09);
+  border-radius: 1.25rem;
+  background: rgb(var(--line) / 0.025);
+}
+
+.longform-prose li {
+  margin-bottom: 0.7rem;
+  margin-top: 0.7rem;
+  padding-left: 0.45rem;
+}
+
+.longform-prose li::marker {
+  color: rgb(var(--accent) / 0.72);
+}
+
+.longform-prose blockquote {
+  position: relative;
+  margin-bottom: clamp(3.5rem, 8vw, 6rem);
+  margin-top: clamp(3.5rem, 8vw, 6rem);
+  padding: 0.35rem 0 0.35rem clamp(1.5rem, 4vw, 2.75rem);
+  border-left: 1px solid rgb(var(--accent) / 0.72);
+  color: rgb(var(--foreground) / 0.92);
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, 3.6vw, 2.7rem);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.42;
+}
+
+.longform-prose blockquote::before {
+  position: absolute;
+  left: 0.5rem;
+  top: -0.75em;
+  color: rgb(var(--accent-soft) / 0.15);
+  content: '“';
+  font-family: 'Fraunces', serif;
+  font-size: 5em;
+  line-height: 1;
+}
+
+.longform-prose blockquote p {
+  margin: 0;
+}
+
+.longform-prose hr {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+}
+
+.longform-prose figure {
+  margin-bottom: clamp(3.5rem, 8vw, 6rem);
+  margin-top: clamp(3.5rem, 8vw, 6rem);
+}
+
+.longform-prose figcaption {
+  color: rgb(var(--foreground) / 0.45);
+}
+
+.longform-end-panel {
+  background:
+    radial-gradient(circle at 82% 18%, rgb(var(--accent-soft) / 0.11), transparent 28%),
+    linear-gradient(135deg, rgb(var(--line) / 0.045), rgb(var(--line) / 0.015));
+}
+
+.light .longform-hero-field::after {
+  background:
+    linear-gradient(180deg, rgb(var(--background) / 0.02), transparent 24%, rgb(var(--background) / 0.5)),
+    radial-gradient(ellipse at center, transparent 34%, rgb(var(--background) / 0.2) 100%);
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -657,8 +973,30 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .cinematic-grid,
-  .hero-cinematic-bloom {
+  .hero-cinematic-bloom,
+  .journal-feature-cover {
     transform: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .longform-prose blockquote {
+    margin-left: -3rem;
+    width: calc(100% + 6rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .longform-reading-shell {
+    grid-template-columns: minmax(0, 46rem) 7rem;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .longform-reading-shell {
+    grid-template-columns: 14rem minmax(0, 46rem) 7rem;
+    gap: 3.5rem;
   }
 }
 
@@ -686,5 +1024,9 @@ button {
     background:
       linear-gradient(90deg, rgb(244 240 231 / 0.97) 0%, rgb(244 240 231 / 0.76) 74%, rgb(244 240 231 / 0.52)),
       linear-gradient(180deg, rgb(244 240 231 / 0.22), transparent 22%, rgb(244 240 231 / 0.74));
+  }
+
+  .rail-series-ghost {
+    font-size: clamp(10rem, 38vw, 17rem);
   }
 }

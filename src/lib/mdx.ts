@@ -1,15 +1,9 @@
 import type { ComponentType } from 'react';
-import type { BlogPostEntry } from '@/types/blog';
+import type { BlogFrontmatter, BlogPostEntry } from '@/types/blog';
 
 type MdxModule = {
   default: ComponentType;
-  frontmatter: {
-    title: string;
-    date: string;
-    description: string;
-    tags: string[];
-    coverImage: string;
-  };
+  frontmatter: BlogFrontmatter;
 };
 
 const modules = import.meta.glob('../../content/blog/*.mdx', {
@@ -39,4 +33,9 @@ export function getAllPosts() {
 
 export function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
+}
+
+export function getFeaturedSeriesPost() {
+  return posts.find((post) => post.kind === 'series' && post.featured)
+    ?? posts.find((post) => post.kind === 'series');
 }

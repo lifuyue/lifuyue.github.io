@@ -9,17 +9,22 @@ import {
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
+import { getFeaturedSeriesPost } from '@/lib/mdx';
+import { formatDate } from '@/lib/utils';
+import type { BlogPostEntry } from '@/types/blog';
 import type { Project } from '@/types/project';
+
+function railCardClass(compact: boolean) {
+  return compact
+    ? 'rail-project-card group relative block h-[32rem] min-w-[82vw] snap-center overflow-hidden rounded-[1.75rem] border border-line/10 bg-surface/[0.35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 sm:min-w-[70vw]'
+    : 'rail-project-card group relative block h-[68vh] w-[74vw] shrink-0 overflow-hidden rounded-[2.4rem] border border-line/10 bg-surface/[0.35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70';
+}
 
 function RailProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
   return (
     <Link
       to={`/works/${project.slug}`}
-      className={
-        compact
-          ? 'rail-project-card group relative block h-[32rem] min-w-[82vw] snap-center overflow-hidden rounded-[1.75rem] border border-line/10 bg-surface/[0.35] sm:min-w-[70vw]'
-          : 'rail-project-card group relative block h-[68vh] w-[74vw] shrink-0 overflow-hidden rounded-[2.4rem] border border-line/10 bg-surface/[0.35]'
-      }
+      className={railCardClass(compact)}
     >
       <div
         className="absolute inset-0 scale-[1.04] transition-transform duration-700 ease-out group-hover:scale-[1.08]"
@@ -57,14 +62,101 @@ function RailProjectCard({ project, compact = false }: { project: Project; compa
   );
 }
 
+function RailSeriesCard({ post, compact = false }: { post: BlogPostEntry; compact?: boolean }) {
+  return (
+    <Link
+      to={`/blog/${post.slug}`}
+      className={`${railCardClass(compact)} rail-series-card`}
+      aria-label={`阅读主线文章：${post.title}`}
+    >
+      <div
+        className="absolute inset-0 scale-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.055]"
+        style={{ backgroundImage: post.coverImage }}
+      />
+      <div aria-hidden="true" className="journal-feature-grid absolute inset-0 opacity-70" />
+      <div aria-hidden="true" className="rail-series-ghost">
+        {post.issue ?? '01'}
+      </div>
+      <div aria-hidden="true" className="rail-series-orbit" />
+      <div className="rail-project-scrim absolute inset-0" />
+      <div className="rail-project-highlight absolute inset-0" />
+
+      <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b border-line/10 bg-background/[0.08] px-6 py-5 text-[10px] uppercase tracking-[0.3em] text-foreground/[0.6] backdrop-blur-[2px] sm:px-8">
+        <span>LONGFORM</span>
+        <span>{post.issue ?? '01'}</span>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 sm:pr-28 lg:p-12 lg:pr-32">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.3em] text-accentSoft/75">
+          <span>主线长文</span>
+          <span className="h-px w-7 bg-accentSoft/40" />
+          <span>{formatDate(post.date)}</span>
+        </div>
+        <h3 className="mt-4 max-w-4xl font-display text-[clamp(2.65rem,6vw,5.4rem)] leading-[0.92] tracking-[-0.035em] text-foreground">
+          {post.title}
+        </h3>
+        {post.subtitle ? (
+          <p className="mt-3 font-display text-lg leading-snug text-foreground/62 sm:text-2xl">
+            {post.subtitle}
+          </p>
+        ) : null}
+        <p className="mt-4 line-clamp-2 max-w-2xl text-sm leading-7 text-foreground/[0.65] sm:text-base">
+          {post.description}
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          {post.tags.slice(0, compact ? 2 : 3).map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-line/[0.14] bg-background/[0.16] px-3 py-2 text-[10px] uppercase tracking-[0.17em] text-foreground/72 backdrop-blur-md"
+            >
+              {tag}
+            </span>
+          ))}
+          {post.readTime ? (
+            <span className="ml-1 text-[10px] uppercase tracking-[0.2em] text-foreground/38">
+              {post.readTime}
+            </span>
+          ) : null}
+        </div>
+      </div>
+
+      <div className="absolute bottom-8 right-8 hidden h-14 w-14 items-center justify-center rounded-full border border-line/20 bg-background/[0.16] text-xl text-foreground backdrop-blur-md transition-transform duration-500 group-hover:translate-x-1 group-hover:scale-110 sm:flex">
+        →
+      </div>
+    </Link>
+  );
+}
+
+const featuredSeriesPost = getFeaturedSeriesPost();
+const homeRailItems = featuredSeriesPost
+  ? [
+      { kind: 'series' as const, post: featuredSeriesPost },
+      ...projects
+        .filter((project) => project.slug !== 'tmo')
+        .map((project) => ({ kind: 'project' as const, project })),
+    ]
+  : projects.map((project) => ({ kind: 'project' as const, project }));
+
+function RailItemCard({
+  item,
+  compact = false,
+}: {
+  item: (typeof homeRailItems)[number];
+  compact?: boolean;
+}) {
+  return item.kind === 'series'
+    ? <RailSeriesCard post={item.post} compact={compact} />
+    : <RailProjectCard project={item.project} compact={compact} />;
+}
+
 function NativeRail() {
   return (
     <section className="section-shell section-space overflow-hidden">
       <div className="mb-10 flex items-end justify-between gap-5">
         <div>
-          <p className="text-xs uppercase tracking-[0.42em] text-accent/75">Horizontal Study</p>
+          <p className="text-xs uppercase tracking-[0.42em] text-accent/75">Writing & selected work</p>
           <h2 className="mt-4 max-w-3xl font-display text-5xl leading-[0.96] text-foreground sm:text-6xl">
-            A wider way through the work.
+            Ideas, then the work they shape.
           </h2>
         </div>
         <p className="hidden text-xs uppercase tracking-[0.32em] text-foreground/40 sm:block">
@@ -74,8 +166,12 @@ function NativeRail() {
       <div
         className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8"
       >
-        {projects.map((project) => (
-          <RailProjectCard key={project.slug} project={project} compact />
+        {homeRailItems.map((item) => (
+          <RailItemCard
+            key={item.kind === 'series' ? item.post.slug : item.project.slug}
+            item={item}
+            compact
+          />
         ))}
       </div>
     </section>
@@ -120,7 +216,7 @@ function DesktopCinematicRail() {
   return (
       <section
         ref={sectionRef}
-        aria-label="Selected work horizontal gallery"
+        aria-label="Featured writing and selected work horizontal gallery"
         className="relative h-[360vh]"
       >
         <div className="sticky top-0 h-screen overflow-hidden border-y border-line/[0.08] bg-background">
@@ -144,21 +240,26 @@ function DesktopCinematicRail() {
           >
             <div className="flex h-[68vh] w-[52vw] shrink-0 flex-col justify-between py-7">
               <div>
-                <p className="text-xs uppercase tracking-[0.46em] text-accent/75">Horizontal Study</p>
+                <p className="text-xs uppercase tracking-[0.46em] text-accent/75">
+                  Writing & selected work
+                </p>
                 <h2 className="mt-7 max-w-3xl font-display text-[clamp(4.5rem,7vw,8rem)] leading-[0.88] tracking-[-0.045em] text-foreground">
-                  Move through a wider frame.
+                  Ideas, then the work they shape.
                 </h2>
               </div>
               <div className="flex items-end justify-between gap-8 border-t border-line/10 pt-6">
                 <p className="max-w-sm text-sm leading-7 text-foreground/[0.58]">
-                  Vertical input becomes horizontal momentum. The next frame always stays in sight.
+                  Longform thinking and shipped systems share one continuous frame.
                 </p>
                 <span className="font-display text-7xl text-foreground/10">→</span>
               </div>
             </div>
 
-            {projects.map((project) => (
-              <RailProjectCard key={project.slug} project={project} />
+            {homeRailItems.map((item) => (
+              <RailItemCard
+                key={item.kind === 'series' ? item.post.slug : item.project.slug}
+                item={item}
+              />
             ))}
 
             <div className="flex h-[68vh] w-[50vw] shrink-0 flex-col items-start justify-between rounded-[2.4rem] border border-line/10 bg-line/[0.03] p-10 lg:p-14">
@@ -169,12 +270,20 @@ function DesktopCinematicRail() {
                   Back to the vertical rhythm.
                 </h3>
               </div>
-              <Link
-                to="/works"
-                className="rounded-full border border-line/15 bg-line/5 px-6 py-3 text-xs uppercase tracking-[0.28em] text-foreground/80 hover:border-accent/45 hover:text-foreground"
-              >
-                View all works ↗
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/blog"
+                  className="rounded-full border border-line/15 bg-line/5 px-6 py-3 text-xs uppercase tracking-[0.28em] text-foreground/80 hover:border-accent/45 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+                >
+                  Read the journal →
+                </Link>
+                <Link
+                  to="/works"
+                  className="rounded-full border border-line/10 px-6 py-3 text-xs uppercase tracking-[0.28em] text-foreground/55 hover:border-line/25 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+                >
+                  View works ↗
+                </Link>
+              </div>
             </div>
           </motion.div>
 

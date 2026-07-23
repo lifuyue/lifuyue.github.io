@@ -1,13 +1,8 @@
 declare module '*.mdx' {
   import type { ComponentType } from 'react';
+  import type { BlogFrontmatter } from '@/types/blog';
 
-  export const frontmatter: {
-    title: string;
-    date: string;
-    description: string;
-    tags: string[];
-    coverImage: string;
-  };
+  export const frontmatter: BlogFrontmatter;
 
   const MDXComponent: ComponentType;
   export default MDXComponent;
