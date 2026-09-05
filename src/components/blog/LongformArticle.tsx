@@ -182,7 +182,7 @@ export function LongformArticle({ post }: LongformArticleProps) {
           </div>
           <p className="text-[10px] uppercase tracking-[0.36em] text-accent/80">End note</p>
           <h2 className="mt-5 max-w-2xl font-display text-4xl leading-tight text-foreground sm:text-5xl">
-            代码会越来越便宜，判断不会。
+            感谢阅读。
           </h2>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link
@@ -191,7 +191,6 @@ export function LongformArticle({ post }: LongformArticleProps) {
             >
               返回 Blog
             </Link>
-            <span className="text-xs text-foreground/38">下一篇，会在有新判断时出现。</span>
           </div>
         </div>
       </footer>
