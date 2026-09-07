@@ -2,95 +2,24 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { WorkArtwork } from '@/components/sections/CinematicRail';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
 import type { Project, ProjectCaseStudyGalleryItem } from '@/types/project';
 
 function ProjectMetaLinks({ project }: { project: Project }) {
-  const isExternalLink = (href: string) => /^https?:\/\//i.test(href);
-
-  return (
-    <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
-      <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Links</p>
-      <div className="mt-5 flex flex-col gap-3">
-        {project.links.map((item) =>
-          isExternalLink(item.href) ? (
-            <a
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ) : (
-            <Link
-              key={item.label}
-              to={item.href}
-              className="rounded-full border border-line/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-foreground/80 hover:border-accent/50 hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ),
-        )}
-      </div>
-    </div>
-  );
+  return <div className="project-links"><p className="index-label">Explore the project</p>{project.links.map((item) => /^https?:\/\//i.test(item.href)
+    ? <a key={item.label} href={item.href} target="_blank" rel="noreferrer">{item.label}<span>↗</span></a>
+    : <Link key={item.label} to={item.href}>{item.label}<span>↗</span></Link>)}</div>;
 }
 
-function DefaultWorkDetail({
-  project,
-  nextProject,
-}: {
-  project: Project;
-  nextProject?: Project;
-}) {
-  return (
-    <section className="section-shell section-space">
-      <div
-        className="mb-12 h-[40vh] min-h-[320px] overflow-hidden rounded-[1rem]"
-        style={{ background: project.cover }}
-      />
-      <SectionHeading
-        eyebrow={`${project.category} / ${project.year}`}
-        title={project.title}
-        description={project.description}
-      />
-      <div className="grid gap-8 lg:grid-cols-[1.3fr,0.7fr]">
-        <div className="space-y-6 text-base leading-8 text-foreground/70">
-          {project.longDescription.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        <aside className="space-y-6">
-          <div className="rounded-[1.25rem] border border-line/8 bg-line/[0.03] p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Project Metrics</p>
-            <div className="mt-5 space-y-4">
-              {project.metrics.map((item) => (
-                <div key={item.label} className="border-b border-line/10 pb-4 last:border-none">
-                  <p className="text-xs uppercase tracking-[0.2em] text-foreground/45">{item.label}</p>
-                  <p className="mt-2 text-lg text-foreground">{item.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <ProjectMetaLinks project={project} />
-        </aside>
-      </div>
-      {nextProject ? (
-        <div className="mt-12">
-          <Link
-            to={`/works/${nextProject.slug}`}
-            className="inline-flex rounded-full border border-line/10 px-5 py-3 text-sm uppercase tracking-[0.22em] text-foreground/80 hover:border-line/20 hover:text-foreground"
-          >
-            Next Project: {nextProject.title}
-          </Link>
-        </div>
-      ) : null}
-    </section>
-  );
+function DefaultWorkDetail({ project, nextProject }: { project: Project; nextProject?: Project }) {
+  return <article className="interior-shell project-detail">
+    <header className="project-header"><div className="interior-kicker"><Link to="/works">← All works</Link><span>{project.category} / {project.year}</span></div><div className="project-title-row"><h1>{project.title}</h1><span aria-hidden="true">↘</span></div><p>{project.description}</p><div className="entry-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></header>
+    <dl className="project-metrics">{project.metrics.map((metric) => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>
+    <div className="project-overview"><div className="project-detail-art"><WorkArtwork kind={project.slug} /></div><div className="project-story"><span className="index-label">Overview / Behind the work</span>{project.longDescription.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<ProjectMetaLinks project={project} /></div></div>
+    {nextProject && <footer className="project-next"><span className="index-label">Next project</span><Link to={`/works/${nextProject.slug}`}><span>{nextProject.title}</span><span aria-hidden="true">↗</span></Link></footer>}
+  </article>;
 }
 
 function GalleryCard({ item, index }: { item: ProjectCaseStudyGalleryItem; index: number }) {
@@ -209,7 +138,7 @@ function CaseStudyWorkDetail({
   }
 
   return (
-    <section className="section-shell section-space">
+    <section className="interior-shell case-study-detail">
       <div
         className="case-study-hero relative overflow-hidden rounded-[1.75rem] min-h-[34rem] lg:aspect-[16/9] lg:min-h-0"
         style={{ background: project.cover }}

@@ -92,6 +92,7 @@ export const mdxComponents: MDXComponents = {
   blockquote: (props) => (
     <blockquote className="border-l-2 border-accent pl-6 italic text-foreground/80" {...props} />
   ),
+  table: (props) => <div className="reader-table-scroll"><table {...props} /></div>,
   hr: (props) => <hr className="border-line/10" {...props} />,
   figure: (props) => <figure className="my-12" {...props} />,
   figcaption: (props) => (

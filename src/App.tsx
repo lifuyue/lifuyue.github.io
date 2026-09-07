@@ -31,7 +31,7 @@ export default function App() {
       {isResumeRoute ? null : <LoadingScreen />}
       {isResumeRoute ? null : <CustomCursor />}
       {isResumeRoute ? null : <Navbar />}
-      <main id="main-content" tabIndex={-1} className={isResumeRoute || location.pathname === '/' ? 'min-h-screen' : 'min-h-screen pt-24'}>
+      <main id="main-content" tabIndex={-1} className={isResumeRoute || location.pathname === '/' ? 'min-h-screen' : 'content-surface min-h-screen pt-24'}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
