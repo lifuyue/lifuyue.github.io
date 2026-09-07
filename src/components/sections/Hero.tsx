@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section ref={ref} className="signal-hero" aria-label="Lifuyue · Developer & builder">
       <div className="hero-person" aria-hidden="true">
-        <img src="/images/lifuyue-cutout.webp" alt="" fetchPriority="high" width={1254} height={1254} />
+        <img src="/images/lifuyue-halfbody-v4.webp" alt="" fetchPriority="high" width={1024} height={1536} />
       </div>
       <div className="hero-location">
         <p>Located in<br />Xiamen, China</p>
