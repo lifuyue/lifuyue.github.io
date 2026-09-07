@@ -4,7 +4,6 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { PageTransition } from '@/components/layout/PageTransition';
-import { SmoothScroll } from '@/components/layout/SmoothScroll';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { LoadingScreen } from '@/components/ui/LoadingScreen';
 import { Blog } from '@/pages/Blog';
@@ -29,11 +28,10 @@ export default function App() {
 
   return (
     <>
-      {isResumeRoute ? null : <SmoothScroll />}
       {isResumeRoute ? null : <LoadingScreen />}
       {isResumeRoute ? null : <CustomCursor />}
       {isResumeRoute ? null : <Navbar />}
-      <main className={isResumeRoute ? 'min-h-screen' : 'min-h-screen pt-24'}>
+      <main id="main-content" tabIndex={-1} className={isResumeRoute || location.pathname === '/' ? 'min-h-screen' : 'min-h-screen pt-24'}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route

@@ -1,7 +1,4 @@
 # AGENTS.md
-
-本文件面向在此仓库内工作的代码代理与协作者，目标是让改动尽快对齐当前项目的结构、风格与交付方式。
-
 ## 仓库简介
 
 这是一个基于 React 19 + TypeScript + Vite 的个人 portfolio / blog 单页应用，部署目标是 GitHub Pages。站点采用统一的 editorial 视觉语言来组织个人介绍、作品集、博客与视觉实验，核心是有节奏的内容呈现、动效编排和适度的 3D 表达。
@@ -36,49 +33,10 @@ npm run preview
 - `src/lib/mdx.ts`：构建时加载博客文章并生成文章索引。
 - `src/styles/globals.css`：全局样式、主题 token 和基础视觉规则入口。
 - `.github/workflows/deploy.yml`：GitHub Pages 部署工作流。
+ ## 解释代码
+Use plain language over jargon, and reference technical details only to the degree that it helps illustrate an idea or your work to the user. Communicate complex concepts in a clear and cohesive manner, and calibrate your writing to the level of background knowledge assumed from the user's prompt and context.
+## 测试
+Do not write tests for reversible, low-impact changes that mirror the implementation. If you do choose to verify your work with tests, make sure that the tests are meaningful and necessary to verify implementation.
 
-## 视觉与实现约束
-
-- 保持现有 `editorial`、`kinetic`、`precise` 的整体方向，不要把页面改成常见 SaaS 模板风格。
-- 保持深色主基调、定制字体、较强的排版层级和节奏化留白。
-- 动效优先复用现有 Framer Motion、GSAP、Lenis 和 Three/R3F 组合，不为小改动引入新的动画依赖。
-- UI 结构优先复用已有组件和模式，例如 `GlassCard`、`SectionHeading`、`MagneticButton`、布局壳层和现有 hooks。
-- 只有在现有模式明显不够用时才扩展新抽象，避免为了“更通用”而做不必要重构。
-
-## 页面内容定位
-
-- `Home` 页面是个人能力与定位页，不是本站技术说明页。
-- 首页内容应优先展示作者自己的技术栈、擅长方向、解决问题能力、代表性经验和合作价值。
-- 首页避免大段描述“这个网站使用了什么框架、部署方式或工程方案”；站点自身技术实现只能作为次要背景信息存在。
-- `Works` 页面继续作为作品集页面使用，保持“项目 / 案例 / 实验”的展示职责不变。
-- 作品页重点仍是项目成果、体验设计、职责分工、实现亮点和过程判断，不要把 `Works` 改写成博客页或简历页。
-- `Blog` 页面用于承载两类内容：推文或社交平台内容的跳转链接，以及项目完成后的复盘总结。
-- 博客区不再泛化为普通技术随笔集合；新增内容时优先判断它是否属于“外链入口”或“项目复盘”。
-- 当前仓库仍保留基于 MDX 的博客正文机制，因此长文复盘内容继续兼容现有文章体系；若后续补充推文跳转入口，优先以独立数据源或外链卡片形式接入，不要伪装成作品数据。
-
-## 内容维护约定
-
-- 新项目优先修改 `src/data/projects.ts`。
-- 新的项目复盘文章放在 `content/blog/<slug>.mdx`。
-- 若新增 `Blog` 页中的推文 / 社交链接入口，优先维护在独立数据源中，不要混入 `src/data/projects.ts`。
-- 博客 frontmatter 至少包含以下字段：
-  - `title`
-  - `date`
-  - `description`
-  - `tags`
-  - `coverImage`
-- 这些 frontmatter 约束以 `src/types/blog.ts` 和 `src/lib/mdx.ts` 的当前实现为准。
-
-## 变更前后检查
-
-- 涉及路由或页面入口时，同步核对 `src/App.tsx`。
-- 涉及博客加载、frontmatter 或文章渲染时，同步核对 `src/lib/mdx.ts` 和 `src/types/blog.ts`。
-- 涉及主题、颜色或字体时，同步核对 `src/styles/globals.css` 与 `tailwind.config.ts`。
-- 涉及 GitHub Pages 行为时，同步核对 `.github/workflows/deploy.yml` 和 `public/404.html`。
-- 提交前至少运行一次 `npm run build`；若本地没有依赖，先执行 `npm ci`。
-
-## 工作边界
-
-- 这是一个前端展示型站点，优先最小化改动范围，不要顺手引入与任务无关的结构性重写。
-- 当前仓库没有测试框架；验证以构建通过、主要页面路径可访问、内容约定未被破坏为主。
-- 如果发现 `CLAUDE.md`、`README.md` 或本文件之间存在重复说明，优先保持事实一致，再做最小必要更新。
+Run tests appropriate to the change and complete required checks. Once those pass, broaden or repeat testing only when new changes, failures, or unresolved concerns justify it; otherwise, continue toward completing the task.
+## 

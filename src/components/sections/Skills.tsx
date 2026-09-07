@@ -1,47 +1,19 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { skills } from '@/data/skills';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 
 export function Skills() {
+  const [expanded, setExpanded] = useState<number | null>(0);
+  const reduced = useReducedMotion();
   return (
-    <section className="section-shell section-space">
-      <SectionHeading
-        eyebrow="What I Ship"
-        title="Things I actually build and deliver."
-        description="我真正在做的事和交付的方式。"
-      />
-      <div className="grid gap-6 md:grid-cols-2">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, delay: index * 0.08 }}
-          >
-            <GlassCard className="h-full min-h-[280px]">
-              <div className="flex h-full flex-col">
-                <p className="text-xs uppercase tracking-[0.35em] text-accent/80">
-                  0{index + 1}
-                </p>
-                <h3 className="mt-6 font-display text-3xl text-foreground">{skill.title}</h3>
-                <p className="mt-4 flex-1 text-sm leading-7 text-foreground/70">{skill.description}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {skill.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-line/10 px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground/80"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
+    <section className="capabilities-section" id="practice"><div className="reset-section">
+      <div className="section-meta"><span>03 / What I ship</span><span>Ideas into things that work.</span></div>
+      <div className="capabilities-grid"><div className="capabilities-heading"><span className="practice-star" aria-hidden="true">✳</span><h2>Things I<br />actually<br /><span>deliver.</span></h2><p>我真正在做的事和交付的方式。</p></div>
+        <div className="capabilities-list">{skills.map((skill, index) => <div className={`capability ${expanded === index ? 'is-expanded' : ''}`} key={skill.title}>
+          <h3><button type="button" onClick={() => setExpanded(expanded === index ? null : index)} aria-expanded={expanded === index} aria-controls={`capability-${index}`} id={`capability-trigger-${index}`}><span className="capability-number">0{index + 1}</span><span>{skill.title}</span><span className="capability-plus" aria-hidden="true">+</span></button></h3>
+          <AnimatePresence initial={false}>{expanded === index && <motion.div id={`capability-${index}`} role="region" aria-labelledby={`capability-trigger-${index}`} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: reduced ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }} className="capability-content"><div><p>{skill.description}</p><div className="work-tags">{skill.items.map((item) => <span key={item}>{item}</span>)}</div></div></motion.div>}</AnimatePresence>
+        </div>)}</div>
       </div>
-    </section>
+    </div></section>
   );
 }

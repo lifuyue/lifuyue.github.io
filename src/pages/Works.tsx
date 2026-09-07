@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { WorkArtwork } from '@/components/sections/CinematicRail';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { projectCategories, projects } from '@/data/projects';
 import { useState } from 'react';
@@ -47,10 +48,7 @@ export function Works() {
           >
             <Link to={`/works/${project.slug}`} className="group block h-full">
               <GlassCard className="h-full min-h-[380px] p-0">
-                <div
-                  className="h-64 w-full border-b border-line/10 transition-transform duration-500 group-hover:scale-[1.02]"
-                  style={{ background: project.cover }}
-                />
+                <div className="work-gallery-cover"><WorkArtwork kind={project.slug} /></div>
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-xs uppercase tracking-[0.28em] text-foreground/45">
