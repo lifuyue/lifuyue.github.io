@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -13,5 +14,5 @@ export function LoadingScreen() {
     }, reduced ? 0 : 600);
     return () => window.clearTimeout(timer);
   }, [reduced]);
-  return <AnimatePresence>{visible && !reduced && <motion.div aria-hidden="true" className="reset-intro" initial={{ y: 0 }} exit={{ y: '-100%', borderRadius: '0 0 35% 35%' }} transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}><span>✳</span><p>Hello, world.</p><small>LIFUYUE / PORTFOLIO</small></motion.div>}</AnimatePresence>;
+  return <AnimatePresence>{visible && !reduced && <motion.div aria-hidden="true" className="reset-intro" initial={{ y: 0 }} exit={{ y: '-100%', borderRadius: '0 0 35% 35%' }} transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}><span><SymbolIcon name="asterisk" /></span><p>Hello, world.</p><small>LIFUYUE / PORTFOLIO</small></motion.div>}</AnimatePresence>;
 }

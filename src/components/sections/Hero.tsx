@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -18,9 +19,9 @@ export function Hero() {
         <span aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" /><ellipse cx="20" cy="20" rx="7" ry="15" /><path d="M5 20h30M8 11h24M8 29h24" /></svg></span>
       </div>
       <motion.div className="hero-introduction" initial={reduced ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <span className="hero-direction" aria-hidden="true">↘</span>
+        <span className="hero-direction" aria-hidden="true"><SymbolIcon name="arrow-down-right" /></span>
         <h1>Hi, I build things<br />with AI agents<br />and ship them.</h1>
-        <div className="hero-actions"><Link to="/works">View works ↗</Link><Link to="/blog">Read notes ↗</Link></div>
+        <div className="hero-actions"><Link to="/works">View works <SymbolIcon name="arrow-up-right" /></Link><Link to="/blog">Read notes <SymbolIcon name="arrow-up-right" /></Link></div>
       </motion.div>
       <div className="hero-name-window" aria-label="Lifuyue">
         <motion.div className="hero-name-scroll" style={reduced ? undefined : { x: nameX }} aria-hidden="true">
@@ -30,7 +31,7 @@ export function Hero() {
         </motion.div>
       </div>
       <div className="hero-edge-label">Developer / Builder / Thinker</div>
-      <Link to="/#about" className="hero-scroll-cue" aria-label="向下浏览个人介绍">↓</Link>
+      <Link to="/#about" className="hero-scroll-cue" aria-label="向下浏览个人介绍"><SymbolIcon name="arrow-down" /></Link>
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useId, useRef, useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
@@ -7,19 +8,19 @@ const themeOptions = [
     value: 'system',
     label: 'System',
     description: 'Follow OS appearance',
-    icon: '◐',
+    icon: 'system',
   },
   {
     value: 'light',
     label: 'Light',
     description: 'Always use light mode',
-    icon: '☀',
+    icon: 'sun',
   },
   {
     value: 'dark',
     label: 'Dark',
     description: 'Always use dark mode',
-    icon: '☾',
+    icon: 'moon',
   },
 ] as const;
 
@@ -77,7 +78,7 @@ export function ThemeToggle() {
             transition={{ duration: 0.28 }}
             className="text-lg text-foreground"
           >
-            {activeOption.icon}
+            <SymbolIcon name={activeOption.icon} />
           </motion.span>
         </AnimatePresence>
       </button>
@@ -123,7 +124,7 @@ export function ThemeToggle() {
                     }`}
                     data-cursor="large"
                   >
-                    <span className="text-base">{option.icon}</span>
+                    <span className="text-base"><SymbolIcon name={option.icon} /></span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-semibold uppercase tracking-[0.16em]">
                         {option.label}

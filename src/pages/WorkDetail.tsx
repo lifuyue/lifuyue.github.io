@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
@@ -9,16 +10,16 @@ import type { Project, ProjectCaseStudyGalleryItem } from '@/types/project';
 
 function ProjectMetaLinks({ project }: { project: Project }) {
   return <div className="project-links"><p className="index-label">Explore the project</p>{project.links.map((item) => /^https?:\/\//i.test(item.href)
-    ? <a key={item.label} href={item.href} target="_blank" rel="noreferrer">{item.label}<span>↗</span></a>
-    : <Link key={item.label} to={item.href}>{item.label}<span>↗</span></Link>)}</div>;
+    ? <a key={item.label} href={item.href} target="_blank" rel="noreferrer">{item.label}<span><SymbolIcon name="arrow-up-right" /></span></a>
+    : <Link key={item.label} to={item.href}>{item.label}<span><SymbolIcon name="arrow-up-right" /></span></Link>)}</div>;
 }
 
 function DefaultWorkDetail({ project, nextProject }: { project: Project; nextProject?: Project }) {
   return <article className="interior-shell project-detail">
-    <header className="project-header"><div className="interior-kicker"><Link to="/works">← All works</Link><span>{project.category} / {project.year}</span></div><div className="project-title-row"><h1>{project.title}</h1><span aria-hidden="true">↘</span></div><p>{project.description}</p><div className="entry-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></header>
+    <header className="project-header"><div className="interior-kicker"><Link to="/works"><SymbolIcon name="arrow-left" /> All works</Link><span>{project.category} / {project.year}</span></div><div className="project-title-row"><h1>{project.title}</h1><span aria-hidden="true"><SymbolIcon name="arrow-down-right" /></span></div><p>{project.description}</p><div className="entry-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></header>
     <dl className="project-metrics">{project.metrics.map((metric) => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>
     <div className="project-overview"><div className="project-detail-art"><WorkArtwork kind={project.slug} /></div><div className="project-story"><span className="index-label">Overview / Behind the work</span>{project.longDescription.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<ProjectMetaLinks project={project} /></div></div>
-    {nextProject && <footer className="project-next"><span className="index-label">Next project</span><Link to={`/works/${nextProject.slug}`}><span>{nextProject.title}</span><span aria-hidden="true">↗</span></Link></footer>}
+    {nextProject && <footer className="project-next"><span className="index-label">Next project</span><Link to={`/works/${nextProject.slug}`}><span>{nextProject.title}</span><span aria-hidden="true"><SymbolIcon name="arrow-up-right" /></span></Link></footer>}
   </article>;
 }
 

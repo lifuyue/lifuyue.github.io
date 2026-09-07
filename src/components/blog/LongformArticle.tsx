@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { MDXProvider } from '@mdx-js/react';
 import { motion, useReducedMotion, useScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -41,17 +42,17 @@ export function LongformArticle({ post }: { post: BlogPostEntry }) {
   return <article ref={articleRef} className="article-reader">
     <motion.div className="reader-progress" aria-hidden="true" style={{ scaleX: scrollYProgress, transition: reduced ? 'none' : undefined }} />
     <header className="interior-shell reader-header">
-      <div className="interior-kicker"><Link to="/blog">← Journal</Link><span>{post.kind === 'series' ? `Longform / ${post.issue ?? '01'}` : 'Project notes'}</span></div>
-      <div className="reader-title-row"><h1>{post.title}</h1><span aria-hidden="true">↘</span></div>
+      <div className="interior-kicker"><Link to="/blog"><SymbolIcon name="arrow-left" /> Journal</Link><span>{post.kind === 'series' ? `Longform / ${post.issue ?? '01'}` : 'Project notes'}</span></div>
+      <div className="reader-title-row"><h1>{post.title}</h1><span aria-hidden="true"><SymbolIcon name="arrow-down-right" /></span></div>
       {post.subtitle && <p className="reader-subtitle">{post.subtitle}</p>}
       <div className="reader-summary"><p>{post.description}</p><dl><div><dt>Published</dt><dd>{formatDate(post.date)}</dd></div>{post.readTime && <div><dt>Reading time</dt><dd>{post.readTime}</dd></div>}</dl></div>
-      <div className="reader-byline"><span>By Lifuyue</span><div>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><a href="#article-body">开始阅读 ↓</a></div>
+      <div className="reader-byline"><span>By Lifuyue</span><div>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><a href="#article-body">开始阅读 <SymbolIcon name="arrow-down" /></a></div>
     </header>
     {chapters.length > 0 && <details className="reader-mobile-contents interior-shell" ref={mobileContents}><summary>文章目录 <span>{String(chapters.length).padStart(2, '0')} chapters ＋</span></summary><nav aria-label="移动端文章章节">{contents}</nav></details>}
     <div className="interior-shell reader-layout">
-      <aside className="reader-sidebar"><div><p className="index-label">On this page</p><nav aria-label="文章章节">{contents}</nav><Link to="/blog" className="reader-back">← 返回全部文章</Link></div></aside>
+      <aside className="reader-sidebar"><div><p className="index-label">On this page</p><nav aria-label="文章章节">{contents}</nav><Link to="/blog" className="reader-back"><SymbolIcon name="arrow-left" /> 返回全部文章</Link></div></aside>
       <div ref={bodyRef} id="article-body" className="reader-prose prose max-w-none"><MDXProvider components={mdxComponents}><post.Content /></MDXProvider></div>
     </div>
-    <footer className="interior-shell reader-ending"><span className="index-label">End note / Thanks for reading</span><Link to="/blog"><span>感谢阅读。<small>回到 Journal，继续探索。</small></span><span aria-hidden="true">↗</span></Link></footer>
+    <footer className="interior-shell reader-ending"><span className="index-label">End note / Thanks for reading</span><Link to="/blog"><span>感谢阅读。<small>回到 Journal，继续探索。</small></span><span aria-hidden="true"><SymbolIcon name="arrow-up-right" /></span></Link></footer>
   </article>;
 }

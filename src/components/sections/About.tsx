@@ -1,3 +1,4 @@
+import { SymbolIcon } from '@/components/ui/SymbolIcon';
 import { motion, useReducedMotion } from 'framer-motion';
 
 export function About() {
@@ -10,7 +11,7 @@ export function About() {
         <p>我是 李富悦，厦大软件工程在读。日常做的事情是用 Coding Agent 搭建产品——从想法到可以交付的东西，前端、后端、工作流我都自己来。这个站点是我的作品集，也是我边做边想的记录。</p>
       </div>
       <div className="about-grid">
-        <figure className="portrait-frame"><img src="/images/about-portrait.jpg" alt="李富悦" loading="lazy" /><figcaption><span>Life outside the editor.</span><span>↗</span></figcaption></figure>
+        <figure className="portrait-frame"><img src="/images/about-portrait.jpg" alt="李富悦" loading="lazy" /><figcaption><span>Life outside the editor.</span><span><SymbolIcon name="arrow-up-right" /></span></figcaption></figure>
         <div className="about-copy">
           <p className="about-lead">我是一名软件工程师，<br />专注于 web 全栈开发和 AI Agent 设计。</p>
           <p>我的工作和兴趣横跨全栈开发、AI Agent 工作流、产品原型与交互设计。我喜欢研究系统在约束下如何运转、Agent 怎样才能可靠地交付、以及界面怎样做到让人觉得“本该如此”——而不只是“能用”。</p>

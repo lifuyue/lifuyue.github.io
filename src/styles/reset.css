@@ -22,6 +22,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .text-link:hover span { transform: translate(3px,-3px); }
 .skip-link { position: fixed; top: 12px; left: 12px; padding: 12px 20px; z-index: 110; background: #4057ef; color: white; transform: translateY(-160%); }
 .skip-link:focus { transform: translateY(0); }
+/* Explicit sizing keeps decorative icons independent of system emoji fonts. */
+.symbol-icon { display: inline-block; width: 1em; height: 1em; flex-shrink: 0; vertical-align: -.125em; }
 /* Navigation */
 .reset-nav { position: absolute; inset: 0 0 auto; z-index: 40; padding: 34px 64px; display: flex; align-items: center; justify-content: space-between; height: 102px; }
 .reset-brand { display: flex; align-items: center; gap: 12px; font-size: 15px; }
