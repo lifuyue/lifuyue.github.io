@@ -12,7 +12,7 @@ const entries = [
 ];
 
 export function WorkArtwork({ kind }: { kind: string }) {
-  if (kind === 'journal') return <div className="work-art art-journal" aria-hidden="true"><div className="art-label"><span>FIELD NOTES</span><span>VOL. 01</span></div><div className="journal-glyph">思<span><SymbolIcon name="arrow-up-right" /></span></div><div className="art-label"><span>HUMAN × AGENT</span><span>A YEAR IN THE MAKING</span></div></div>;
+  if (kind === 'journal') return <div className="work-art art-journal" aria-hidden="true"><img className="journal-cover-image" src="/images/journal/thought-continued-v1.webp" alt="" width={1254} height={1254} loading="lazy" decoding="async" /></div>;
   if (kind === 'tmo') return <div className="work-art art-tmo" aria-hidden="true"><div className="art-label"><span>TMO / COMMERCE</span><span>2026</span></div><img src="/images/tmo/hero-sku.png" alt="" loading="lazy" /><strong>TMO<span>®</span></strong><div className="art-label"><span>CONNECTED COMMERCE</span><span>IDEA → SYSTEM</span></div></div>;
   return <div className="work-art art-suanxian" aria-hidden="true"><div className="art-label"><span>SUANXIAN / FRESHFLOW</span><span>2026</span></div><div className="fresh-symbol"><span /><span /><span /></div><strong>Fresh ideas.<br />Full delivery.</strong><div className="art-label"><span>报价 → 下单 → 配送 → 结算</span><span><SymbolIcon name="arrow-up-right" /></span></div></div>;
 }
